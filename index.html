@@ -42,6 +42,38 @@
         rel="stylesheet"
         href="style.css"
     >
+    <style>
+        /* Tăng kích thước cho các đoạn văn bản đọc chính */
+        body, p, .hero-description, .section-heading p, 
+        .knowledge-card p, .resource-body p, .tool-card p, 
+        .quiz-context, #modalText, .feedback-content p {
+            font-size: 18px !important; 
+            line-height: 1.7 !important;
+        }
+
+        /* Tăng kích thước chữ cho thanh điều hướng (menu) và các nút bấm */
+        .nav-link, .button, .header-cta, .answer-button strong {
+            font-size: 14px !important;
+        }
+
+        /* Tăng kích thước cho các tiêu đề chính và phụ */
+        .section-heading h2 {
+            font-size: clamp(42px, 6vw, 68px) !important;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(54px, 6.5vw, 86px) !important;
+        }
+        
+        h3, .knowledge-card h3, .resource-body h3, .tool-card h3, .quiz-question {
+            font-size: 22px !important;
+        }
+
+        /* Tăng nhẹ font chữ cho các chú thích nhỏ */
+        .section-kicker, .card-category, .tool-type, .quiz-topic {
+            font-size: 11px !important;
+        }
+    </style>
 </head>
 
 <body>
