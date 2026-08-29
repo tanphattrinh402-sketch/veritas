@@ -47,32 +47,72 @@
         body, p, .hero-description, .section-heading p, 
         .knowledge-card p, .resource-body p, .tool-card p, 
         .quiz-context, #modalText, .feedback-content p {
-            font-size: 18px !important; 
+            font-size: 20px !important; 
             line-height: 1.7 !important;
         }
 
         /* Tăng kích thước chữ cho thanh điều hướng (menu) và các nút bấm */
         .nav-link, .button, .header-cta, .answer-button strong {
-            font-size: 14px !important;
+            font-size: 20px !important;
         }
 
         /* Tăng kích thước cho các tiêu đề chính và phụ */
         .section-heading h2 {
-            font-size: clamp(42px, 6vw, 68px) !important;
+            font-size: clamp(50px, 7vw, 75px) !important;
         }
         
         .hero-content h1 {
-            font-size: clamp(54px, 6.5vw, 86px) !important;
+            font-size: clamp(50px, 7.5vw, 92px) !important;
         }
         
         h3, .knowledge-card h3, .resource-body h3, .tool-card h3, .quiz-question {
-            font-size: 22px !important;
+            font-size: 28px !important;
         }
 
         /* Tăng nhẹ font chữ cho các chú thích nhỏ */
         .section-kicker, .card-category, .tool-type, .quiz-topic {
-            font-size: 11px !important;
+            font-size: 25px !important;
         }
+        /* ==============================
+   FOOTER OVERRIDE
+============================== */
+
+.site-footer,
+.site-footer p,
+.site-footer span,
+.site-footer small,
+.site-footer a {
+    line-height: 1.6;
+}
+
+.site-footer .footer-school span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-school small {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-column a,
+.site-footer .footer-column span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-about p {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-about small {
+    font-size: 9px !important;
+}
+
+.site-footer .footer-about span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-bottom {
+    font-size: 10px !important;
+}
     </style>
 </head>
 
@@ -93,7 +133,7 @@
                 <img
                     src="assets/logo.png"
                     alt="Logo Trường THPT Giồng Ông Tố"
-                    style="height: 200px; width: 250px; object-fit: contain;"
+                    style="height: 78px; width: 130px; object-fit: contain;"
                 >
             </div>
 
@@ -1492,11 +1532,11 @@
                 </p>
 
 
-                <div class="featured-source">
+                 <div class="featured-source">
 
-                    <span class="source-circle">
+                 <span class="source-circle">
                         V
-                    </span>
+                </span>
 
                     <div>
 
@@ -1735,7 +1775,7 @@
                         </span>
 
                         <span>
-                            NĂNG LỰC SỐ
+                            DIGITAL LITERACY
                         </span>
                     </div>
 
@@ -1763,14 +1803,14 @@
 
             <article
                 class="resource-card"
-                data-category="deepfake"
-                data-search="deepfake AI video image"
+                data-category="research"
+                data-search="research AI video image"
             >
 
                 <div class="resource-cover cover-purple">
 
                     <span class="cover-label">
-                        DEEPFAKE
+                        RESEARCH 
                     </span>
 
                     <div class="face-placeholder">
@@ -1788,7 +1828,7 @@
 
                     <div class="resource-meta">
                         <span>
-                            DEEPFAKE
+                            RESEARCH
                         </span>
 
                         <span>
@@ -1796,7 +1836,7 @@
                         </span>
 
                         <span>
-                            AI
+                            DIGITAL LITERACY
                         </span>
                     </div>
 
@@ -1811,9 +1851,9 @@
 
                     <button
                         class="resource-link"
-                        data-resource="deepfake"
+                        data-resource="research"
                     >
-                        Xem nội dung
+                        Mở tài liệu
                         <span>↗</span>
                     </button>
 
@@ -1822,20 +1862,25 @@
             </article>
 
 
-            <article
+             <article
                 class="resource-card"
-                data-category="critical-thinking"
-                data-search="critical thinking misinformation"
+                data-category="research"
+                data-search="research AI video image"
             >
 
-                <div class="resource-cover cover-yellow">
+                <div class="resource-cover cover-purple">
 
-                    <span class="cover-label dark">
-                        CRITICAL THINKING
+                    <span class="cover-label">
+                        RESEARCH 
                     </span>
 
-                    <div class="question-symbol">
-                        ?
+                    <div class="face-placeholder">
+
+                        <span></span>
+                        <span></span>
+
+                        <i></i>
+
                     </div>
 
                 </div>
@@ -1844,7 +1889,7 @@
 
                     <div class="resource-meta">
                         <span>
-                            TƯ DUY
+                            RESEARCH
                         </span>
 
                         <span>
@@ -1852,31 +1897,30 @@
                         </span>
 
                         <span>
-                            KỸ NĂNG
+                           DIGITAL LITERACY
                         </span>
                     </div>
 
                     <h3>
-                        Đừng để tiêu đề
-                        quyết định thay bạn
+                        Những dấu hiệu cần chú ý
+                        khi xem nội dung AI
                     </h3>
 
                     <p>
-                        Bài đọc và tình huống thực hành.
+                        Dành cho hình ảnh và video deepfake.
                     </p>
 
                     <button
                         class="resource-link"
-                        data-resource="critical"
+                        data-resource="research"
                     >
-                        Đọc thêm
+                        Mở tài liệu
                         <span>↗</span>
                     </button>
 
                 </div>
 
             </article>
-
 
             <article
                 class="resource-card"
@@ -3306,6 +3350,7 @@
 
     <div class="container footer-main">
 
+        <!-- TRƯỜNG -->
         <div class="footer-school">
 
             <div class="footer-logo">
@@ -3317,8 +3362,7 @@
 
             </div>
 
-
-            <div>
+            <div class="footer-school-info">
 
                 <strong>
                     TRƯỜNG THPT GIỒNG ÔNG TỐ
@@ -3338,6 +3382,7 @@
         </div>
 
 
+        <!-- VERITAS -->
         <div class="footer-column">
 
             <strong>
@@ -3359,6 +3404,7 @@
         </div>
 
 
+        <!-- KIỂM CHỨNG -->
         <div class="footer-column">
 
             <strong>
@@ -3380,6 +3426,7 @@
         </div>
 
 
+        <!-- NGUYÊN TẮC -->
         <div class="footer-column">
 
             <strong>
@@ -3400,8 +3447,37 @@
 
         </div>
 
+
+        <!-- VỀ CHÚNG TÔI -->
+        <div class="footer-about">
+
+            <strong>
+                VỀ CHÚNG TÔI
+            </strong>
+
+            <p>
+                Nhóm xây dựng Veritas với mục tiêu tạo ra
+                một không gian học tập trực quan, giúp học sinh
+                nâng cao năng lực số và hình thành thói quen
+                kiểm chứng thông tin trước khi tin hoặc chia sẻ.
+            </p>
+
+            <small>
+                MỤC ĐÍCH WEBSITE
+            </small>
+
+            <span>
+                Cung cấp kiến thức, phương pháp, công cụ và
+                bài thực hành về kiểm chứng thông tin, tin giả
+                và nội dung do AI tạo ra.
+            </span>
+
+        </div>
+
     </div>
 
+
+    <!-- FOOTER BOTTOM -->
 
     <div class="container footer-bottom">
 
@@ -3418,8 +3494,6 @@
     </div>
 
 </footer>
-
-
 <!-- =====================================================
      RESOURCE MODAL
 ===================================================== -->
