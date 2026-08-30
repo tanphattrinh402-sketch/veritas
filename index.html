@@ -50,6 +50,118 @@
             font-size: 20px !important; 
             line-height: 1.7 !important;
         }
+/* =========================================
+   HERO BOTTOM — CÂN ĐỐI VỚI WEBSITE
+   ========================================= */
+
+.hero-bottom .hero-bottom-inner {
+    min-height: 72px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 24px !important;
+}
+
+/* Xây dựng thói quen */
+.hero-bottom .hero-bottom-inner > span {
+    display: block !important;
+
+    color: var(--ink-600) !important;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: .04em !important;
+
+    white-space: nowrap !important;
+
+    flex: 0 0 auto !important;
+}
+
+/* Nhóm các bước */
+.hero-bottom .hero-flow {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 16px !important;
+
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+}
+
+/* DỪNG / KIỂM TRA / ĐỐI CHIẾU / TRUY XUẤT / CHIA SẺ */
+.hero-bottom .hero-flow strong {
+    display: inline-block !important;
+
+    color: var(--ink-600) !important;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: .04em !important;
+
+    white-space: nowrap !important;
+
+    flex: 0 0 auto !important;
+}
+
+/* Dấu chấm phân cách */
+.hero-bottom .hero-flow i {
+    display: block !important;
+
+    flex: 0 0 4px !important;
+
+    width: 4px !important;
+    height: 4px !important;
+
+    background: var(--blue-400) !important;
+
+    border-radius: 50% !important;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1150px) {
+
+    .hero-bottom .hero-bottom-inner {
+        gap: 18px !important;
+    }
+
+    .hero-bottom .hero-bottom-inner > span {
+        font-size: 11px !important;
+    }
+
+    .hero-bottom .hero-flow {
+        gap: 11px !important;
+    }
+
+    .hero-bottom .hero-flow strong {
+        font-size: 13px !important;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 680px) {
+
+    .hero-bottom {
+        display: none !important;
+    }
+
+}
 
         /* Tăng kích thước chữ cho thanh điều hướng (menu) và các nút bấm */
         .nav-link, .button, .header-cta, .answer-button strong {
