@@ -1332,8 +1332,74 @@ document.addEventListener("DOMContentLoaded", () => {
         evidence:
             "Bài viết không dẫn tới quyết định, thông tư hoặc tài liệu chính thức của Bộ GD&ĐT xác nhận nội dung này",
 
-        next:
+             next:
             "Tìm văn bản chính thức của Bộ GD&ĐT và đối chiếu chương trình Ngữ văn"
+    },
+
+
+    /* =================================================
+       CÂU 9
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh9.jpg",
+            label: "Tuyên bố về tác động của một loại đồ uống"
+        },
+
+        question:
+            "Một bài đăng cho rằng một thói quen sử dụng đồ uống quen thuộc vào buổi sáng có thể làm cơ thể tăng tốc độ trao đổi chất và đốt cháy mỡ nhanh hơn. Tuyên bố này được trình bày như một kết luận đã được khoa học chứng minh. Bạn đánh giá tuyên bố này là thật hay giả?",
+
+        context:
+            "Tuyên bố đưa ra một tác động sinh lý cụ thể và sử dụng cách diễn đạt mang tính khoa học. Hãy kiểm tra xem có bằng chứng nghiên cứu trực tiếp và đáng tin cậy nào thực sự hỗ trợ kết luận này hay không.",
+
+        answer: false,
+
+        explanation:
+            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Chưa có bằng chứng đủ đáng tin cậy được cung cấp để khẳng định thói quen này có thể làm tăng tốc độ trao đổi chất và khiến cơ thể đốt cháy mỡ nhanh hơn như tuyên bố.",
+
+        signal:
+            "Một tuyên bố về sức khỏe cần có bằng chứng khoa học có thể truy xuất",
+
+        evidence:
+            "Nguồn được nêu không cho thấy đây là một nguồn y khoa hoặc nghiên cứu học thuật đủ độ tin cậy để xác nhận kết luận trên",
+
+        next:
+            "Tìm nghiên cứu gốc, tác giả, tạp chí công bố và phương pháp nghiên cứu trước khi kết luận"
+    },
+
+
+    /* =================================================
+       CÂU 10
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh10.jpg",
+            label: "Tuyên bố về chính sách đối với học sinh"
+        },
+
+        question:
+            "Một thông tin được chia sẻ cho rằng trong một năm học sắp tới, học sinh THPT trên cả nước sẽ không còn được phép mang một thiết bị cá nhân quen thuộc đến trường nhằm giảm sự phụ thuộc vào công nghệ. Tuyên bố này được cho là một thay đổi chính sách trên phạm vi toàn quốc. Bạn đánh giá tuyên bố này là thật hay giả?",
+
+        context:
+            "Một quy định có thật ở một mức độ hoặc trong một hoàn cảnh nhất định có thể bị diễn giải thành một lệnh cấm rộng hơn. Hãy kiểm tra cơ quan ban hành, văn bản gốc và phạm vi áp dụng trước khi kết luận.",
+
+        answer: false,
+
+        explanation:
+            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Nội dung đã mở rộng một quy định có thật thành tuyên bố cấm hoàn toàn học sinh THPT mang điện thoại đến trường trên phạm vi toàn quốc, nhưng không có căn cứ chính thức được cung cấp để xác nhận mức độ cấm này.",
+
+        signal:
+            "Phải phân biệt giữa quy định thực tế và cách diễn giải mở rộng trên mạng",
+
+        evidence:
+            "Nguồn được nêu không phải là văn bản chính thức của cơ quan quản lý giáo dục và không cung cấp căn cứ xác nhận lệnh cấm hoàn toàn trên phạm vi toàn quốc",
+
+        next:
+            "Tìm văn bản chính thức của Bộ GD&ĐT và kiểm tra chính xác phạm vi của quy định"
     }
 
 ];
