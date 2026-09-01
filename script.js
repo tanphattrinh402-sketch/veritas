@@ -227,91 +227,223 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =================================================
-       LIBRARY FILTER
+          /* =================================================
+       LIBRARY FILTER + LOAD MORE
     ================================================= */
 
     const libraryTabs =
-        document.querySelectorAll(
-            ".library-tab"
-        );
+        document.querySelectorAll(".library-tab");
 
     const resourceCards =
-        document.querySelectorAll(
-            ".resource-card"
+        Array.from(
+            document.querySelectorAll(".resource-card")
         );
 
     const librarySearch =
-        document.getElementById(
-            "librarySearch"
-        );
+        document.getElementById("librarySearch");
 
     const emptyResults =
-        document.getElementById(
-            "emptyResults"
-        );
+        document.getElementById("emptyResults");
+
+    const libraryMore =
+        document.getElementById("libraryMore");
+
+    const libraryMoreWrap =
+        document.getElementById("libraryMoreWrap");
 
 
-    let activeLibraryCategory =
-        "all";
+    const LIBRARY_LIMIT = 6;
+
+    let activeLibraryCategory = "all";
+
+    let libraryExpanded = false;
 
 
-    function filterLibrary() {
+    /* =================================================
+       RENDER LIBRARY
+    ================================================= */
+
+    function renderLibrary() {
 
         const keyword =
             librarySearch
-                .value
-                .trim()
-                .toLowerCase();
+                ? librarySearch.value
+                    .trim()
+                    .toLowerCase()
+                : "";
 
-        let visibleCount = 0;
 
+        /* ---------------------------------------------
+           LỌC CARD
+        --------------------------------------------- */
+
+        const matchedCards =
+            resourceCards.filter(card => {
+
+                const category =
+                    (
+                        card.dataset.category ||
+                        ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+
+                const searchText =
+                    (
+                        card.dataset.search ||
+                        card.textContent ||
+                        ""
+                    )
+                    .toLowerCase();
+
+
+                const categoryMatch =
+                    activeLibraryCategory === "all" ||
+                    category === activeLibraryCategory;
+
+
+                const searchMatch =
+                    keyword === "" ||
+                    searchText.includes(keyword);
+
+
+                return (
+                    categoryMatch &&
+                    searchMatch
+                );
+
+            });
+
+
+        /* ---------------------------------------------
+           XÁC ĐỊNH CARD HIỂN THỊ
+        --------------------------------------------- */
+
+        let visibleCards;
+
+
+        if (
+            activeLibraryCategory === "all" &&
+            keyword === "" &&
+            libraryExpanded === false
+        ) {
+
+            visibleCards =
+                matchedCards.slice(
+                    0,
+                    LIBRARY_LIMIT
+                );
+
+        } else {
+
+            visibleCards =
+                matchedCards;
+
+        }
+
+
+        /* ---------------------------------------------
+           ẨN TOÀN BỘ CARD
+        --------------------------------------------- */
 
         resourceCards.forEach(card => {
 
-            const category =
-                card.dataset.category || "";
-
-            const searchable =
-                card.dataset.search || "";
-
-            const categoryMatch =
-                activeLibraryCategory ===
-                "all" ||
-                category ===
-                activeLibraryCategory;
-
-            const searchMatch =
-                searchable
-                    .toLowerCase()
-                    .includes(keyword);
-
-
-            const show =
-                categoryMatch &&
-                searchMatch;
-
-
-            card.classList.toggle(
-                "hidden",
-                !show
-            );
-
-
-            if (show) {
-                visibleCount++;
-            }
+            card.style.display = "none";
 
         });
 
 
-        emptyResults.classList.toggle(
-            "show",
-            visibleCount === 0
-        );
+        /* ---------------------------------------------
+           HIỆN CARD ĐƯỢC CHỌN
+        --------------------------------------------- */
+
+        visibleCards.forEach(card => {
+
+            card.style.display = "";
+
+        });
+
+
+        /* ---------------------------------------------
+           EMPTY RESULT
+        --------------------------------------------- */
+
+        if (emptyResults) {
+
+            emptyResults.classList.toggle(
+                "show",
+                matchedCards.length === 0
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           LOAD MORE
+        --------------------------------------------- */
+
+        const shouldShowMore =
+            activeLibraryCategory === "all" &&
+            keyword === "" &&
+            matchedCards.length > LIBRARY_LIMIT;
+
+
+        if (
+            libraryMore &&
+            libraryMoreWrap
+        ) {
+
+            if (!shouldShowMore) {
+
+                libraryMoreWrap.style.display =
+                    "none";
+
+            } else {
+
+                libraryMoreWrap.style.display =
+                    "flex";
+
+
+                const text =
+                    libraryMore.querySelector(
+                        ".library-more-text"
+                    );
+
+                const arrow =
+                    libraryMore.querySelector(
+                        ".library-more-arrow"
+                    );
+
+
+                if (libraryExpanded) {
+
+                    text.textContent =
+                        "Thu gọn";
+
+                    arrow.textContent =
+                        "↑";
+
+                } else {
+
+                    text.textContent =
+                        "Xem thêm";
+
+                    arrow.textContent =
+                        "↓";
+
+                }
+
+            }
+
+        }
 
     }
 
+
+    /* =================================================
+       TAB
+    ================================================= */
 
     libraryTabs.forEach(tab => {
 
@@ -319,13 +451,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                libraryTabs.forEach(
-                    item => {
-                        item.classList.remove(
-                            "active"
-                        );
-                    }
-                );
+                libraryTabs.forEach(item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                });
+
 
                 tab.classList.add(
                     "active"
@@ -333,10 +466,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 activeLibraryCategory =
-                    tab.dataset.category;
+                    (
+                        tab.dataset.category ||
+                        "all"
+                    )
+                    .trim()
+                    .toLowerCase();
 
 
-                filterLibrary();
+                libraryExpanded = false;
+
+
+                if (librarySearch) {
+
+                    librarySearch.value = "";
+
+                }
+
+
+                renderLibrary();
 
             }
         );
@@ -344,12 +492,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    librarySearch.addEventListener(
-        "input",
-        filterLibrary
-    );
+    /* =================================================
+       SEARCH
+    ================================================= */
+
+    if (librarySearch) {
+
+        librarySearch.addEventListener(
+            "input",
+            () => {
+
+                libraryExpanded = true;
+
+                renderLibrary();
+
+            }
+        );
+
+    }
 
 
+    /* =================================================
+       XEM THÊM
+    ================================================= */
+
+    if (libraryMore) {
+
+        libraryMore.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    activeLibraryCategory !== "all"
+                ) {
+                    return;
+                }
+
+
+                libraryExpanded =
+                    !libraryExpanded;
+
+
+                renderLibrary();
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       KHỞI TẠO
+    ================================================= */
+
+    renderLibrary();
     /* =================================================
        RESOURCE MODAL
     ================================================= */
@@ -877,311 +1073,270 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const quizData = [
 
-        {
-            media: {
-                type: "image",
-                src:
-                    "assets/quiz/question-01.jpg",
-                label:
-                    "Hình ảnh mạng xã hội"
-            },
+    /* =================================================
+       CÂU 1
+    ================================================= */
 
-            question:
-                "Một bài đăng khẳng định: \"90% chuyên gia đã xác nhận thông tin này\", nhưng không có tên chuyên gia hay nghiên cứu nào được dẫn.",
-
-            context:
-                "Bạn thấy bài đăng có số liệu rất cụ thể nhưng không thể truy ra nguồn gốc.",
-
-            answer: false,
-
-            explanation:
-                "Con số phần trăm không tự tạo ra độ tin cậy. Khi không biết 90% được tính từ đâu, ai tham gia và nghiên cứu nào đứng phía sau, tuyên bố chưa có đủ bằng chứng.",
-
-            signal:
-                "Số liệu thiếu nguồn",
-
-            evidence:
-                "Không có nghiên cứu hoặc danh sách chuyên gia để kiểm tra",
-
-            next:
-                "Tìm nguyên văn tuyên bố và nguồn thống kê"
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh1.jpg",
+            label: "Robot hình người tại cuộc thi ở Bắc Kinh"
         },
 
+        question:
+            "Một robot hình người được cho là đã hoàn thành quãng đường 100 m trong 8,64 giây tại một cuộc thi ở Bắc Kinh. Thành tích này được so sánh với kỷ lục 9,58 giây ở nội dung 100 m của Usain Bolt. Tuyên bố trên là thật hay giả?",
 
-        {
-            media: {
-                type: "video",
-                src:
-                    "assets/quiz/deepfake-01.mp4",
-                label:
-                    "Video deepfake AI"
-            },
+        context:
+            "Bạn bắt gặp tuyên bố này trên mạng xã hội. Hãy đánh giá dựa trên độ chính xác của con số, sự kiện được mô tả và khả năng truy xuất về nguồn gốc.",
 
-            question:
-                "Video cho thấy một nhân vật phát biểu rất tự nhiên, nhưng chuyển động môi, ánh sáng trên khuôn mặt và vùng tóc có nhiều điểm bất thường.",
+        answer: true,
 
-            context:
-                "Bạn chưa có bằng chứng độc lập xác nhận video là thật hoặc giả.",
+        explanation:
+            "Tuyên bố được xác định là THẬT. Thông tin về robot chạy 100 m trong 8,64 giây tại một cuộc thi ở Bắc Kinh đã được Reuters đưa tin ngày 26/08/2026.",
 
-            answer: false,
+        signal:
+            "Con số thành tích có thể được đối chiếu với nguồn báo chí",
 
-            explanation:
-                "Các dấu hiệu trực quan chỉ cho thấy video đáng nghi, không đủ để kết luận tuyệt đối. Bước tiếp theo nên là tìm nguồn gốc video và kiểm tra bằng các nguồn độc lập.",
+        evidence:
+            "Reuters, ngày 26/08/2026",
 
-            signal:
-                "Bất thường hình ảnh",
+        next:
+            "Mở nguồn gốc bài viết và đối chiếu chính xác thành tích 8,64 giây"
+    },
 
-            evidence:
-                "Môi, ánh sáng và vùng tóc có dấu hiệu không nhất quán",
 
-            next:
-                "Truy xuất video gốc và đối chiếu nguồn"
+    /* =================================================
+       CÂU 2
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh2.jpg",
+            label: "Kỳ thi tốt nghiệp THPT năm 2026"
         },
 
+        question:
+            "Có thông tin cho rằng số người đăng ký dự thi Kỳ thi tốt nghiệp THPT năm 2026 đã vượt mốc một triệu người và lên tới hơn 1,2 triệu. Bạn đánh giá tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "youtube",
-                src:
-                    "",
-                label:
-                    "Video YouTube"
-            },
+        context:
+            "Đây là một tuyên bố về số liệu thống kê giáo dục. Hãy xem xét liệu con số được đưa ra có phù hợp với dữ liệu chính thức hay không.",
 
-            question:
-                "Một video cũ được đăng lại với chú thích rằng sự kiện vừa xảy ra trong ngày hôm nay.",
+        answer: true,
 
-            context:
-                "Hình ảnh trong video phù hợp với sự kiện, nhưng thời điểm được ghi trong bài đăng khiến bạn nghi ngờ.",
+        explanation:
+            "Tuyên bố được xác định là THẬT. Số lượng thí sinh đăng ký dự thi Kỳ thi tốt nghiệp THPT năm 2026 là 1.223.776, vượt mốc 1,2 triệu.",
 
-            answer: false,
+        signal:
+            "Con số cụ thể có thể đối chiếu với dữ liệu chính thức",
 
-            explanation:
-                "Nội dung có thể là video thật nhưng được đặt vào bối cảnh sai. Đây là lý do cần kiểm tra ngày xuất hiện và nguồn gốc ban đầu.",
+        evidence:
+            "Cục Quản lý chất lượng, Bộ Giáo dục và Đào tạo: 1.223.776 thí sinh đăng ký dự thi năm 2026",
 
-            signal:
-                "Sai bối cảnh thời gian",
+        next:
+            "Đối chiếu số liệu với công bố chính thức của Bộ GD&ĐT"
+    },
 
-            evidence:
-                "Video được đăng từ trước thời điểm sự kiện được mô tả",
 
-            next:
-                "Dùng Reverse Search và kiểm tra ngày"
+    /* =================================================
+       CÂU 3
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh3.jpg",
+            label: "Hình thức thi tốt nghiệp THPT"
         },
 
+        question:
+            "Một bài đăng khẳng định rằng bắt đầu từ năm 2027, toàn bộ học sinh THPT trên cả nước sẽ bắt buộc thực hiện kỳ thi tốt nghiệp THPT bằng máy tính. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "placeholder",
-                label:
-                    "Bài viết cần xác minh"
-            },
+        context:
+            "Đây là một tuyên bố về thay đổi chính sách giáo dục trên phạm vi toàn quốc. Hãy đánh giá mức độ đáng tin cậy của tuyên bố trước khi chia sẻ.",
 
-            question:
-                "Một bài viết không ghi tên tác giả, không có ngày cập nhật và không dẫn bất kỳ nguồn dữ liệu nào.",
+        answer: false,
 
-            context:
-                "Nội dung viết rất thuyết phục nhưng bạn không thể kiểm tra ai chịu trách nhiệm về tuyên bố.",
+        explanation:
+            "Tuyên bố này được đánh giá là GIẢ trong bài kiểm tra. Chưa có căn cứ chính thức được cung cấp để xác nhận rằng từ năm 2027 toàn bộ học sinh THPT trên cả nước bắt buộc thi tốt nghiệp THPT bằng máy tính.",
 
-            answer: false,
+        signal:
+            "Một thay đổi chính sách lớn cần có văn bản chính thức",
 
-            explanation:
-                "Một văn bản thuyết phục vẫn cần nguồn để người đọc kiểm tra. Việc thiếu tác giả, thời gian và nguồn tham khảo làm giảm khả năng xác minh độc lập.",
+        evidence:
+            "Tuyên bố không đi kèm quyết định, thông tư hoặc văn bản chính thức xác nhận nội dung trên",
 
-            signal:
-                "Nguồn không rõ",
+        next:
+            "Tìm thông tin trực tiếp từ Bộ GD&ĐT và các văn bản pháp lý liên quan"
+    },
 
-            evidence:
-                "Không có tác giả, ngày hoặc tài liệu gốc",
 
-            next:
-                "Điều tra website và tìm nguồn độc lập"
+    /* =================================================
+       CÂU 4
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh4.jpg",
+            label: "Nghiên cứu về việc sử dụng điện thoại"
         },
 
+        question:
+            "Một bài viết cho biết học sinh sử dụng điện thoại trước khi ngủ có nguy cơ mất tập trung vào ngày hôm sau cao hơn 30%. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "image",
-                src:
-                    "assets/quiz/question-05.jpg",
-                label:
-                    "Ảnh được chia sẻ lại"
-            },
+        context:
+            "Con số 30% nghe có vẻ thuyết phục, nhưng một tuyên bố khoa học cần có nghiên cứu cụ thể để kiểm chứng.",
 
-            question:
-                "Một hình ảnh được chia sẻ với chú thích về một sự kiện mới, nhưng khi tìm kiếm ngược, ảnh xuất hiện trong các bài viết từ nhiều năm trước.",
+        answer: false,
 
-            context:
-                "Hình ảnh là thật nhưng có vẻ đã bị đưa vào một bối cảnh khác.",
+        explanation:
+            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Con số 30% không thể được xác minh vì không có thông tin cụ thể về nghiên cứu, tác giả, nơi công bố hoặc phương pháp tính toán.",
 
-            answer: false,
+        signal:
+            "Số liệu cụ thể nhưng không thể truy xuất nghiên cứu gốc",
 
-            explanation:
-                "Một hình ảnh có thể hoàn toàn xác thực nhưng cách sử dụng hiện tại vẫn gây hiểu lầm nếu nó được gắn với một sự kiện khác.",
+        evidence:
+            "Không xác định được nghiên cứu nào tạo ra con số 30%, tác giả và phương pháp tính",
 
-            signal:
-                "Ảnh thật, bối cảnh sai",
+        next:
+            "Tìm nghiên cứu gốc và kiểm tra phương pháp thu thập dữ liệu"
+    },
 
-            evidence:
-                "Nguồn cũ cho thấy ảnh xuất hiện ở một sự kiện khác",
 
-            next:
-                "Tìm nguồn ảnh đầu tiên"
+    /* =================================================
+       CÂU 5
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh5.jpg",
+            label: "Dân số Việt Nam"
         },
 
+        question:
+            "Một bài đăng cho rằng Việt Nam đã vượt mốc 100 triệu dân và hiện đứng thứ ba Đông Nam Á về quy mô dân số. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "placeholder",
-                label:
-                    "Bài kiểm chứng"
-            },
+        context:
+            "Tuyên bố chứa hai dữ kiện khác nhau: quy mô dân số và thứ hạng trong khu vực. Cả hai đều cần được kiểm tra.",
 
-            question:
-                "Một bài fact-check đưa ra tuyên bố, dẫn tài liệu gốc và trình bày cách dữ liệu được dùng để đi đến kết luận.",
+        answer: true,
 
-            context:
-                "Người đọc có thể mở nguồn và tự kiểm tra phần bằng chứng.",
+        explanation:
+            "Tuyên bố được xác định là THẬT theo dữ liệu dùng trong bài kiểm tra.",
 
-            answer: true,
+        signal:
+            "Hai dữ kiện đều có thể đối chiếu bằng số liệu dân số",
 
-            explanation:
-                "Một nội dung kiểm chứng mạnh thường cho phép truy ngược từ kết luận về tuyên bố, dữ liệu và tài liệu nguồn.",
+        evidence:
+            "Dữ liệu dân số của Tổng cục Thống kê được dùng để xác nhận tuyên bố",
 
-            signal:
-                "Có thể truy xuất bằng chứng",
+        next:
+            "Đối chiếu số liệu dân số và thứ hạng các quốc gia Đông Nam Á"
+    },
 
-            evidence:
-                "Tài liệu gốc được dẫn trực tiếp",
 
-            next:
-                "Mở nguồn và kiểm tra lại dữ liệu"
+    /* =================================================
+       CÂU 6
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh6.jpg",
+            label: "Phương thức xét tuyển đại học 2026"
         },
 
+        question:
+            "Trong mùa tuyển sinh năm 2026, một số trường đại học tại Việt Nam vẫn sử dụng điểm SAT như một phương thức xét tuyển. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "image",
-                src:
-                    "assets/quiz/question-07.jpg",
-                label:
-                    "Ảnh chứa thông tin thống kê"
-            },
+        context:
+            "Thông tin liên quan đến phương thức tuyển sinh có thể khác nhau giữa các trường. Không nên suy luận từ một trường sang toàn bộ hệ thống.",
 
-            question:
-                "Một infographic có biểu đồ nhưng trục dữ liệu bị cắt khiến mức chênh lệch giữa hai cột trông lớn hơn rất nhiều.",
+        answer: true,
 
-            context:
-                "Con số có thể đúng, nhưng cách trình bày khiến người xem dễ hiểu sai.",
+        explanation:
+            "Tuyên bố được xác định là THẬT theo dữ liệu được dùng trong bài kiểm tra. Một số trường đại học Việt Nam tiếp tục sử dụng kết quả SAT trong tuyển sinh 2026.",
 
-            answer: true,
+        signal:
+            "Có thể kiểm tra trực tiếp trong đề án tuyển sinh của từng trường",
 
-            explanation:
-                "Thông tin có thể không hoàn toàn sai nhưng vẫn gây hiểu lầm do cách trực quan hóa dữ liệu. Cần xem dữ liệu gốc thay vì chỉ nhìn đồ họa.",
+        evidence:
+            "Thông tin tuyển sinh 2026 được báo Thanh Niên đưa tin về việc sử dụng SAT",
 
-            signal:
-                "Cách trình bày gây thiên lệch",
+        next:
+            "Kiểm tra đề án tuyển sinh chính thức của từng trường"
+    },
 
-            evidence:
-                "Trục biểu đồ bị thay đổi",
 
-            next:
-                "Xem bảng số liệu gốc"
+    /* =================================================
+       CÂU 7
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh7.jpg",
+            label: "Nhắn tin qua vệ tinh trên iPhone"
         },
 
+        question:
+            "Một bài đăng cho biết người dùng iPhone tại Việt Nam đã có thể sử dụng tính năng nhắn tin qua vệ tinh từ tháng 8/2026. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "youtube",
-                src:
-                    "",
-                label:
-                    "Video đang lan truyền"
-            },
+        context:
+            "Đây là thông tin công nghệ phụ thuộc vào cả thời điểm và quốc gia được hỗ trợ. Một tính năng có thật không đồng nghĩa với việc nó đã có mặt ở mọi thị trường.",
 
-            question:
-                "Một đoạn video được chia sẻ rất mạnh trên mạng xã hội, nhưng không có nguồn ban đầu và không rõ ai quay video.",
+        answer: false,
 
-            context:
-                "Nhiều lượt chia sẻ không cung cấp thêm bằng chứng về nguồn gốc.",
+        explanation:
+            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Nội dung dựa trên một công nghệ có thật nhưng thông tin về thời điểm và phạm vi triển khai tại Việt Nam là không chính xác.",
 
-            answer: false,
+        signal:
+            "Phải kiểm tra đồng thời tính năng, thời điểm và quốc gia được hỗ trợ",
 
-            explanation:
-                "Độ phổ biến không phải là bằng chứng. Video cần được truy xuất về nguồn ban đầu trước khi xác định bối cảnh và tính xác thực.",
+        evidence:
+            "Thông tin trong tuyên bố không khớp với phạm vi triển khai được xác thực",
 
-            signal:
-                "Thiếu nguồn gốc",
+        next:
+            "Kiểm tra tài liệu hỗ trợ chính thức của Apple cho thị trường Việt Nam"
+    },
 
-            evidence:
-                "Không xác định được người tạo hoặc video gốc",
 
-            next:
-                "Tìm phiên bản đầu tiên"
+    /* =================================================
+       CÂU 8
+    ================================================= */
+
+    {
+        media: {
+            type: "image",
+            src: "assets/quiz/anh8.jpg",
+            label: "Chương trình Ngữ văn THPT"
         },
 
+        question:
+            "Một bài viết ngày 19/08/2026 cho rằng từ năm học 2026–2027, học sinh THPT sẽ bắt buộc học nội dung nhận diện tin giả và kiểm chứng thông tin như một phần của môn Ngữ văn. Tuyên bố này là thật hay giả?",
 
-        {
-            media: {
-                type: "placeholder",
-                label:
-                    "Tuyên bố cần đối chiếu"
-            },
+        context:
+            "Nội dung nghe hợp lý vì năng lực kiểm chứng thông tin ngày càng được quan tâm. Tuy nhiên, tính hợp lý không thay thế cho văn bản chính thức.",
 
-            question:
-                "Hai nguồn độc lập cùng dẫn một tài liệu sơ cấp để mô tả cùng một sự kiện và dữ liệu trong tài liệu có thể kiểm tra.",
+        answer: false,
 
-            context:
-                "Bạn vẫn nên kiểm tra tài liệu gốc thay vì chỉ dựa vào hai bài báo.",
+        explanation:
+            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Chưa có văn bản chính thức được cung cấp để xác nhận đây là nội dung bắt buộc trong môn Ngữ văn THPT từ năm học 2026–2027.",
 
-            answer: true,
+        signal:
+            "Nội dung chính sách giáo dục cần được xác nhận bằng văn bản chính thức",
 
-            explanation:
-                "Sự nhất quán giữa nhiều nguồn độc lập là tín hiệu hữu ích, nhưng việc truy xuất về nguồn sơ cấp vẫn là bước mạnh hơn để kiểm tra chi tiết.",
+        evidence:
+            "Bài viết không dẫn tới quyết định, thông tư hoặc tài liệu chính thức của Bộ GD&ĐT xác nhận nội dung này",
 
-            signal:
-                "Nhiều nguồn độc lập",
+        next:
+            "Tìm văn bản chính thức của Bộ GD&ĐT và đối chiếu chương trình Ngữ văn"
+    }
 
-            evidence:
-                "Cùng dẫn một nguồn sơ cấp",
-
-            next:
-                "Mở tài liệu gốc"
-        },
-
-
-        {
-            media: {
-                type: "image",
-                src:
-                    "assets/quiz/question-10.jpg",
-                label:
-                    "Ảnh AI / Deepfake"
-            },
-
-            question:
-                "Một bức ảnh có bàn tay và chữ trên nền bị biến dạng. Bạn kết luận ngay rằng ảnh chắc chắn là deepfake.",
-
-            context:
-                "Bạn mới phát hiện một số dấu hiệu bất thường bằng mắt thường.",
-
-            answer: false,
-
-            explanation:
-                "Dấu hiệu bất thường chỉ là lý do để kiểm tra thêm. Không nên biến một dấu hiệu thành kết luận tuyệt đối nếu chưa có bằng chứng khác.",
-
-            signal:
-                "Kết luận quá sớm",
-
-            evidence:
-                "Chỉ có dấu hiệu trực quan",
-
-            next:
-                "Reverse Search và đối chiếu nguồn"
-        }
-
-    ];
-
+];
 
     /* =================================================
        QUIZ DOM
