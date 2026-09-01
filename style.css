@@ -9853,4 +9853,1814 @@ footer.site-footer .footer-bottom > span:last-child {
     }
 
 }
+/* =========================================================
+   VERITAS — LIBRARY LOAD MORE
+   FINAL DESIGN OVERRIDE
+========================================================= */
+
+.library-more-wrap {
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 42px 0 0 !important;
+    padding: 0 !important;
+
+    position: relative !important;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.library-more {
+    position: relative !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 12px !important;
+
+    width: 190px !important;
+    height: 56px !important;
+
+    padding: 0 22px !important;
+
+    border: 1px solid rgba(255,255,255,.22) !important;
+    border-radius: 17px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #38BDF8 0%,
+            #2563EB 48%,
+            #1D4ED8 100%
+        ) !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 16px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: .01em !important;
+
+    text-align: center !important;
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+
+    overflow: hidden !important;
+
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.20),
+        0 4px 10px rgba(15,23,42,.06) !important;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease !important;
+}
+
+
+/* =========================================================
+   LIGHT SHINE
+========================================================= */
+
+.library-more::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: -80% !important;
+    left: -110% !important;
+
+    width: 70% !important;
+    height: 260% !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.32),
+            transparent
+        ) !important;
+
+    transform: rotate(18deg) !important;
+
+    transition:
+        left .65s ease !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.library-more-text {
+    position: relative !important;
+
+    z-index: 2 !important;
+
+    display: inline-block !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 16px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: .01em !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.library-more-arrow {
+    position: relative !important;
+
+    z-index: 2 !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 24px !important;
+    height: 24px !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 18px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    transform:
+        translateY(-1px) !important;
+
+    transition:
+        transform .25s ease !important;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.library-more:hover {
+    transform:
+        translateY(-4px) !important;
+
+    filter:
+        brightness(1.04) !important;
+
+    box-shadow:
+        0 18px 38px rgba(37,99,235,.28),
+        0 7px 16px rgba(15,23,42,.08) !important;
+}
+
+
+.library-more:hover::before {
+    left: 140% !important;
+}
+
+
+.library-more:hover
+.library-more-arrow {
+    transform:
+        translateY(-1px)
+        translateX(3px) !important;
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.library-more:active {
+    transform:
+        translateY(-1px) !important;
+
+    box-shadow:
+        0 9px 20px rgba(37,99,235,.20) !important;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.library-more:focus-visible {
+    outline:
+        3px solid rgba(37,99,235,.22) !important;
+
+    outline-offset:
+        4px !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 680px) {
+
+    .library-more-wrap {
+        margin-top:
+            30px !important;
+    }
+
+    .library-more {
+        width:
+            175px !important;
+
+        min-width:
+            175px !important;
+
+        height:
+            50px !important;
+
+        border-radius:
+            15px !important;
+
+        font-size:
+            15px !important;
+    }
+
+    .library-more-text {
+        font-size:
+            15px !important;
+    }
+
+    .library-more-arrow {
+        font-size:
+            17px !important;
+    }
+
+}
+/* =========================================================
+   VERITAS — LOAD MORE BUTTON
+========================================================= */
+
+.library-more-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
+}
+
+.library-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 190px;
+    height: 52px;
+
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #38BDF8 0%,
+        #2563EB 55%,
+        #1D4ED8 100%
+    );
+
+    color: #FFFFFF;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+
+    line-height: 1;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.22);
+
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        filter .22s ease;
+}
+
+.library-more:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 16px 34px rgba(37,99,235,.30);
+}
+
+.library-more:active {
+    transform: translateY(0);
+}
+
+.library-more-text,
+.library-more-arrow {
+    color: #FFFFFF;
+}
+
+.library-more-arrow {
+    font-size: 19px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+@media (max-width: 680px) {
+
+    .library-more-wrap {
+        margin-top: 28px;
+    }
+
+    .library-more {
+        width: 170px;
+        height: 48px;
+
+        font-size: 15px;
+        border-radius: 14px;
+    }
+
+    .library-more-arrow {
+        font-size: 18px;
+    }
+
+}
+/* =========================================================
+   VERITAS — LIBRARY LOAD MORE
+========================================================= */
+
+.library-more-wrap {
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin-top: 36px !important;
+}
+
+
+.library-more {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 10px !important;
+
+    width: 190px !important;
+    height: 54px !important;
+
+    padding: 0 22px !important;
+
+    border: 1px solid rgba(37,99,235,.18) !important;
+
+    border-radius: 16px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #38BDF8 0%,
+            #2563EB 55%,
+            #1D4ED8 100%
+        ) !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 16px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.20) !important;
+
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        filter .22s ease !important;
+}
+
+
+.library-more:hover {
+
+    transform:
+        translateY(-3px) !important;
+
+    filter:
+        brightness(1.05) !important;
+
+    box-shadow:
+        0 16px 34px rgba(37,99,235,.28) !important;
+}
+
+
+.library-more:active {
+
+    transform:
+        translateY(0) !important;
+}
+
+
+.library-more-text {
+
+    display: inline-block !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 16px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+}
+
+
+.library-more-arrow {
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: #FFFFFF !important;
+
+    font-family:
+        "Inter",
+        sans-serif !important;
+
+    font-size: 19px !important;
+    font-weight: 900 !important;
+
+    line-height: 1 !important;
+
+    transition:
+        transform .22s ease !important;
+}
+
+
+.library-more:hover .library-more-arrow {
+
+    transform:
+        translateY(2px) !important;
+}
+
+
+@media (max-width: 680px) {
+
+    .library-more-wrap {
+
+        margin-top: 28px !important;
+
+    }
+
+
+    .library-more {
+
+        width: 175px !important;
+        height: 50px !important;
+
+        border-radius: 14px !important;
+
+        font-size: 15px !important;
+
+    }
+
+
+    .library-more-text {
+
+        font-size: 15px !important;
+
+    }
+
+
+    .library-more-arrow {
+
+        font-size: 18px !important;
+
+    }
+
+}
+/* =====================================================
+   VERITAS HERO — FINAL POSITION FIX
+   DESKTOP: TEXT LEFT / PHONE RIGHT
+===================================================== */
+
+/* =====================================================
+   HERO LAYOUT
+===================================================== */
+
+@media (min-width: 951px) {
+
+    .hero-layout {
+        position: relative !important;
+
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            620px !important;
+
+        align-items: center !important;
+
+        column-gap: 10px !important;
+
+        width: 100% !important;
+
+        min-height: 720px !important;
+    }
+
+
+    /* =================================================
+       TEXT
+    ================================================= */
+
+    .hero-content {
+        position: relative !important;
+
+        z-index: 20 !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+    }
+
+
+    /* =================================================
+       PHONE / HERO VISUAL
+    ================================================= */
+
+    .hero-visual {
+        position: relative !important;
+
+        z-index: 5 !important;
+
+        width: 620px !important;
+
+        height: 720px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        overflow: visible !important;
+
+        transform: none !important;
+    }
+
+
+    /* =================================================
+       SVG PHONE
+    ================================================= */
+
+    .hero-visual .veritas-hero-svg {
+        position: relative !important;
+
+        display: block !important;
+
+        width: 720px !important;
+
+        height: 720px !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform-origin: center center !important;
+    }
+
+
+    /* =================================================
+       METRICS
+    ================================================= */
+
+    .hero-metrics {
+        position: relative !important;
+
+        z-index: 30 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 28px !important;
+
+        width: 100% !important;
+
+        margin-top: 34px !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+
+    .hero-metrics .metric {
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+
+    .hero-metrics .metric strong {
+        display: block !important;
+
+        color: #0F172A !important;
+
+        font-family:
+            "Plus Jakarta Sans",
+            sans-serif !important;
+
+        font-size: 30px !important;
+
+        font-weight: 800 !important;
+
+        line-height: 1 !important;
+    }
+
+
+    .hero-metrics .metric span {
+        display: block !important;
+
+        margin-top: 7px !important;
+
+        color: #64748B !important;
+
+        font-size: 13px !important;
+
+        font-weight: 700 !important;
+
+        line-height: 1.3 !important;
+    }
+
+
+    .hero-metrics .metric-divider {
+        display: block !important;
+
+        width: 1px !important;
+
+        height: 42px !important;
+
+        flex: 0 0 1px !important;
+
+        background: #E2E8F0 !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (min-width: 951px) and (max-width: 1200px) {
+
+    .hero-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            540px !important;
+
+        min-height: 680px !important;
+    }
+
+
+    .hero-visual {
+        width: 540px !important;
+
+        height: 680px !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+
+        height: 680px !important;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .hero-layout {
+        position: relative !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        width: 100% !important;
+
+        min-height: 0 !important;
+
+        gap: 0 !important;
+    }
+
+
+    .hero-content {
+        position: relative !important;
+
+        width: 100% !important;
+
+        z-index: 20 !important;
+    }
+
+
+    .hero-visual {
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: 680px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+
+        height: 680px !important;
+
+        margin: 0 !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform-origin: center center !important;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .hero-visual {
+        width: 100% !important;
+
+        height: 520px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        transform: none !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 620px !important;
+
+        height: 620px !important;
+
+        transform:
+            scale(.84) !important;
+
+        transform-origin:
+            center top !important;
+    }
+
+
+    .hero-metrics {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-wrap: wrap !important;
+
+        gap: 16px !important;
+
+        margin-top: 26px !important;
+    }
+
+
+    .hero-metrics .metric strong {
+        font-size: 22px !important;
+    }
+
+
+    .hero-metrics .metric span {
+        font-size: 10px !important;
+    }
+
+
+    .hero-metrics .metric-divider {
+        height: 32px !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .hero-visual {
+        height: 440px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        transform: none !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 570px !important;
+
+        height: 570px !important;
+
+        transform:
+            scale(.80) !important;
+
+        transform-origin:
+            center top !important;
+    }
+
+
+    .hero-metrics {
+        gap: 12px !important;
+    }
+
+
+    .hero-metrics .metric strong {
+        font-size: 20px !important;
+    }
+
+
+    .hero-metrics .metric span {
+        font-size: 9px !important;
+    }
+
+}
+/* =====================================================
+   VERITAS HERO — FINAL CLEAN POSITION
+   KHÔNG ĐẨY HERO VISUAL XUỐNG
+===================================================== */
+
+/* HERO LAYOUT DESKTOP */
+@media (min-width: 951px) {
+
+    .hero-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 620px !important;
+        align-items: center !important;
+        column-gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .hero-content {
+        position: relative !important;
+        z-index: 20 !important;
+        min-width: 0 !important;
+    }
+
+    .hero-visual {
+        position: relative !important;
+        width: 620px !important;
+        height: 620px !important;
+        min-height: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+        z-index: 5 !important;
+    }
+
+    .hero-visual .veritas-hero-svg {
+        position: relative !important;
+
+        width: 720px !important;
+        height: 720px !important;
+
+        max-width: none !important;
+
+        display: block !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        transform-origin: center center !important;
+    }
+
+    .hero-metrics {
+        position: relative !important;
+        z-index: 20 !important;
+    }
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (min-width: 951px) and (max-width: 1200px) {
+
+    .hero-layout {
+        grid-template-columns: minmax(0, 1fr) 540px !important;
+    }
+
+    .hero-visual {
+        width: 540px !important;
+        height: 600px !important;
+    }
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+        height: 680px !important;
+    }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .hero-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
+
+    .hero-content {
+        width: 100% !important;
+        position: relative !important;
+        z-index: 20 !important;
+    }
+
+    .hero-visual {
+        width: 100% !important;
+        height: 620px !important;
+        min-height: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        transform: none !important;
+        overflow: visible !important;
+    }
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+        height: 680px !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        transform: none !important;
+        transform-origin: center center !important;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .hero-visual {
+        width: 100% !important;
+        height: 500px !important;
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        transform: none !important;
+    }
+
+    .hero-visual .veritas-hero-svg {
+        width: 620px !important;
+        height: 620px !important;
+
+        max-width: none !important;
+
+        transform: scale(.84) !important;
+        transform-origin: center top !important;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .hero-visual {
+        height: 430px !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    .hero-visual .veritas-hero-svg {
+        width: 570px !important;
+        height: 570px !important;
+
+        transform: scale(.80) !important;
+        transform-origin: center top !important;
+    }
+}
+/* =====================================================
+   VERITAS HERO — FINAL ABSOLUTE POSITION
+   TEXT LEFT / PHONE RIGHT
+===================================================== */
+
+@media (min-width: 951px) {
+
+    /* KHỐI HERO */
+    .hero-layout {
+        position: relative !important;
+
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            620px !important;
+
+        align-items: start !important;
+
+        column-gap: 10px !important;
+
+        width: 100% !important;
+
+        min-height: 700px !important;
+    }
+
+
+    /* =================================================
+       CỘT CHỮ
+    ================================================= */
+
+    .hero-content {
+        position: relative !important;
+
+        z-index: 20 !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+    }
+
+
+    /* =================================================
+       KHỐI ĐIỆN THOẠI
+       ĐẶT ĐỘC LẬP Ở PHÍA PHẢI
+    ================================================= */
+
+    .hero-visual {
+        position: absolute !important;
+
+        top: -30px !important;
+
+        right: 0 !important;
+
+        width: 620px !important;
+
+        height: 720px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+
+        z-index: 5 !important;
+    }
+
+
+    /* =================================================
+       SVG ĐIỆN THOẠI
+    ================================================= */
+
+    .hero-visual .veritas-hero-svg {
+        position: relative !important;
+
+        display: block !important;
+
+        width: 720px !important;
+
+        height: 720px !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform: none !important;
+
+        transform-origin: center center !important;
+
+        animation:
+            veritasHeroFloat 5.5s ease-in-out infinite !important;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (min-width: 951px) and (max-width: 1200px) {
+
+    .hero-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            540px !important;
+    }
+
+
+    .hero-visual {
+
+        width: 540px !important;
+
+        right: 0 !important;
+
+        top: -20px !important;
+
+        height: 680px !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+
+        width: 680px !important;
+
+        height: 680px !important;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .hero-layout {
+        position: relative !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        width: 100% !important;
+
+        min-height: 0 !important;
+
+        gap: 0 !important;
+    }
+
+
+    .hero-content {
+        position: relative !important;
+
+        width: 100% !important;
+
+        z-index: 20 !important;
+    }
+
+
+    .hero-visual {
+
+        position: relative !important;
+
+        top: 0 !important;
+
+        right: auto !important;
+
+        width: 100% !important;
+
+        height: 620px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+
+        width: 680px !important;
+
+        height: 680px !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform: none !important;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .hero-visual {
+
+        width: 100% !important;
+
+        height: 500px !important;
+
+        margin: 0 !important;
+
+        transform: none !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+
+        width: 620px !important;
+
+        height: 620px !important;
+
+        transform:
+            scale(.84) !important;
+
+        transform-origin:
+            center top !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .hero-visual {
+
+        height: 430px !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+
+        width: 570px !important;
+
+        height: 570px !important;
+
+        transform:
+            scale(.80) !important;
+
+        transform-origin:
+            center top !important;
+    }
+
+}
+ /* =====================================================
+    VERITAS — FINAL HERO LAYOUT FIX
+ ===================================================== */
+
+.hero-layout {
+    position: relative !important;
+}
+
+
+/* =====================================================
+   DESKTOP — TEXT LEFT / PHONE RIGHT
+===================================================== */
+
+@media (min-width: 951px) {
+
+    .hero-layout {
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            620px !important;
+
+        align-items: start !important;
+
+        column-gap: 20px !important;
+
+        min-height: 720px !important;
+    }
+
+
+    .hero-content {
+        position: relative !important;
+
+        z-index: 30 !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+    }
+
+
+    /* =================================================
+       METRICS — NẰM TRONG CỘT CHỮ
+    ================================================= */
+
+    .hero-metrics {
+        position: relative !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 28px !important;
+
+        width: 100% !important;
+
+        margin-top: 30px !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+
+        z-index: 50 !important;
+    }
+
+
+    .hero-metrics .metric {
+        position: relative !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+
+    .hero-metrics .metric strong {
+        display: block !important;
+
+        color: #0F172A !important;
+
+        font-family:
+            "Plus Jakarta Sans",
+            sans-serif !important;
+
+        font-size: 25px !important;
+
+        font-weight: 800 !important;
+
+        line-height: 1 !important;
+    }
+
+
+    .hero-metrics .metric span {
+        display: block !important;
+
+        margin-top: 7px !important;
+
+        color: #64748B !important;
+
+        font-family:
+            "Inter",
+            sans-serif !important;
+
+        font-size: 11px !important;
+
+        font-weight: 700 !important;
+
+        line-height: 1.3 !important;
+    }
+
+
+    .hero-metrics .metric-divider {
+        display: block !important;
+
+        width: 1px !important;
+
+        min-width: 1px !important;
+
+        height: 42px !important;
+
+        flex: 0 0 1px !important;
+
+        background: #E2E8F0 !important;
+    }
+
+
+    /* =================================================
+       HERO VISUAL — TÁCH HẲN KHỎI CỘT CHỮ
+    ================================================= */
+
+    .hero-visual {
+        position: absolute !important;
+
+        top: 0 !important;
+
+        right: 0 !important;
+
+        width: 620px !important;
+
+        height: 720px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+
+        z-index: 5 !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        position: relative !important;
+
+        display: block !important;
+
+        width: 720px !important;
+
+        height: 720px !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform-origin: center center !important;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (min-width: 951px) and (max-width: 1200px) {
+
+    .hero-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            540px !important;
+    }
+
+
+    .hero-visual {
+        width: 540px !important;
+
+        height: 680px !important;
+
+        top: 0 !important;
+
+        right: 0 !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+
+        height: 680px !important;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .hero-layout {
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        width: 100% !important;
+
+        min-height: 0 !important;
+
+        gap: 0 !important;
+    }
+
+
+    .hero-content {
+        position: relative !important;
+
+        width: 100% !important;
+
+        z-index: 30 !important;
+    }
+
+
+    .hero-metrics {
+        position: relative !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 18px !important;
+
+        width: 100% !important;
+
+        margin-top: 28px !important;
+
+        z-index: 50 !important;
+    }
+
+
+    .hero-visual {
+        position: relative !important;
+
+        top: auto !important;
+
+        right: auto !important;
+
+        width: 100% !important;
+
+        height: 680px !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        transform: none !important;
+
+        overflow: visible !important;
+
+        z-index: 5 !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 680px !important;
+
+        height: 680px !important;
+
+        top: 0 !important;
+
+        left: 0 !important;
+
+        transform: none !important;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .hero-metrics {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-wrap: wrap !important;
+
+        gap: 16px !important;
+
+        margin-top: 26px !important;
+    }
+
+
+    .hero-visual {
+        width: 100% !important;
+
+        height: 520px !important;
+
+        margin: 0 !important;
+
+        transform: none !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 620px !important;
+
+        height: 620px !important;
+
+        transform: scale(.84) !important;
+
+        transform-origin: center top !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .hero-visual {
+        height: 440px !important;
+    }
+
+
+    .hero-visual .veritas-hero-svg {
+        width: 570px !important;
+
+        height: 570px !important;
+
+        transform: scale(.80) !important;
+
+        transform-origin: center top !important;
+    }
+
+
+    .hero-metrics {
+        gap: 12px !important;
+    }
+
+}
 }
