@@ -384,61 +384,42 @@ document.addEventListener("DOMContentLoaded", () => {
         --------------------------------------------- */
 
         const shouldShowMore =
-            activeLibraryCategory === "all" &&
-            keyword === "" &&
-            matchedCards.length > LIBRARY_LIMIT;
+    activeLibraryCategory === "all" &&
+    keyword === "" &&
+    matchedCards.length > LIBRARY_LIMIT;
 
 
-        if (
-            libraryMore &&
-            libraryMoreWrap
-        ) {
+if (libraryMore && libraryMoreWrap) {
 
-            if (!shouldShowMore) {
+    if (!shouldShowMore) {
+        libraryMoreWrap.style.display = "none";
+        return;
+    }
 
-                libraryMoreWrap.style.display =
-                    "none";
+    libraryMoreWrap.style.display = "flex";
 
-            } else {
+    const text =
+        libraryMore.querySelector(".library-more-text");
 
-                libraryMoreWrap.style.display =
-                    "flex";
+    const arrow =
+        libraryMore.querySelector(".library-more-arrow");
 
+    if (text && arrow) {
 
-                const text =
-                    libraryMore.querySelector(
-                        ".library-more-text"
-                    );
-
-                const arrow =
-                    libraryMore.querySelector(
-                        ".library-more-arrow"
-                    );
-
-
-                if (libraryExpanded) {
-
-                    text.textContent =
-                        "Thu gọn";
-
-                    arrow.textContent =
-                        "↑";
-
-                } else {
-
-                    text.textContent =
-                        "Xem thêm";
-
-                    arrow.textContent =
-                        "↓";
-
-                }
-
-            }
-
+        if (libraryExpanded) {
+            text.textContent = "Thu gọn";
+            arrow.textContent = "↑";
+        } else {
+            text.textContent = "Xem thêm";
+            arrow.textContent = "↓";
         }
 
     }
+
+}
+    }
+
+    
 
 
     /* =================================================
@@ -546,193 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     renderLibrary();
-    /* =================================================
-       RESOURCE MODAL
-    ================================================= */
-
-    const contentModal =
-        document.getElementById(
-            "contentModal"
-        );
-
-    const modalOverlay =
-        document.getElementById(
-            "modalOverlay"
-        );
-
-    const modalClose =
-        document.getElementById(
-            "modalClose"
-        );
-
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-    const modalText =
-        document.getElementById(
-            "modalText"
-        );
-
-    const resourceLinks =
-        document.querySelectorAll(
-            ".resource-link"
-        );
-
-    const featuredOpen =
-        document.getElementById(
-            "featuredOpen"
-        );
-
-
-    const modalData = {
-
-        video: {
-            title:
-                "Khu vực Video",
-            text:
-                "Bạn có thể thay khu vực này bằng iframe YouTube hoặc video riêng của dự án."
-        },
-
-        guide: {
-            title:
-                "Khu vực Hướng dẫn",
-            text:
-                "Dùng khu vực này để đưa tài liệu PDF, bài đọc hoặc hướng dẫn kiểm chứng."
-        },
-
-        research: {
-            title:
-                "Khu vực Nghiên cứu",
-            text:
-                "Bạn có thể gắn tài liệu học thuật, bài nghiên cứu hoặc đường dẫn nguồn."
-        },
-
-        deepfake: {
-            title:
-                "Khu vực Deepfake",
-            text:
-                "Đây là nơi phù hợp để đưa video, hình ảnh hoặc case study về deepfake."
-        },
-
-        critical: {
-            title:
-                "Khu vực Tư duy phản biện",
-            text:
-                "Dùng để chèn bài đọc, tình huống hoặc hoạt động thực hành."
-        },
-
-        featured: {
-            title:
-                "Nội dung nổi bật",
-            text:
-                "Khu vực này có thể thay bằng video YouTube, video local hoặc một tài liệu quan trọng."
-        }
-
-    };
-
-
-    function openModal(
-        type = "featured"
-    ) {
-
-        const data =
-            modalData[type] ||
-            modalData.featured;
-
-
-        modalTitle.textContent =
-            data.title;
-
-        modalText.textContent =
-            data.text;
-
-
-        contentModal.classList.add(
-            "active"
-        );
-
-        contentModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
-    }
-
-
-    function closeModal() {
-
-        contentModal.classList.remove(
-            "active"
-        );
-
-        contentModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
-    }
-
-
-    resourceLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                openModal(
-                    link.dataset.resource
-                );
-
-            }
-        );
-
-    });
-
-
-    featuredOpen.addEventListener(
-        "click",
-        () => {
-            openModal("featured");
-        }
-    );
-
-
-    modalClose.addEventListener(
-        "click",
-        closeModal
-    );
-
-    modalOverlay.addEventListener(
-        "click",
-        closeModal
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape" &&
-                contentModal.classList.contains(
-                    "active"
-                )
-            ) {
-                closeModal();
-            }
-
-        }
-    );
+  
 
 
     /* =================================================
