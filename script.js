@@ -2401,6 +2401,11 @@ function openResourceModal(type, url, title, readerId) {
 
         iframe.className =
             "youtube-resource-iframe";
+            iframe.allow =
+    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
+
+iframe.allowFullscreen =
+    true;
 
         iframe.src =
     `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0`;
