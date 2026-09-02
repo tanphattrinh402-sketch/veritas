@@ -1996,6 +1996,611 @@ if (libraryMore && libraryMoreWrap) {
 
 
     /* =================================================
+   RESOURCE VIEWER
+================================================= */
+
+/* =========================================================
+   RESOURCE VIEWER / READER
+   ========================================================= */
+
+const resourceModal = document.getElementById("resourceModal");
+const resourceModalBody = document.getElementById("resourceModalBody");
+const resourceModalTitle = document.getElementById("resourceModalTitle");
+const resourceModalClose = document.getElementById("resourceModalClose");
+const resourceModalBackdrop = document.querySelector(".resource-modal-backdrop");
+
+
+/* =========================================================
+   READER NỘI BỘ
+   ========================================================= */
+
+const internalReaders = {
+
+    brands: {
+        label: "PHÂN TÍCH TRUYỀN THÔNG SỐ",
+        title: "Vì sao short-form video là dạng nội dung tiềm năng?",
+        meta: "Brands Vietnam · Novaon Digital",
+
+        content: `
+            <div class="resource-reader-section">
+
+                <h2>Short-form video là gì?</h2>
+
+                <p>
+                    Short-form video là dạng video ngắn được thiết kế
+                    để truyền tải thông tin nhanh, trực quan và dễ tiếp cận
+                    trên các nền tảng số.
+                </p>
+
+                <p>
+                    Sự phát triển của mạng xã hội đã khiến video ngắn trở thành
+                    một trong những hình thức nội dung phổ biến. Người dùng có
+                    thể tiếp nhận rất nhiều nội dung chỉ trong một khoảng thời
+                    gian ngắn.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-highlight">
+
+                <p>
+                    Nội dung ngắn và hấp dẫn có thể thu hút sự chú ý rất nhanh,
+                    nhưng mức độ viral không đồng nghĩa với độ chính xác.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Vì sao video ngắn có sức hút?</h2>
+
+                <ul>
+                    <li>Thông tin được trình bày cô đọng.</li>
+                    <li>Hình ảnh và âm thanh giúp tăng khả năng thu hút.</li>
+                    <li>Người dùng dễ chuyển liên tục giữa các video.</li>
+                    <li>Nội dung phù hợp với thói quen sử dụng mạng xã hội.</li>
+                </ul>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Bài học kiểm chứng</h2>
+
+                <p>
+                    Khi gặp một video ngắn đang viral, không nên sử dụng
+                    số lượt xem hoặc lượt thích như bằng chứng cho tính đúng
+                    sai của thông tin.
+                </p>
+
+                <p>
+                    Hãy kiểm tra nguồn, ngày xuất bản, bằng chứng được đưa ra
+                    và tìm thêm các nguồn độc lập.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-source">
+
+                Đây là bản tóm lược giáo dục của Veritas dựa trên
+                bài viết nguồn của Brands Vietnam.
+
+            </div>
+        `
+    },
+
+
+    gitnux: {
+        label: "MEDIA LITERACY",
+        title: "Media Literacy Statistics",
+        meta: "Gitnux · Media Literacy Statistics",
+
+        content: `
+            <div class="resource-reader-section">
+
+                <h2>Media literacy là gì?</h2>
+
+                <p>
+                    Media literacy, hay năng lực truyền thông, là khả năng
+                    tiếp cận, phân tích, đánh giá và sử dụng thông tin truyền
+                    thông một cách có trách nhiệm.
+                </p>
+
+                <p>
+                    Trong môi trường số, người dùng phải tiếp nhận thông tin
+                    từ mạng xã hội, video, báo chí, quảng cáo, công cụ tìm kiếm
+                    và nhiều nguồn khác nhau.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-highlight">
+
+                <p>
+                    Việc tiếp cận Internet không đồng nghĩa với việc
+                    một người có khả năng đánh giá thông tin chính xác.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Những vấn đề cần quan tâm</h2>
+
+                <ul>
+                    <li>Thông tin có thể lan truyền với tốc độ rất cao.</li>
+                    <li>Nội dung hấp dẫn dễ thu hút sự chú ý.</li>
+                    <li>Số liệu có thể bị trình bày ngoài ngữ cảnh.</li>
+                    <li>Nguồn thông tin cần được kiểm tra trước khi sử dụng.</li>
+                </ul>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Liên hệ với việc kiểm chứng</h2>
+
+                <p>
+                    Khi nhìn thấy một con số hoặc một thống kê trên Internet,
+                    hãy hỏi: dữ liệu đến từ đâu, được thu thập như thế nào,
+                    thời điểm nào và có nguồn độc lập nào xác nhận không?
+                </p>
+
+            </div>
+
+            <div class="resource-reader-source">
+
+                Nội dung được Veritas trình bày dưới dạng tài liệu học tập
+                tóm lược dựa trên chủ đề Media Literacy Statistics.
+
+            </div>
+        `
+    },
+
+
+    medialiteracynow: {
+        label: "KIẾN THỨC NỀN TẢNG",
+        title: "What Is Media Literacy?",
+        meta: "Media Literacy Now",
+
+        content: `
+            <div class="resource-reader-section">
+
+                <h2>Media literacy là gì?</h2>
+
+                <p>
+                    Media literacy là khả năng tiếp cận, phân tích,
+                    đánh giá và tạo ra các thông điệp truyền thông
+                    trong nhiều hình thức khác nhau.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Những câu hỏi quan trọng</h2>
+
+                <ul>
+                    <li>Ai tạo ra thông tin này?</li>
+                    <li>Mục đích của thông tin là gì?</li>
+                    <li>Thông tin muốn tôi tin hoặc làm điều gì?</li>
+                    <li>Bằng chứng được đưa ra là gì?</li>
+                    <li>Có thông tin nào đang bị bỏ sót không?</li>
+                    <li>Có nguồn độc lập nào xác nhận không?</li>
+                </ul>
+
+            </div>
+
+            <div class="resource-reader-highlight">
+
+                <p>
+                    Media literacy không chỉ là biết sử dụng Internet.
+                    Đó là khả năng suy nghĩ có phê phán trước thông tin.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Tại sao học sinh cần kỹ năng này?</h2>
+
+                <p>
+                    Học sinh hiện nay tiếp nhận thông tin từ video ngắn,
+                    mạng xã hội, công cụ tìm kiếm, quảng cáo, người sáng tạo
+                    nội dung và các hệ thống AI.
+                </p>
+
+                <p>
+                    Vì vậy, khả năng đặt câu hỏi và kiểm tra nguồn là một phần
+                    quan trọng của năng lực số.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-source">
+
+                Bản trình bày học tập của Veritas dựa trên chủ đề
+                Media Literacy của Media Literacy Now.
+
+            </div>
+        `
+    },
+
+
+    thanhnien: {
+        label: "GÓC NHÌN XÃ HỘI",
+        title: "Tuyên chiến với các video ngắn độc hại trên mạng xã hội",
+        meta: "Báo Thanh Niên · 25/08/2026",
+
+        content: `
+            <div class="resource-reader-section">
+
+                <h2>Video ngắn và môi trường thông tin</h2>
+
+                <p>
+                    Video ngắn đã trở thành một phần quen thuộc trong đời sống
+                    trực tuyến, đặc biệt với người trẻ.
+                </p>
+
+                <p>
+                    Bên cạnh những nội dung hữu ích, môi trường này cũng có thể
+                    xuất hiện nội dung giật gân, phản cảm, sai lệch hoặc gây
+                    ảnh hưởng tiêu cực.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-highlight">
+
+                <p>
+                    Mục tiêu không phải là phủ nhận video ngắn,
+                    mà là giúp người dùng chủ động hơn trước dòng thông tin.
+                </p>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Sức đề kháng số</h2>
+
+                <ul>
+                    <li>Không đánh giá thông tin chỉ bằng lượt xem.</li>
+                    <li>Không mặc định nội dung viral là nội dung đúng.</li>
+                    <li>Kiểm tra nguồn và ngày xuất bản.</li>
+                    <li>Tìm thêm nguồn độc lập.</li>
+                    <li>Dừng lại trước khi chia sẻ thông tin đáng ngờ.</li>
+                </ul>
+
+            </div>
+
+            <div class="resource-reader-section">
+
+                <h2>Bài học cho người dùng trẻ</h2>
+
+                <p>
+                    Thay vì chỉ hỏi "Có nhiều người xem không?",
+                    hãy hỏi "Ai tạo ra?", "Nguồn ở đâu?",
+                    "Bằng chứng là gì?" và "Nguồn nào độc lập có thể xác nhận?"
+                </p>
+
+            </div>
+
+            <div class="resource-reader-source">
+
+                Bản tóm lược học tập của Veritas dựa trên bài viết
+                của Báo Thanh Niên.
+
+            </div>
+        `
+    }
+
+};
+
+
+/* =========================================================
+   MỞ RESOURCE MODAL
+   ========================================================= */
+
+function openResourceModal(type, url, title, readerId) {
+
+    if (!resourceModal || !resourceModalBody) {
+        console.error("Veritas: Không tìm thấy resourceModal.");
+        return;
+    }
+
+    resourceModalBody.innerHTML = "";
+
+    if (resourceModalTitle) {
+        resourceModalTitle.textContent =
+            title || "Nội dung";
+    }
+
+
+    /* =========================
+       YOUTUBE
+       ========================= */
+
+    if (type === "youtube") {
+
+        const iframe =
+            document.createElement("iframe");
+
+        iframe.src =
+            url.includes("?")
+                ? `${url}&autoplay=1&rel=0`
+                : `${url}?autoplay=1&rel=0`;
+
+        iframe.title =
+            title || "YouTube video";
+
+        iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+        iframe.allowFullscreen = true;
+
+        resourceModalBody.appendChild(
+            iframe
+        );
+    }
+
+
+    /* =========================
+       NGHIÊN CỨU FULL TEXT
+       ========================= */
+
+    else if (type === "research") {
+
+        const loading =
+            document.createElement("div");
+
+        loading.className =
+            "resource-modal-loading";
+
+        loading.textContent =
+            "Đang tải nghiên cứu...";
+
+        resourceModalBody.appendChild(
+            loading
+        );
+
+
+        const iframe =
+            document.createElement("iframe");
+
+        iframe.src = url;
+
+        iframe.title =
+            title || "Nghiên cứu";
+
+        iframe.loading =
+            "eager";
+
+        iframe.referrerPolicy =
+            "strict-origin-when-cross-origin";
+
+        iframe.addEventListener(
+            "load",
+            () => {
+                loading.remove();
+            }
+        );
+
+        resourceModalBody.appendChild(
+            iframe
+        );
+    }
+
+
+    /* =========================
+       READER NỘI BỘ
+       ========================= */
+
+    else if (type === "reader") {
+
+        const reader =
+            internalReaders[readerId];
+
+        if (!reader) {
+
+            resourceModalBody.innerHTML = `
+
+                <article class="resource-reader">
+
+                    <div class="resource-reader-label">
+                        VERITAS
+                    </div>
+
+                    <h1>
+                        Không tìm thấy tài liệu
+                    </h1>
+
+                    <div class="resource-reader-section">
+
+                        <p>
+                            Không tìm thấy Reader có mã:
+                            <strong>${readerId}</strong>
+                        </p>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        } else {
+
+            resourceModalBody.innerHTML = `
+
+                <article class="resource-reader">
+
+                    <div class="resource-reader-label">
+                        ${reader.label}
+                    </div>
+
+                    <h1>
+                        ${reader.title}
+                    </h1>
+
+                    <div class="resource-reader-meta">
+                        <span>
+                            ${reader.meta}
+                        </span>
+                    </div>
+
+                    ${reader.content}
+
+                </article>
+
+            `;
+        }
+    }
+
+
+    /* =========================
+       HIỂN THỊ
+       ========================= */
+
+    resourceModal.classList.add(
+        "active"
+    );
+
+    resourceModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "modal-open"
+    );
+}
+
+
+/* =========================================================
+   ĐÓNG MODAL
+   ========================================================= */
+
+function closeResourceModal() {
+
+    if (!resourceModal) return;
+
+    resourceModal.classList.remove(
+        "active"
+    );
+
+    resourceModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+    if (resourceModalBody) {
+        resourceModalBody.innerHTML = "";
+    }
+}
+
+
+/* =========================================================
+   SỰ KIỆN RESOURCE
+   ========================================================= */
+
+/*
+   Dùng event delegation.
+   Cách này ổn định hơn việc gắn từng button riêng lẻ.
+*/
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                ".resource-link"
+            );
+
+        if (!button) return;
+
+        const type =
+            button.dataset.resourceType ||
+            "reader";
+
+        const url =
+            button.dataset.resourceUrl ||
+            "";
+
+        const readerId =
+            button.dataset.readerId ||
+            "";
+
+        const card =
+            button.closest(
+                ".resource-card"
+            );
+
+        const title =
+            card
+                ? card
+                    .querySelector(
+                        ".resource-body h3"
+                    )
+                    ?.textContent
+                    .trim()
+                : "Nội dung";
+
+
+        openResourceModal(
+            type,
+            url,
+            title,
+            readerId
+        );
+    }
+);
+
+
+/* =========================================================
+   NÚT ĐÓNG
+   ========================================================= */
+
+if (resourceModalClose) {
+
+    resourceModalClose.addEventListener(
+        "click",
+        closeResourceModal
+    );
+}
+
+
+if (resourceModalBackdrop) {
+
+    resourceModalBackdrop.addEventListener(
+        "click",
+        closeResourceModal
+    );
+}
+
+
+/* =========================================================
+   ESC
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            resourceModal &&
+            resourceModal.classList.contains("active")
+        ) {
+
+            closeResourceModal();
+        }
+    }
+);
+    /* =================================================
        REDUCE MOTION
     ================================================= */
 
