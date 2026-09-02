@@ -2304,7 +2304,9 @@ const internalReaders = {
 function openResourceModal(type, url, title, readerId) {
 
     if (!resourceModal || !resourceModalBody) {
-        console.error("Veritas: Không tìm thấy resourceModal.");
+        console.error(
+            "Veritas: Không tìm thấy resourceModal."
+        );
         return;
     }
 
@@ -2316,19 +2318,93 @@ function openResourceModal(type, url, title, readerId) {
     }
 
 
-    /* =========================
+    /* =====================================================
        YOUTUBE
-       ========================= */
+       ===================================================== */
 
     if (type === "youtube") {
+
+    let videoId = "";
+
+    try {
+
+        const parsedUrl = new URL(url);
+
+        if (parsedUrl.hostname.includes("youtu.be")) {
+
+            videoId =
+                parsedUrl.pathname
+                    .replace(/^\/+/, "")
+                    .split("/")[0];
+
+        } else if (
+            parsedUrl.pathname.includes("/embed/")
+        ) {
+
+            videoId =
+                parsedUrl.pathname
+                    .split("/embed/")[1]
+                    .split("/")[0];
+
+        } else {
+
+            videoId =
+                parsedUrl.searchParams.get("v") || "";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Không đọc được YouTube URL:",
+            url
+        );
+
+    }
+
+
+    if (!videoId) {
+
+        resourceModalBody.innerHTML = `
+            <div class="resource-reader">
+
+                <h1>Không thể tải video</h1>
+
+                <div class="resource-reader-section">
+                    <p>
+                        Không xác định được mã video YouTube.
+                    </p>
+                </div>
+
+            </div>
+        `;
+
+    } else {
+
+        /* ---------------------------------------------
+           WRAPPER RIÊNG CHO YOUTUBE
+        --------------------------------------------- */
+
+        const videoFrame =
+            document.createElement("div");
+
+        videoFrame.className =
+            "youtube-resource-frame";
+
+
+        /* ---------------------------------------------
+           IFRAME
+        --------------------------------------------- */
 
         const iframe =
             document.createElement("iframe");
 
+        iframe.className =
+            "youtube-resource-iframe";
+
         iframe.src =
-            url.includes("?")
-                ? `${url}&autoplay=1&rel=0`
-                : `${url}?autoplay=1&rel=0`;
+    `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0`;
+            `&iv_load_policy=3`;
 
         iframe.title =
             title || "YouTube video";
@@ -2338,15 +2414,30 @@ function openResourceModal(type, url, title, readerId) {
 
         iframe.allowFullscreen = true;
 
-        resourceModalBody.appendChild(
+        iframe.setAttribute(
+            "frameborder",
+            "0"
+        );
+
+        iframe.setAttribute(
+            "allowfullscreen",
+            ""
+        );
+
+        videoFrame.appendChild(
             iframe
         );
+
+        resourceModalBody.appendChild(
+            videoFrame
+        );
     }
+}
 
 
-    /* =========================
-       NGHIÊN CỨU FULL TEXT
-       ========================= */
+    /* =====================================================
+       NGHIÊN CỨU FULL-TEXT
+       ===================================================== */
 
     else if (type === "research") {
 
@@ -2367,7 +2458,8 @@ function openResourceModal(type, url, title, readerId) {
         const iframe =
             document.createElement("iframe");
 
-        iframe.src = url;
+        iframe.src =
+            url;
 
         iframe.title =
             title || "Nghiên cứu";
@@ -2378,12 +2470,16 @@ function openResourceModal(type, url, title, readerId) {
         iframe.referrerPolicy =
             "strict-origin-when-cross-origin";
 
+
         iframe.addEventListener(
             "load",
             () => {
+
                 loading.remove();
+
             }
         );
+
 
         resourceModalBody.appendChild(
             iframe
@@ -2391,14 +2487,15 @@ function openResourceModal(type, url, title, readerId) {
     }
 
 
-    /* =========================
-       READER NỘI BỘ
-       ========================= */
+    /* =====================================================
+       READER NỘI BỘ VERITAS
+       ===================================================== */
 
     else if (type === "reader") {
 
         const reader =
             internalReaders[readerId];
+
 
         if (!reader) {
 
@@ -2417,8 +2514,11 @@ function openResourceModal(type, url, title, readerId) {
                     <div class="resource-reader-section">
 
                         <p>
-                            Không tìm thấy Reader có mã:
-                            <strong>${readerId}</strong>
+                            Không tìm thấy Reader
+                            có mã:
+                            <strong>
+                                ${readerId}
+                            </strong>
                         </p>
 
                     </div>
@@ -2442,9 +2542,11 @@ function openResourceModal(type, url, title, readerId) {
                     </h1>
 
                     <div class="resource-reader-meta">
+
                         <span>
                             ${reader.meta}
                         </span>
+
                     </div>
 
                     ${reader.content}
@@ -2456,9 +2558,9 @@ function openResourceModal(type, url, title, readerId) {
     }
 
 
-    /* =========================
-       HIỂN THỊ
-       ========================= */
+    /* =====================================================
+       HIỂN THỊ MODAL
+       ===================================================== */
 
     resourceModal.classList.add(
         "active"
@@ -2469,19 +2571,21 @@ function openResourceModal(type, url, title, readerId) {
         "false"
     );
 
-    document.body.classList.add(
+        document.body.classList.add(
         "modal-open"
     );
 }
 
 
 /* =========================================================
-   ĐÓNG MODAL
+   ĐÓNG RESOURCE MODAL
    ========================================================= */
 
 function closeResourceModal() {
 
-    if (!resourceModal) return;
+    if (!resourceModal) {
+        return;
+    }
 
     resourceModal.classList.remove(
         "active"
@@ -2503,52 +2607,69 @@ function closeResourceModal() {
 
 
 /* =========================================================
-   SỰ KIỆN RESOURCE
+   RESOURCE LINK CLICK
    ========================================================= */
-
-/*
-   Dùng event delegation.
-   Cách này ổn định hơn việc gắn từng button riêng lẻ.
-*/
 
 document.addEventListener(
     "click",
     event => {
 
-        const button =
+        const trigger =
             event.target.closest(
-                ".resource-link"
+                ".resource-link, .cover-play"
             );
 
-        if (!button) return;
-
-        const type =
-            button.dataset.resourceType ||
-            "reader";
-
-        const url =
-            button.dataset.resourceUrl ||
-            "";
-
-        const readerId =
-            button.dataset.readerId ||
-            "";
+        if (!trigger) {
+            return;
+        }
 
         const card =
-            button.closest(
+            trigger.closest(
                 ".resource-card"
             );
 
+        if (!card) {
+            return;
+        }
+
+        let sourceButton = trigger;
+
+        if (
+            trigger.classList.contains(
+                "cover-play"
+            )
+        ) {
+
+            sourceButton =
+                card.querySelector(
+                    ".resource-link"
+                );
+
+            if (!sourceButton) {
+                return;
+            }
+        }
+
+        const type =
+            sourceButton.dataset.resourceType ||
+            "reader";
+
+        const url =
+            sourceButton.dataset.resourceUrl ||
+            "";
+
+        const readerId =
+            sourceButton.dataset.readerId ||
+            "";
+
         const title =
             card
-                ? card
-                    .querySelector(
-                        ".resource-body h3"
-                    )
-                    ?.textContent
-                    .trim()
-                : "Nội dung";
-
+                .querySelector(
+                    ".resource-body h3"
+                )
+                ?.textContent
+                .trim() ||
+            "Nội dung";
 
         openResourceModal(
             type,
@@ -2570,6 +2691,7 @@ if (resourceModalClose) {
         "click",
         closeResourceModal
     );
+
 }
 
 
@@ -2579,11 +2701,12 @@ if (resourceModalBackdrop) {
         "click",
         closeResourceModal
     );
+
 }
 
 
 /* =========================================================
-   ESC
+   PHÍM ESC
    ========================================================= */
 
 document.addEventListener(
@@ -2593,16 +2716,22 @@ document.addEventListener(
         if (
             event.key === "Escape" &&
             resourceModal &&
-            resourceModal.classList.contains("active")
+            resourceModal.classList.contains(
+                "active"
+            )
         ) {
 
             closeResourceModal();
+
         }
+
     }
 );
-    /* =================================================
-       REDUCE MOTION
-    ================================================= */
+
+
+/* =================================================
+   REDUCE MOTION
+================================================= */
 
     const reduceMotion =
         window.matchMedia(
