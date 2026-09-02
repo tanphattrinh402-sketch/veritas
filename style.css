@@ -4788,19 +4788,20 @@ body.modal-open {
 
 
 /* =========================================================
-   BODY / KHUNG IFRAME
-   ========================================================= */
+   VERITAS — YOUTUBE PLAYER
+   GIỮ ĐÚNG TỶ LỆ 16:9
+========================================================= */
 
 .resource-modal-body {
     position: relative;
 
     flex: 1 1 auto;
-
     min-height: 0;
 
     overflow-y: auto;
-overflow-x: hidden;
--webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
 
     background:
         radial-gradient(
@@ -4812,52 +4813,42 @@ overflow-x: hidden;
 }
 
 
-/* Khung iframe */
-.resource-modal-body iframe {
-    position: relative;
-    z-index: 1;
+/* Chỉ áp dụng riêng cho video YouTube */
+.resource-modal-body:has(.youtube-resource-iframe) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
-    display: block;
+    padding: 14px;
 
-    width: calc(100% - 28px);
-    height: calc(100% - 28px);
-
-    margin: 14px;
-
-    min-height: 0;
-
-    border: 0;
-
-    border-radius: 20px;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 12px 35px rgba(15, 23, 42, 0.10),
-        0 2px 8px rgba(15, 23, 42, 0.05);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
-/* =========================================================
-   YOUTUBE IFRAME
-   ========================================================= */
-
+/* YouTube player */
 .youtube-resource-iframe {
     position: relative !important;
-    z-index: 20 !important;
 
     display: block !important;
 
-    width: calc(100% - 28px) !important;
-    height: calc(100% - 28px) !important;
+    width: 100% !important;
+    max-width: 1200px !important;
 
-    margin: 14px !important;
+    height: auto !important;
+
+    aspect-ratio: 16 / 9 !important;
+
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
 
     border: 0 !important;
-
     border-radius: 20px !important;
 
-    background: #0b1220;
+    background: #000000 !important;
 
     pointer-events: auto !important;
 
@@ -4865,6 +4856,40 @@ overflow-x: hidden;
         0 15px 40px rgba(15, 23, 42, 0.18);
 }
 
+
+/* =========================================================
+   MOBILE — YOUTUBE
+========================================================= */
+
+@media (max-width: 680px) {
+
+    .resource-modal-body:has(.youtube-resource-iframe) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        padding: 0;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .youtube-resource-iframe {
+        width: 100% !important;
+        max-width: none !important;
+
+        height: auto !important;
+
+        aspect-ratio: 16 / 9 !important;
+
+        margin: 0 !important;
+
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+}
 /* =========================================================
    LOADING
    ========================================================= */
@@ -5284,174 +5309,4 @@ overflow-x: hidden;
             19px
             21px;
     }
-}
-/* =========================================================
-   YOUTUBE RESOURCE FRAME
-   ========================================================= */
-
-.youtube-resource-frame {
-    position: absolute;
-    inset: 14px;
-
-    z-index: 50;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-
-    background: #000;
-
-    box-shadow:
-        0 15px 40px rgba(15, 23, 42, 0.18);
-
-    pointer-events: auto;
-}
-
-.youtube-resource-iframe {
-    position: absolute !important;
-    inset: 0 !important;
-
-    z-index: 51 !important;
-
-    display: block !important;
-
-    width: 100% !important;
-    height: 100% !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    border-radius: 20px !important;
-
-    background: #000 !important;
-
-    pointer-events: auto !important;
-
-    cursor: pointer;
-}
-
-
-/* Tuyệt đối không để pseudo-element phủ iframe */
-
-.youtube-resource-frame::before,
-.youtube-resource-frame::after,
-.youtube-resource-iframe::before,
-.youtube-resource-iframe::after {
-    content: none !important;
-    display: none !important;
-}
-
-
-/* Không cho loading che YouTube */
-
-.resource-modal-body:has(.youtube-resource-frame)
-.resource-modal-loading {
-    display: none !important;
-}
-
-
-/* Khi có YouTube, body không tạo thêm lớp phủ */
-
-.resource-modal-body:has(.youtube-resource-frame) {
-    overflow: hidden !important;
-}
-
-
-/* Mobile */
-
-@media (max-width: 680px) {
-
-    .youtube-resource-frame {
-        inset: 0;
-
-        border-radius: 0;
-    }
-
-    .youtube-resource-iframe {
-        border-radius: 0 !important;
-    }
-
-}
-/* =========================================================
-   YOUTUBE CLICK FIX
-========================================================= */
-
-.resource-modal,
-.resource-modal-panel,
-.resource-modal-body,
-.youtube-resource-frame,
-.youtube-resource-iframe {
-    pointer-events: auto !important;
-}
-
-.resource-modal-backdrop {
-    pointer-events: auto;
-}
-
-.youtube-resource-frame {
-    position: absolute !important;
-    inset: 14px !important;
-
-    z-index: 100 !important;
-
-    overflow: hidden !important;
-
-    border-radius: 20px !important;
-
-    background: #000 !important;
-
-    pointer-events: auto !important;
-}
-
-.youtube-resource-iframe {
-    position: absolute !important;
-    inset: 0 !important;
-
-    width: 100% !important;
-    height: 100% !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
-    border-radius: 20px !important;
-
-    z-index: 101 !important;
-
-    display: block !important;
-
-    pointer-events: auto !important;
-
-    cursor: pointer !important;
-}
-/* =========================================================
-   VERITAS — FIX YOUTUBE VIDEO FRAME
-   HIỂN THỊ ĐẦY ĐỦ TỶ LỆ 16:9
-========================================================= */
-
-.resource-modal-body {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.youtube-resource-frame {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 16px;
-}
-
-.youtube-resource-iframe {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: 16 / 9 !important;
-    border: 0 !important;
 }
