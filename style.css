@@ -4789,9 +4789,10 @@ body.modal-open {
 
 /* =========================================================
    VERITAS — YOUTUBE PLAYER
-   GIỮ ĐÚNG TỶ LỆ 16:9
+   KHUNG VIDEO CỐ ĐỊNH 16:9
 ========================================================= */
 
+/* Khu vực chứa video */
 .resource-modal-body {
     position: relative;
 
@@ -4803,6 +4804,8 @@ body.modal-open {
 
     -webkit-overflow-scrolling: touch;
 
+    padding: 14px;
+
     background:
         radial-gradient(
             circle at 50% -20%,
@@ -4813,44 +4816,39 @@ body.modal-open {
 }
 
 
-/* Chỉ áp dụng riêng cho video YouTube */
-.resource-modal-body:has(.youtube-resource-iframe) {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+/* Khi mở YouTube */
+.resource-modal-body:has(.youtube-resource-frame) {
+    display: block;
 
-    padding: 14px;
+    width: 100%;
 
     overflow-y: auto;
     overflow-x: hidden;
+
+    padding: 14px;
 }
 
 
-/* YouTube player */
-.youtube-resource-iframe {
-    position: relative !important;
+/* =========================================================
+   KHUNG NGOÀI — quyết định kích thước video
+========================================================= */
 
-    display: block !important;
+.youtube-resource-frame {
+    position: relative;
 
-    width: 100% !important;
-    max-width: 1200px !important;
+    display: block;
 
-    height: auto !important;
+    width: min(1200px, 100%);
 
-    aspect-ratio: 16 / 9 !important;
+    aspect-ratio: 16 / 9;
 
-    min-height: 0 !important;
-    max-height: none !important;
+    margin: 0 auto;
 
-    margin: 0 auto !important;
-    padding: 0 !important;
+    overflow: hidden;
 
-    border: 0 !important;
-    border-radius: 20px !important;
+    background: #000000;
 
-    background: #000000 !important;
-
-    pointer-events: auto !important;
+    border-radius: 20px;
 
     box-shadow:
         0 15px 40px rgba(15, 23, 42, 0.18);
@@ -4858,15 +4856,48 @@ body.modal-open {
 
 
 /* =========================================================
-   MOBILE — YOUTUBE
+   IFRAME — phủ kín toàn bộ khung
+========================================================= */
+
+.youtube-resource-iframe {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: #000000 !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media (max-width: 680px) {
 
-    .resource-modal-body:has(.youtube-resource-iframe) {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
+    .resource-modal-body:has(.youtube-resource-frame) {
+        display: block;
 
         padding: 0;
 
@@ -4874,19 +4905,23 @@ body.modal-open {
         overflow-x: hidden;
     }
 
+    .youtube-resource-frame {
+        width: 100%;
+
+        aspect-ratio: 16 / 9;
+
+        margin: 0;
+
+        border-radius: 0;
+
+        box-shadow: none;
+    }
+
     .youtube-resource-iframe {
         width: 100% !important;
-        max-width: none !important;
-
-        height: auto !important;
-
-        aspect-ratio: 16 / 9 !important;
-
-        margin: 0 !important;
+        height: 100% !important;
 
         border-radius: 0 !important;
-
-        box-shadow: none !important;
     }
 
 }
