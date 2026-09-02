@@ -1132,7 +1132,7 @@ if (libraryMore && libraryMoreWrap) {
     },
 
 
-    /* =================================================
+        /* =================================================
        CÂU 9
     ================================================= */
 
@@ -1140,30 +1140,29 @@ if (libraryMore && libraryMoreWrap) {
         media: {
             type: "image",
             src: "assets/quiz/anh9.jpg",
-            label: "Tuyên bố về tác động của một loại đồ uống"
+            label: "Uống nước chanh vào buổi sáng"
         },
 
         question:
-            "Một bài đăng cho rằng một thói quen sử dụng đồ uống quen thuộc vào buổi sáng có thể làm cơ thể tăng tốc độ trao đổi chất và đốt cháy mỡ nhanh hơn. Tuyên bố này được trình bày như một kết luận đã được khoa học chứng minh. Bạn đánh giá tuyên bố này là thật hay giả?",
+            "Uống nước chanh vào buổi sáng có thể làm tăng tốc độ trao đổi chất và giúp cơ thể đốt cháy mỡ nhanh hơn. Nguồn: Sống khỏe mỗi ngày — Minh Anh. Tuyên bố này là thật hay giả?",
 
         context:
-            "Tuyên bố đưa ra một tác động sinh lý cụ thể và sử dụng cách diễn đạt mang tính khoa học. Hãy kiểm tra xem có bằng chứng nghiên cứu trực tiếp và đáng tin cậy nào thực sự hỗ trợ kết luận này hay không.",
+            "Tuyên bố đưa ra một tác động sinh lý cụ thể và sử dụng cách diễn đạt mang tính khoa học. Hãy kiểm tra nguồn và bằng chứng nghiên cứu trước khi kết luận.",
 
         answer: false,
 
         explanation:
-            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Chưa có bằng chứng đủ đáng tin cậy được cung cấp để khẳng định thói quen này có thể làm tăng tốc độ trao đổi chất và khiến cơ thể đốt cháy mỡ nhanh hơn như tuyên bố.",
+            "Tuyên bố được xác định là SAI. Nguồn “Sống khỏe mỗi ngày — Minh Anh” chưa cho thấy đây là nguồn y khoa đáng tin cậy. Đồng thời, chưa có nghiên cứu nào chứng minh tính hiệu quả của việc này.",
 
         signal:
-            "Một tuyên bố về sức khỏe cần có bằng chứng khoa học có thể truy xuất",
+            "Nguồn thông tin chưa đủ độ tin cậy",
 
         evidence:
-            "Nguồn được nêu không cho thấy đây là một nguồn y khoa hoặc nghiên cứu học thuật đủ độ tin cậy để xác nhận kết luận trên",
+            "Nguồn “Sống khỏe mỗi ngày — Minh Anh” chưa cho thấy đây là nguồn y khoa đáng tin cậy và chưa có nghiên cứu được dẫn để chứng minh tuyên bố.",
 
         next:
-            "Tìm nghiên cứu gốc, tác giả, tạp chí công bố và phương pháp nghiên cứu trước khi kết luận"
+            "Tìm nghiên cứu y khoa hoặc nguồn học thuật đáng tin cậy trước khi kết luận"
     },
-
 
     /* =================================================
        CÂU 10
@@ -1173,32 +1172,31 @@ if (libraryMore && libraryMoreWrap) {
         media: {
             type: "image",
             src: "assets/quiz/anh10.jpg",
-            label: "Tuyên bố về chính sách đối với học sinh"
+            label: "Quy định về điện thoại của học sinh"
         },
 
         question:
-            "Một thông tin được chia sẻ cho rằng trong một năm học sắp tới, học sinh THPT trên cả nước sẽ không còn được phép mang một thiết bị cá nhân quen thuộc đến trường nhằm giảm sự phụ thuộc vào công nghệ. Tuyên bố này được cho là một thay đổi chính sách trên phạm vi toàn quốc. Bạn đánh giá tuyên bố này là thật hay giả?",
+            "Bộ GD&ĐT sẽ cấm hoàn toàn học sinh THPT mang điện thoại đến trường từ năm học 2026–2027 để hạn chế sự phụ thuộc vào công nghệ. Nguồn: Thời sự Học đường — Ban Biên tập. Tuyên bố này là thật hay giả?",
 
         context:
-            "Một quy định có thật ở một mức độ hoặc trong một hoàn cảnh nhất định có thể bị diễn giải thành một lệnh cấm rộng hơn. Hãy kiểm tra cơ quan ban hành, văn bản gốc và phạm vi áp dụng trước khi kết luận.",
+            "Đây là một tuyên bố về chính sách giáo dục trên phạm vi toàn quốc. Hãy kiểm tra cơ quan ban hành, nguồn gốc thông tin và phạm vi áp dụng của quy định trước khi kết luận.",
 
         answer: false,
 
         explanation:
-            "Tuyên bố được đánh giá là GIẢ trong bài kiểm tra. Nội dung đã mở rộng một quy định có thật thành tuyên bố cấm hoàn toàn học sinh THPT mang điện thoại đến trường trên phạm vi toàn quốc, nhưng không có căn cứ chính thức được cung cấp để xác nhận mức độ cấm này.",
+            "Tuyên bố được xác định là GIẢ. “Thời sự Học đường” nghe giống một trang tin, nhưng không phải nguồn chính thức của Bộ GD&ĐT. Nội dung cũng mở rộng một quy định có thật thành lệnh cấm hoàn toàn.",
 
         signal:
-            "Phải phân biệt giữa quy định thực tế và cách diễn giải mở rộng trên mạng",
+            "Nguồn không phải cơ quan chính thức và nội dung bị diễn giải mở rộng",
 
         evidence:
-            "Nguồn được nêu không phải là văn bản chính thức của cơ quan quản lý giáo dục và không cung cấp căn cứ xác nhận lệnh cấm hoàn toàn trên phạm vi toàn quốc",
+            "“Thời sự Học đường” không phải nguồn chính thức của Bộ GD&ĐT. Nội dung tuyên bố cũng mở rộng một quy định có thật thành lệnh cấm hoàn toàn.",
 
         next:
             "Tìm văn bản chính thức của Bộ GD&ĐT và kiểm tra chính xác phạm vi của quy định"
     }
 
 ];
-
     /* =================================================
        QUIZ DOM
     ================================================= */
