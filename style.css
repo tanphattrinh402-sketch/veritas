@@ -5427,3 +5427,31 @@ overflow-x: hidden;
 
     cursor: pointer !important;
 }
+/* =========================================================
+   VERITAS — FIX YOUTUBE VIDEO FRAME
+   HIỂN THỊ ĐẦY ĐỦ TỶ LỆ 16:9
+========================================================= */
+
+.resource-modal-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.youtube-resource-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.youtube-resource-iframe {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    border: 0 !important;
+}
