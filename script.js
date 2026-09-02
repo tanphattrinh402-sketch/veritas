@@ -2318,129 +2318,157 @@ function openResourceModal(type, url, title, readerId) {
 
     /* =====================================================
        YOUTUBE
-       ===================================================== */
+    ===================================================== */
 
     if (type === "youtube") {
 
-    let videoId = "";
+        let videoId = "";
 
-    try {
+        try {
 
-        const parsedUrl = new URL(url);
+            const parsedUrl =
+                new URL(url);
 
-        if (parsedUrl.hostname.includes("youtu.be")) {
+            if (
+                parsedUrl.hostname.includes(
+                    "youtu.be"
+                )
+            ) {
 
-            videoId =
-                parsedUrl.pathname
-                    .replace(/^\/+/, "")
-                    .split("/")[0];
+                videoId =
+                    parsedUrl.pathname
+                        .replace(/^\/+/, "")
+                        .split("/")[0];
 
-        } else if (
-            parsedUrl.pathname.includes("/embed/")
-        ) {
+            } else if (
+                parsedUrl.pathname.includes(
+                    "/embed/"
+                )
+            ) {
 
-            videoId =
-                parsedUrl.pathname
-                    .split("/embed/")[1]
-                    .split("/")[0];
+                videoId =
+                    parsedUrl.pathname
+                        .split("/embed/")[1]
+                        .split("/")[0];
 
-        } else {
+            } else {
 
-            videoId =
-                parsedUrl.searchParams.get("v") || "";
+                videoId =
+                    parsedUrl.searchParams.get("v") ||
+                    "";
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Không đọc được YouTube URL:",
+                url
+            );
 
         }
 
-    } catch (error) {
 
-        console.error(
-            "Không đọc được YouTube URL:",
-            url
-        );
+        /* -------------------------------------------------
+           KHÔNG CÓ VIDEO ID
+        ------------------------------------------------- */
 
-    }
+        if (!videoId) {
 
+            resourceModalBody.innerHTML = `
+                <div class="resource-reader">
 
-    if (!videoId) {
+                    <h1>
+                        Không thể tải video
+                    </h1>
 
-        resourceModalBody.innerHTML = `
-            <div class="resource-reader">
+                    <div class="resource-reader-section">
 
-                <h1>Không thể tải video</h1>
+                        <p>
+                            Không xác định được mã video YouTube.
+                        </p>
 
-                <div class="resource-reader-section">
-                    <p>
-                        Không xác định được mã video YouTube.
-                    </p>
+                    </div>
+
                 </div>
+            `;
 
-            </div>
-        `;
+        } else {
 
-    } else {
+            /* ---------------------------------------------
+               WRAPPER VIDEO
+            --------------------------------------------- */
 
-        /* ---------------------------------------------
-           WRAPPER RIÊNG CHO YOUTUBE
-        --------------------------------------------- */
+            const videoFrame =
+                document.createElement("div");
 
-        const videoFrame =
-            document.createElement("div");
-
-        videoFrame.className =
-            "youtube-resource-frame";
+            videoFrame.className =
+                "youtube-resource-frame";
 
 
-        /* ---------------------------------------------
-           IFRAME
-        --------------------------------------------- */
+            /* ---------------------------------------------
+               IFRAME
+            --------------------------------------------- */
 
-        const iframe =
-            document.createElement("iframe");
+            const iframe =
+                document.createElement("iframe");
 
-        iframe.className =
-            "youtube-resource-iframe";
+            iframe.className =
+                "youtube-resource-iframe";
+
+
+            /* ---------------------------------------------
+               YOUTUBE URL
+            --------------------------------------------- */
+
+            iframe.src =
+                `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0&iv_load_policy=3`;
+
+
+            iframe.title =
+                title || "YouTube video";
+
+
+            /* ---------------------------------------------
+               QUYỀN YOUTUBE
+            --------------------------------------------- */
+
             iframe.allow =
-    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
 
-iframe.allowFullscreen =
-    true;
+            iframe.allowFullscreen = true;
 
-        iframe.src =
-    `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0`;
-            `&iv_load_policy=3`;
+            iframe.setAttribute(
+                "frameborder",
+                "0"
+            );
 
-        iframe.title =
-            title || "YouTube video";
+            iframe.setAttribute(
+                "allowfullscreen",
+                ""
+            );
 
-        iframe.allow =
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
 
-        iframe.allowFullscreen = true;
+            /* ---------------------------------------------
+               ĐƯA IFRAME VÀO WRAPPER
+            --------------------------------------------- */
 
-        iframe.setAttribute(
-            "frameborder",
-            "0"
-        );
+            videoFrame.appendChild(
+                iframe
+            );
 
-        iframe.setAttribute(
-            "allowfullscreen",
-            ""
-        );
+            resourceModalBody.appendChild(
+                videoFrame
+            );
 
-        videoFrame.appendChild(
-            iframe
-        );
+        }
 
-        resourceModalBody.appendChild(
-            videoFrame
-        );
     }
-}
 
 
     /* =====================================================
        NGHIÊN CỨU FULL-TEXT
-       ===================================================== */
+    ===================================================== */
 
     else if (type === "research") {
 
@@ -2487,12 +2515,13 @@ iframe.allowFullscreen =
         resourceModalBody.appendChild(
             iframe
         );
+
     }
 
 
     /* =====================================================
        READER NỘI BỘ VERITAS
-       ===================================================== */
+    ===================================================== */
 
     else if (type === "reader") {
 
@@ -2557,13 +2586,15 @@ iframe.allowFullscreen =
                 </article>
 
             `;
+
         }
+
     }
 
 
     /* =====================================================
        HIỂN THỊ MODAL
-       ===================================================== */
+    ===================================================== */
 
     resourceModal.classList.add(
         "active"
@@ -2574,12 +2605,11 @@ iframe.allowFullscreen =
         "false"
     );
 
-        document.body.classList.add(
+    document.body.classList.add(
         "modal-open"
     );
+
 }
-
-
 /* =========================================================
    ĐÓNG RESOURCE MODAL
    ========================================================= */
