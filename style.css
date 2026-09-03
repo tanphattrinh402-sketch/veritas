@@ -1068,14 +1068,23 @@ a {
 }
 
 .library-tab {
-    padding: 18px 28px;
+    padding: 20px 34px;
+
     color: var(--ink-500);
     background: var(--surface);
+
     border: 1px solid var(--border-light);
     border-radius: 999px;
-    font-size: 16px;
-    font-weight: 800;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 22px !important;
+    font-weight: 800 !important;
+
     line-height: 1.2;
+
+    white-space: nowrap;
+
     transition:
         background .2s ease,
         color .2s ease,
@@ -1083,7 +1092,6 @@ a {
         transform .2s ease,
         box-shadow .2s ease;
 }
-
 .library-tab:hover {
     color: var(--blue-600);
     border-color: var(--blue-100);
@@ -1660,16 +1668,15 @@ a {
 .resource-meta {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
 
     color: var(--ink-400);
 
-    font-size: 7px;
+    font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: .08em;
+    letter-spacing: .06em;
 }
-
 .resource-meta span:first-child {
     color: var(--blue-600);
 }
@@ -1709,7 +1716,7 @@ a {
 
     background: transparent;
 
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 800;
 }
 
@@ -2480,7 +2487,7 @@ a {
     flex-direction: column;
 }
 
-.quiz-number span:first-child {
+.quiz-number > span:first-child {
     color: var(--blue-600);
 
     font-size: 7px;
@@ -2489,12 +2496,21 @@ a {
     letter-spacing: .14em;
 }
 
+
+/* TOÀN BỘ SỐ CÂU HỎI */
+.quiz-number strong > span {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+}
 .quiz-number strong {
     margin-top: 2px;
 
     color: var(--ink-900);
 
-    font-size: 11px;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .quiz-progress {
@@ -2533,8 +2549,9 @@ a {
 
     color: var(--ink-400);
 
-    font-size: 8px;
+    font-size: 18px;
     font-weight: 800;
+    line-height: 1;
 }
 
 .quiz-topic {
