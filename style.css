@@ -4814,6 +4814,30 @@ body.modal-open {
         ),
         #eef4fb;
 }
+/* =========================================================
+   RESEARCH IFRAME
+   Kích thước giống khung tài liệu trong modal
+========================================================= */
+
+.resource-modal-body > iframe:not(.youtube-resource-iframe) {
+    display: block;
+
+    width: calc(100% - 28px);
+    height: calc(100% - 28px);
+
+    min-height: 0;
+
+    margin: 14px;
+
+    border: 0;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.12);
+}
 
 
 /* Khi mở YouTube */
