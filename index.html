@@ -358,6 +358,295 @@
     height: 6px !important;
     flex: 0 0 6px !important;
 }
+/* =====================================================
+   SIFT FEATURED VIDEO SERIES
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+
+/* VIDEO AREA */
+
+/* =====================================================
+   SIFT FEATURED VIDEO — CĂN KHUNG CHUẨN 16:9
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+.sift-featured-media {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 0 !important;
+    overflow: hidden;
+
+    aspect-ratio: 16 / 9;
+
+    background: #0f172a;
+}
+
+
+/* XÓA các thành phần trang trí cũ trên khung video */
+
+.sift-featured-media .featured-media-pattern {
+    display: none !important;
+}
+
+.sift-featured-media .featured-video-icon {
+    display: none !important;
+}
+
+
+/* NHÃN FEATURED */
+
+.sift-featured-media .media-label {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 10;
+}
+
+
+/* KHUNG CHỨA IFRAME */
+
+.sift-video-frame {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #0f172a;
+}
+
+
+/* IFRAME YOUTUBE */
+
+.sift-video-frame iframe {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+.sift-featured-media .media-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.sift-video-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.sift-video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* CONTENT */
+
+.sift-featured-content > h3 span {
+    display: block;
+}
+
+
+/* VIDEO SELECTOR */
+
+.sift-video-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px 0 30px;
+}
+
+.sift-video-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: 16px;
+
+    background: rgba(248, 250, 252, 0.85);
+
+    cursor: pointer;
+    text-align: left;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.sift-video-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.sift-video-item.active {
+    border-color: #2563EB;
+    background: rgba(37, 99, 235, 0.07);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10);
+}
+
+
+/* NUMBER */
+
+.sift-video-number {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: #2563EB;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* TEXT */
+
+.sift-video-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sift-video-info strong {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.sift-video-info small {
+    margin-top: 3px;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    color: #64748b;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ARROW */
+
+.sift-video-arrow {
+    margin-left: auto;
+    font-size: 18px;
+    opacity: 0.55;
+}
+
+
+/* ACTIVE ITEM */
+
+.sift-video-item.active .sift-video-number {
+    background: #2563EB;
+}
+
+.sift-video-item.active .sift-video-arrow {
+    opacity: 1;
+    color: #2563EB;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 680px) {
+
+    .sift-video-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .sift-video-item {
+        padding: 13px 14px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-video-frame {
+        aspect-ratio: 16 / 10;
+    }
+
+    .sift-video-number {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+}
     </style>
 </head>
 
@@ -3192,88 +3481,176 @@
         </div>
 
 
-        <!-- FEATURED RESOURCE -->
+       <!-- =====================================================
+     FEATURED RESOURCE — SIFT VIDEO SERIES
+===================================================== -->
 
-        <article class="featured-resource">
+<article class="featured-resource sift-featured">
 
-            <div class="featured-media">
+    <!-- =================================================
+         VIDEO PLAYER
+    ================================================== -->
 
-                <div class="media-label">
-                    FEATURED
-                </div>
+    <div class="featured-media sift-featured-media">
 
-                <div class="featured-media-pattern"></div>
+        <div class="media-label">
+            SIFT / ONLINE VERIFICATION SKILLS
+        </div>
 
-                <div class="featured-video-icon">
-                    ▶
-                </div>
+        <div class="sift-video-frame">
+            <iframe
+                id="siftFeaturedVideo"
+                src="https://www.youtube.com/embed/yBU2sDlUbp8?playsinline=1&rel=0"
+                title="Online Verification Skills — Video 1: Introductory Video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
 
-                <div class="featured-media-text">
+    </div>
+
+
+    <!-- =================================================
+         FEATURED CONTENT
+    ================================================== -->
+
+    <div class="featured-content sift-featured-content">
+
+        <span class="featured-category">
+            DIGITAL LITERACY
+        </span>
+
+        <h3>
+            SIFT — 4 video
+            <span>kiểm chứng thông tin trực tuyến.</span>
+        </h3>
+
+        <p>
+            Khám phá 4 bước của phương pháp SIFT qua
+            chuỗi video <strong>Online Verification Skills</strong>:
+            dừng lại, điều tra nguồn, tìm nguồn đáng tin cậy
+            và truy xuất về nguồn gốc ban đầu.
+        </p>
+
+
+        <!-- =================================================
+             SIFT VIDEO SELECTOR
+        ================================================== -->
+
+        <div class="sift-video-selector">
+
+            <button
+                type="button"
+                class="sift-video-item active"
+                data-sift-video="yBU2sDlUbp8"
+                data-sift-title="Online Verification Skills — Video 1: Introductory Video"
+            >
+                <span class="sift-video-number">01</span>
+
+                <span class="sift-video-info">
+                    <strong>STOP</strong>
                     <small>
-                        VIDEO / TÀI LIỆU NỔI BẬT
+                        Introductory Video
                     </small>
-
-                    <strong>
-                        Khu vực chèn video YouTube
-                        hoặc nội dung media
-                    </strong>
-                </div>
-
-            </div>
-
-
-            <div class="featured-content">
-
-                <span class="featured-category">
-                    DIGITAL LITERACY
                 </span>
 
-                <h3>
-                    Hiểu thông tin trước khi
-                    quyết định tin hay chia sẻ.
-                </h3>
-
-                <p>
-                    Đây là khu vực dành cho video hoặc
-                    tài liệu quan trọng nhất của chủ đề.
-                    Bạn có thể thay phần minh họa bằng
-                    iframe YouTube bất kỳ lúc nào.
-                </p>
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
 
 
-                 <div class="featured-source">
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="hB6qjIxKltA"
+                data-sift-title="Online Verification Skills — Video 2: Investigate the Source"
+            >
+                <span class="sift-video-number">02</span>
 
-                 <span class="source-circle">
-                        V
+                <span class="sift-video-info">
+                    <strong>INVESTIGATE</strong>
+                    <small>
+                        Investigate the Source
+                    </small>
                 </span>
 
-                    <div>
-
-                        <strong>
-                            Veritas Library
-                        </strong>
-
-                        <small>
-                            Khu vực nội dung nổi bật
-                        </small>
-
-                    </div>
-
-                </div>
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
 
 
-                <button
-                    class="button primary-button featured-button"
-                    id="featuredOpen"
-                >
-                    Mở nội dung
-                    <span>→</span>
-                </button>
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="tRZ-N3OvvUs"
+                data-sift-title="Online Verification Skills — Video 3: Find the Original Source"
+            >
+                <span class="sift-video-number">03</span>
 
+                <span class="sift-video-info">
+                    <strong>TRACE</strong>
+                    <small>
+                        Find the Original Source
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="wJG7kFmS0FE"
+                data-sift-title="Online Verification Skills — Video 4: Look for Trusted Work"
+            >
+                <span class="sift-video-number">04</span>
+
+                <span class="sift-video-info">
+                    <strong>FIND</strong>
+                    <small>
+                        Look for Trusted Work
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             SOURCE
+        ================================================== -->
+
+        <div class="featured-source">
+
+            <span class="source-circle">
+                S
+            </span>
+
+            <div>
+                <strong>
+                    SIFT / Online Verification Skills
+                </strong>
+
+                <small>
+                    4 video hướng dẫn kiểm chứng
+                </small>
             </div>
 
-        </article>
+        </div>
 
+    </div>
+
+</article>
 <!-- RESOURCE GRID -->
 
 <div
@@ -3794,6 +4171,544 @@ Critical Thinking Crisis
         </div>
 
     </article>
+    <!-- =================================================
+         10 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy phản biện định nghĩa câu hỏi phản biện kỹ năng tư duy"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/UjbKZvPw1MU/maxresdefault.jpg"
+                alt="Tư duy phản biện - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện:
+                Định nghĩa & 3 cách đặt câu hỏi
+            </h3>
+
+            <p>
+                Giới thiệu khái niệm tư duy phản biện
+                và cách đặt câu hỏi để đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/UjbKZvPw1MU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         11 — CRITICAL THINKING PRACTICE
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy biện luận luyện tập phản biện cách luyện tập"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/6HP5mg91ETU/maxresdefault.jpg"
+                alt="Tư duy biện luận - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy biện luận:
+                Cách luyện tập phản biện
+            </h3>
+
+            <p>
+                Video tập trung vào cách rèn luyện
+                khả năng suy luận và phản biện.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/6HP5mg91ETU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         12 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="tư duy phản biện critical thinking phân tích đánh giá thông tin"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/pNKRExRmvBQ/maxresdefault.jpg"
+                alt="Tư duy phản biện"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện
+            </h3>
+
+            <p>
+                Nội dung bổ sung cho kỹ năng phân tích,
+                đặt câu hỏi và đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/pNKRExRmvBQ"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+<!-- =================================================
+     13 — TIN AI? | VTV24
+================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="tin AI VTV24 phòng chống tin giả chiến dịch AI fake news kiểm chứng thông tin"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/FQWuU-AKAMg/maxresdefault.jpg"
+            alt="Chung tay phòng chống tin giả cùng chiến dịch TIN AI? - VTV24"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>VTV24</span>
+        </div>
+
+        <h3>
+            Chung tay phòng chống tin giả
+            cùng chiến dịch “TIN AI?”
+        </h3>
+
+        <p>
+            Video của VTV24 giới thiệu chiến dịch “TIN AI?”,
+            nhằm nâng cao nhận thức về tin giả và khuyến khích
+            người dùng chủ động kiểm chứng thông tin trong thời đại AI.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/FQWuU-AKAMg"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     14 — MEDIA MANIPULATION
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="truyền thông thao túng media manipulation tin giả thông tin Phạm Hoàng Beyond Limits"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/lLP7xbx8zaE/maxresdefault.jpg"
+            alt="Làm thế nào để không bị truyền thông thao túng - Phạm Hoàng"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>BEYOND LIMITS</span>
+        </div>
+
+        <h3>
+            Làm thế nào để không bị
+            truyền thông thao túng?
+        </h3>
+
+        <p>
+            Video của Phạm Hoàng phân tích cách truyền thông
+            có thể tác động đến cách chúng ta tiếp nhận,
+            đánh giá và phản ứng với thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/lLP7xbx8zaE"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     15 — SÓNG TRẺ
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="nội dung nhanh mạng xã hội bạn trẻ TikTok reels short form video tập trung"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SÓNG TRẺ</span>
+        </div>
+
+        <h3>
+            Hệ quả của “nội dung nhanh”
+            trên mạng xã hội với bạn trẻ
+        </h3>
+
+        <p>
+            Phân tích ảnh hưởng của nội dung ngắn đến
+            thời gian sử dụng mạng xã hội, khả năng tập trung
+            và thói quen tiếp nhận thông tin của người trẻ.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://songtre.com.vn/he-qua-cua-%E2%80%9Cnoi-dung-nhanh%E2%80%9D-tren-mang-xa-hoi-voi-ban-tre-p29418.html"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     16 — LATERAL READING
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="lateral reading đọc ngang đánh giá thông tin digital information credibility Wineburg McGrew Stanford"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SSRN / STANFORD</span>
+        </div>
+
+        <h3>
+            Lateral Reading:
+            Reading Less and Learning More
+        </h3>
+
+        <p>
+            Nghiên cứu về cách đánh giá độ tin cậy của
+            thông tin trực tuyến và phương pháp đọc ngang
+            được các fact-checker sử dụng.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3048994"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     17 — VOV
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="VOV tin giả thông tin sai sự thật không gian mạng nhận diện ngăn chặn deepfake giới trẻ"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            GUIDE
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>GUIDE</span>
+            <span>•</span>
+            <span>VOV</span>
+        </div>
+
+        <h3>
+            Chủ động nhận diện,
+            ngăn chặn tin giả trên không gian mạng
+        </h3>
+
+        <p>
+            Phân tích nguy cơ tin giả, thông tin sai sự thật
+            và sự cần thiết của kỹ năng nhận diện, sàng lọc
+            trước khi tiếp nhận hoặc chia sẻ thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://vov.vn/chinh-tri/chu-dong-nhan-dien-ngan-chan-tin-gia-tren-khong-gian-mang-post1294844.vov"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     18 — UNESCO
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="UNESCO media information literacy MIL policies education digital literacy misinformation critical thinking"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/article/2025-10/shutterstock_667978993.jpg.webp?itok=ej9pIox9"
+            alt="UNESCO Media and Information Literacy"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            UNESCO
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>UNESCO</span>
+        </div>
+
+        <h3>
+            New UNESCO Issue Brief:
+            Global Gaps in Media and Information Literacy
+        </h3>
+
+        <p>
+            Phân tích khoảng cách toàn cầu trong chính sách
+            và giáo dục Media and Information Literacy,
+            đồng thời nhấn mạnh vai trò của tư duy phản biện
+            và năng lực số.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://www.unesco.org/en/articles/new-unesco-issue-brief-reveals-global-gaps-media-and-information-literacy-policies-and-education"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+
 
 </div>
         <!-- =================================================
@@ -3872,317 +4787,66 @@ Critical Thinking Crisis
 
 
 <!-- =====================================================
-     METHODS
+     SIFT — VERIFICATION STUDIO
 ===================================================== -->
 
 <section
-    class="section methods-section"
+    class="section sift-studio-section"
     id="methods"
 >
 
     <div class="container">
 
-        <div class="section-heading">
 
-            <div>
+        <!-- =================================================
+             INTRO
+        ================================================== -->
+
+        <div class="sift-studio-intro">
+
+            <div class="sift-studio-intro-copy">
 
                 <span class="section-kicker">
                     03 / PHƯƠNG PHÁP KIỂM CHỨNG
                 </span>
 
                 <h2>
-                    Không chỉ SIFT.
-                    <span>Nhiều cách để kiểm chứng.</span>
+                    Học cách kiểm chứng
+                    <span>trước khi tin.</span>
                 </h2>
 
-            </div>
-
-            <p>
-                Bạn có thể sử dụng nhiều phương pháp
-                khác nhau tùy loại thông tin, mục đích
-                và bằng chứng cần kiểm tra.
-            </p>
-
-        </div>
-
-
-        <!-- METHOD NAV -->
-
-        <div class="method-layout">
-
-            <div class="method-list">
-
-                <button
-                    class="method-item active"
-                    data-method="sift"
-                >
-
-                    <span class="method-code blue">
-                        S
-                    </span>
-
-                    <div>
-                        <strong>
-                            SIFT
-                        </strong>
-
-                        <small>
-                            Kiểm chứng nhanh
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="method-item"
-                    data-method="craap"
-                >
-
-                    <span class="method-code orange">
-                        C
-                    </span>
-
-                    <div>
-                        <strong>
-                            CRAAP
-                        </strong>
-
-                        <small>
-                            Đánh giá nguồn
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="method-item"
-                    data-method="lateral"
-                >
-
-                    <span class="method-code purple">
-                        L
-                    </span>
-
-                    <div>
-                        <strong>
-                            Lateral Reading
-                        </strong>
-
-                        <small>
-                            Đọc ngang
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="method-item"
-                    data-method="reverse"
-                >
-
-                    <span class="method-code green">
-                        R
-                    </span>
-
-                    <div>
-                        <strong>
-                            Reverse Search
-                        </strong>
-
-                        <small>
-                            Tìm kiếm hình ảnh
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="method-item"
-                    data-method="date"
-                >
-
-                    <span class="method-code yellow">
-                        D
-                    </span>
-
-                    <div>
-                        <strong>
-                            Check the Date
-                        </strong>
-
-                        <small>
-                            Kiểm tra thời điểm
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="method-item"
-                    data-method="source"
-                >
-
-                    <span class="method-code blue">
-                        E
-                    </span>
-
-                    <div>
-                        <strong>
-                            Source Evaluation
-                        </strong>
-
-                        <small>
-                            Đánh giá nguồn
-                        </small>
-                    </div>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
+                <p>
+                    SIFT là một phương pháp kiểm chứng thông tin
+                    được xây dựng quanh bốn chuyển động:
+                    Stop, Investigate, Find và Trace.
+                    Mỗi bước giúp bạn đặt một câu hỏi khác nhau
+                    trước khi đưa ra kết luận.
+                </p>
 
             </div>
 
 
-            <div class="method-content">
+            <div class="sift-studio-intro-side">
 
-                <div class="method-content-header">
-
-                    <div>
-
-                        <span class="method-count">
-                            PHƯƠNG PHÁP
-                        </span>
-
-                        <span class="method-divider"></span>
-
-                        <strong
-                            id="methodCodeLabel"
-                        >
-                            SIFT
-                        </strong>
-
-                    </div>
-
-                    <span
-                        id="methodIndex"
-                    >
-                        01 / 06
-                    </span>
-
-                </div>
-
-
-                <div class="method-content-main">
-
-                    <div class="method-visual">
-
-                        <div class="method-circle circle-one"></div>
-                        <div class="method-circle circle-two"></div>
-
-                        <div
-                            class="method-letter"
-                            id="methodLetter"
-                        >
-                            S
-                        </div>
-
-                    </div>
-
-
-                    <div class="method-copy">
-
-                        <span
-                            class="method-tag"
-                            id="methodTag"
-                        >
-                            QUICK VERIFICATION
-                        </span>
-
-                        <h3
-                            id="methodTitle"
-                        >
-                            SIFT —
-                            4 hành động kiểm chứng nhanh.
-                        </h3>
-
-                        <p
-                            id="methodDescription"
-                        >
-                            Dừng lại, điều tra nguồn,
-                            tìm kiếm thông tin tốt hơn
-                            và truy xuất tuyên bố về
-                            bối cảnh nguyên bản.
-                        </p>
-
-
-                        <div
-                            class="method-points"
-                            id="methodPoints"
-                        >
-
-                            <div>
-                                <span>01</span>
-                                Stop — Dừng lại
-                            </div>
-
-                            <div>
-                                <span>02</span>
-                                Investigate — Điều tra nguồn
-                            </div>
-
-                            <div>
-                                <span>03</span>
-                                Find — Tìm nguồn tốt hơn
-                            </div>
-
-                            <div>
-                                <span>04</span>
-                                Trace — Truy xuất bối cảnh
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="method-tip">
+                <div class="sift-studio-index">
+                    <strong>
+                        04
+                    </strong>
 
                     <span>
-                        ?
+                        MOVES
                     </span>
+                </div>
 
-                    <p id="methodTip">
-                        Phương pháp phù hợp phụ thuộc
-                        vào loại nội dung bạn đang xác minh.
+                <div>
+
+                    <strong>
+                        VERIFICATION STUDIO
+                    </strong>
+
+                    <p>
+                        Một không gian thực hành
+                        kiểm chứng thông tin.
                     </p>
 
                 </div>
@@ -4191,11 +4855,900 @@ Critical Thinking Crisis
 
         </div>
 
+
+
+        <!-- =================================================
+             STEP MAP
+        ================================================== -->
+
+        <div class="sift-step-map">
+
+            <div class="sift-step-map-line">
+                <span></span>
+            </div>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item active"
+                data-sift-step="0"
+            >
+
+                <span class="sift-studio-step-number">
+                    01
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    S
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        STOP
+                    </strong>
+
+                    <small>
+                        Dừng lại
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="1"
+            >
+
+                <span class="sift-studio-step-number">
+                    02
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    I
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        INVESTIGATE
+                    </strong>
+
+                    <small>
+                        Điều tra nguồn
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="2"
+            >
+
+                <span class="sift-studio-step-number">
+                    03
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    F
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        FIND
+                    </strong>
+
+                    <small>
+                        Tìm nguồn tốt hơn
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="3"
+            >
+
+                <span class="sift-studio-step-number">
+                    04
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    T
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        TRACE
+                    </strong>
+
+                    <small>
+                        Truy xuất nguồn gốc
+                    </small>
+
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERIFICATION STAGE
+        ================================================== -->
+
+        <div class="sift-studio-stage">
+
+
+            <!-- =============================================
+                 CASE VISUAL
+            ============================================== -->
+
+            <article class="sift-case-panel">
+
+                <div class="sift-case-glow glow-a"></div>
+                <div class="sift-case-glow glow-b"></div>
+
+                <div class="sift-case-top">
+
+                    <span>
+                        CASE STUDY / INFORMATION CHECK
+                    </span>
+
+                    <span>
+                        #004
+                    </span>
+
+                </div>
+
+
+                <div class="sift-case-content">
+
+                    <div class="sift-case-label">
+                        CLAIM UNDER REVIEW
+                    </div>
+
+                    <h3 id="siftClaimText">
+                        Có nên tin thông tin này?
+                    </h3>
+
+                    <p>
+                        Một tuyên bố có thể trông rất thuyết phục
+                        trên mạng xã hội. Nhưng trước khi tin hoặc chia sẻ,
+                        chúng ta cần biết nguồn ở đâu, bằng chứng là gì
+                        và thông tin có còn đúng với bối cảnh ban đầu hay không.
+                    </p>
+
+                </div>
+
+
+                <div class="sift-case-image-wrap">
+
+                    <img
+                        id="siftCaseImage"
+                        src="assets/quiz/anh1.jpg"
+                        alt="Ví dụ thông tin cần kiểm chứng"
+                    >
+
+                    <div class="sift-case-image-overlay"></div>
+
+
+                    <div class="sift-image-tag">
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <strong>
+                            UNVERIFIED
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="sift-case-bottom">
+
+                    <div>
+
+                        <span>
+                            CURRENT STATE
+                        </span>
+
+                        <strong id="siftCurrentState">
+                            Chưa được xác minh
+                        </strong>
+
+                    </div>
+
+                    <div class="sift-case-meter">
+
+                        <span></span>
+
+                        <span></span>
+
+                        <span></span>
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =============================================
+                 ACTIVE STEP
+            ============================================== -->
+
+            <aside class="sift-studio-active">
+
+                <div class="sift-active-header">
+
+                    <div>
+
+                        <span>
+                            CURRENT MOVE
+                        </span>
+
+                        <strong>
+                            <b id="siftStepCurrent">
+                                01
+                            </b>
+                            / 04
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="sift-auto-button"
+                        id="siftAutoPlay"
+                    >
+                        ▶ TỰ ĐỘNG
+                    </button>
+
+                </div>
+
+
+                <div class="sift-active-identity">
+
+                    <div class="sift-active-letter">
+
+                        <span id="siftActiveLetter">
+                            S
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span id="siftActiveCode">
+                            STOP
+                        </span>
+
+                        <small id="siftActiveSub">
+                            PAUSE BEFORE TRUSTING
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sift-active-progress">
+
+                    <span></span>
+
+                    <strong id="siftVisualPercent">
+                        25
+                    </strong>%
+
+                </div>
+
+
+                <div class="sift-active-description">
+
+                    <span>
+                        MỤC TIÊU
+                    </span>
+
+                    <p id="siftExplanationText">
+                        Khi gặp một thông tin trực tuyến,
+                        đừng lập tức phản ứng hoặc chia sẻ.
+                        Hãy tạo một khoảng dừng trước khi quyết định.
+                    </p>
+
+                </div>
+
+
+                <div class="sift-status-line">
+
+                    <span></span>
+
+                    <strong id="siftVisualStatus">
+                        PAUSING BEFORE TRUSTING
+                    </strong>
+
+                </div>
+
+            </aside>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             VISUAL EXAMPLE GALLERY
+        ================================================== -->
+
+        <div class="sift-example-section">
+
+            <div class="sift-example-heading">
+
+                <div>
+
+                    <span>
+                        VISUAL EXAMPLES
+                    </span>
+
+                    <h3>
+                        Nhìn thấy vấn đề
+                        <span>trước khi xử lý.</span>
+                    </h3>
+
+                </div>
+
+                <p>
+                    Mỗi bước SIFT gắn với một kiểu bằng chứng
+                    hoặc tín hiệu khác nhau. Hãy quan sát hình ảnh
+                    để hiểu bạn cần tìm gì.
+                </p>
+
+            </div>
+
+
+            <div class="sift-example-gallery">
+
+                <div class="sift-gallery-main">
+
+                    <img
+                        id="siftGalleryMain"
+                        src="assets/quiz/anh1.jpg"
+                        alt="Ví dụ SIFT"
+                    >
+
+                    <div class="sift-gallery-overlay"></div>
+
+                    <div class="sift-gallery-caption">
+
+                        <span id="siftGalleryTag">
+                            STOP
+                        </span>
+
+                        <strong id="siftGalleryTitle">
+                            Dừng lại trước khi phản ứng
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sift-gallery-side">
+
+                    <div class="sift-gallery-card">
+
+                        <img
+                            id="siftGallerySmallOne"
+                            src="assets/quiz/anh2.jpg"
+                            alt="Ví dụ kiểm chứng nguồn"
+                        >
+
+                        <div>
+                            <span>
+                                LOOK FOR
+                            </span>
+
+                            <strong id="siftGalleryLook">
+                                Cảm xúc và tốc độ phản ứng
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="sift-gallery-card">
+
+                        <img
+                            id="siftGallerySmallTwo"
+                            src="assets/quiz/anh3.jpg"
+                            alt="Ví dụ thông tin cần đối chiếu"
+                        >
+
+                        <div>
+                            <span>
+                                AVOID
+                            </span>
+
+                            <strong id="siftGalleryAvoid">
+                                Chia sẻ khi chưa kiểm chứng
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DETAIL + ACTION
+        ================================================== -->
+
+        <div class="sift-learning-grid">
+
+
+            <!-- DETAIL -->
+
+            <article class="sift-learning-detail">
+
+                <div class="sift-detail-top">
+
+                    <span>
+                        WHAT THIS STEP MEANS
+                    </span>
+
+                    <div>
+                        SIFT /
+                        <strong id="siftExplanationKicker">
+                            STOP
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="sift-detail-body">
+
+                    <div class="sift-detail-mark">
+
+                        <span id="siftExplanationLetter">
+                            S
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 id="siftExplanationTitle">
+                            Dừng lại trước khi tin.
+                        </h3>
+
+                        <p id="siftLongExplanation">
+                            STOP không yêu cầu bạn phải kết luận
+                            thông tin đúng hay sai ngay lập tức.
+                            Mục tiêu đầu tiên là tạo ra một khoảng dừng
+                            để nhận biết cảm xúc, xác định tuyên bố
+                            cần kiểm chứng và tránh hành động quá sớm.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ACTION -->
+
+            <article class="sift-learning-action">
+
+                <div class="sift-learning-action-head">
+
+                    <div>
+
+                        <span>
+                            PRACTICE
+                        </span>
+
+                        <h3>
+                            Hãy làm gì tiếp theo?
+                        </h3>
+
+                    </div>
+
+                    <span class="sift-action-arrow">
+                        ↗
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="sift-action-list"
+                    id="siftActionList"
+                >
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            Nhận diện phản ứng cảm xúc của bạn.
+                        </strong>
+
+                    </div>
+
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            Xác định chính xác tuyên bố cần kiểm chứng.
+                        </strong>
+
+                    </div>
+
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            Tạm dừng trước khi bình luận hoặc chia sẻ.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             DO / DON'T
+        ================================================== -->
+
+        <div class="sift-do-dont-grid">
+
+
+            <article class="sift-do-panel">
+
+                <div class="sift-do-heading">
+
+                    <span>
+                        ✓ DO
+                    </span>
+
+                    <strong>
+                        Nên làm
+                    </strong>
+
+                </div>
+
+
+                <div id="siftDoList">
+
+                    <div>
+                        <span>01</span>
+                        <p>
+                            Chậm lại trước thông tin gây sốc.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <p>
+                            Xác định điều bạn thực sự cần kiểm chứng.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <p>
+                            Tách cảm xúc khỏi quyết định.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="sift-dont-panel">
+
+                <div class="sift-dont-heading">
+
+                    <span>
+                        × DON'T
+                    </span>
+
+                    <strong>
+                        Không nên làm
+                    </strong>
+
+                </div>
+
+
+                <div id="siftDontList">
+
+                    <div>
+                        <span>01</span>
+                        <p>
+                            Chia sẻ chỉ vì nội dung đang viral.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <p>
+                            Kết luận chỉ dựa vào cảm giác.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <p>
+                            Tin ngay vì tiêu đề nghe thuyết phục.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUESTION
+        ================================================== -->
+
+        <div class="sift-question-banner">
+
+            <div class="sift-question-symbol">
+                ?
+            </div>
+
+            <div class="sift-question-content">
+
+                <span>
+                    CÂU HỎI KIỂM TRA
+                </span>
+
+                <strong id="siftQuestion">
+                    Tôi đang phản ứng với sự thật
+                    hay với cảm xúc?
+                </strong>
+
+            </div>
+
+
+            <div class="sift-question-tip">
+                ASK
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             WHY
+        ================================================== -->
+
+        <div class="sift-why-strip">
+
+            <div>
+
+                <span>
+                    WHY IT MATTERS
+                </span>
+
+                <h3>
+                    Một bước nhỏ có thể
+                    <strong>thay đổi quyết định.</strong>
+                </h3>
+
+            </div>
+
+
+            <p id="siftWhy">
+                Nội dung gây sốc hoặc kích thích cảm xúc
+                có thể khiến chúng ta phản ứng quá nhanh.
+                STOP tạo ra một khoảng dừng để chuyển từ phản ứng
+                sang suy nghĩ có chủ đích.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUICK CHECK
+        ================================================== -->
+
+        <div class="sift-quick-check">
+
+            <div class="sift-quick-heading">
+
+                <span>
+                    QUICK CHECK
+                </span>
+
+                <h3>
+                    Trước khi sang bước tiếp theo
+                </h3>
+
+            </div>
+
+
+            <div class="sift-quick-items">
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Tôi đã xác định tuyên bố chưa?
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Tôi biết mình cần kiểm tra điều gì?
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Tôi có đang vội đưa ra kết luận không?
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERIFICATION TRAIL
+        ================================================== -->
+
+        <div class="sift-verification-trail">
+
+            <div class="sift-trail-label">
+
+                <span></span>
+
+                VERIFICATION TRAIL
+
+            </div>
+
+
+            <div class="sift-trail">
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step active"
+                    data-sift-step="0"
+                >
+                    S
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="1"
+                >
+                    I
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="2"
+                >
+                    F
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="3"
+                >
+                    T
+                </button>
+
+                <i></i>
+
+                <strong>
+                    BETTER JUDGMENT
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="sift-studio-footnote">
+
+            <span>
+                SIFT không phải một bài kiểm tra “đúng / sai”
+                ngay lập tức. Đây là quy trình giúp bạn
+                tiến gần hơn tới thông tin đáng tin cậy.
+            </span>
+
+            <strong>
+                STOP → INVESTIGATE → FIND → TRACE
+            </strong>
+
+        </div>
+
     </div>
 
 </section>
-
-
 <!-- =====================================================
      TOOLKIT
 ===================================================== -->
