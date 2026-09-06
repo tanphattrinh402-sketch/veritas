@@ -172,14 +172,26 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     const revealSelectors = `
-        .knowledge-card,
-        .featured-resource,
-        .resource-card,
-        .method-layout,
-        .tool-card,
-        .quiz-card,
-        .final-card
-    `;
+    .knowledge-card,
+    .featured-resource,
+    .resource-card,
+
+    .sift-studio-intro,
+    .sift-step-map,
+    .sift-case-panel,
+    .sift-studio-active,
+    .sift-example-section,
+    .sift-learning-grid,
+    .sift-do-dont-grid,
+    .sift-question-banner,
+    .sift-why-strip,
+    .sift-quick-check,
+    .sift-verification-trail,
+
+    .tool-card,
+    .quiz-card,
+    .final-card
+`;
 
     const revealItems =
         document.querySelectorAll(
@@ -527,326 +539,1297 @@ if (libraryMore && libraryMoreWrap) {
     ================================================= */
 
     renderLibrary();
-  
+ 
+
+/* =========================================================
+   VERITAS — SIFT VERIFICATION STUDIO
+========================================================= */
+
+const siftNavItems =
+    document.querySelectorAll(
+        ".sift-nav-item"
+    );
+
+const siftPipelineSteps =
+    document.querySelectorAll(
+        ".sift-pipeline-step"
+    );
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const siftClaimText =
+    document.getElementById(
+        "siftClaimText"
+    );
+
+const siftCaseImage =
+    document.getElementById(
+        "siftCaseImage"
+    );
+
+const siftCurrentState =
+    document.getElementById(
+        "siftCurrentState"
+    );
+
+const siftActiveLetter =
+    document.getElementById(
+        "siftActiveLetter"
+    );
+
+const siftActiveCode =
+    document.getElementById(
+        "siftActiveCode"
+    );
+
+const siftActiveSub =
+    document.getElementById(
+        "siftActiveSub"
+    );
+
+const siftStepCurrent =
+    document.getElementById(
+        "siftStepCurrent"
+    );
+
+const siftVisualPercent =
+    document.getElementById(
+        "siftVisualPercent"
+    );
+
+const siftVisualStatus =
+    document.getElementById(
+        "siftVisualStatus"
+    );
+
+const siftExplanationKicker =
+    document.getElementById(
+        "siftExplanationKicker"
+    );
+
+const siftExplanationLetter =
+    document.getElementById(
+        "siftExplanationLetter"
+    );
+
+const siftExplanationTitle =
+    document.getElementById(
+        "siftExplanationTitle"
+    );
+
+const siftLongExplanation =
+    document.getElementById(
+        "siftLongExplanation"
+    );
+
+const siftExplanationText =
+    document.getElementById(
+        "siftExplanationText"
+    );
+
+const siftQuestion =
+    document.getElementById(
+        "siftQuestion"
+    );
+
+const siftWhy =
+    document.getElementById(
+        "siftWhy"
+    );
+
+const siftActionList =
+    document.getElementById(
+        "siftActionList"
+    );
+
+const siftDoList =
+    document.getElementById(
+        "siftDoList"
+    );
 
+const siftDontList =
+    document.getElementById(
+        "siftDontList"
+    );
 
-    /* =================================================
-       METHODS
-    ================================================= */
+const siftGalleryMain =
+    document.getElementById(
+        "siftGalleryMain"
+    );
 
-    const methodItems =
-        document.querySelectorAll(
-            ".method-item"
-        );
+const siftGallerySmallOne =
+    document.getElementById(
+        "siftGallerySmallOne"
+    );
 
-    const methodCodeLabel =
-        document.getElementById(
-            "methodCodeLabel"
-        );
+const siftGallerySmallTwo =
+    document.getElementById(
+        "siftGallerySmallTwo"
+    );
 
-    const methodIndex =
-        document.getElementById(
-            "methodIndex"
-        );
+const siftGalleryTag =
+    document.getElementById(
+        "siftGalleryTag"
+    );
 
-    const methodLetter =
-        document.getElementById(
-            "methodLetter"
-        );
+const siftGalleryTitle =
+    document.getElementById(
+        "siftGalleryTitle"
+    );
 
-    const methodTag =
-        document.getElementById(
-            "methodTag"
-        );
+const siftGalleryLook =
+    document.getElementById(
+        "siftGalleryLook"
+    );
+
+const siftGalleryAvoid =
+    document.getElementById(
+        "siftGalleryAvoid"
+    );
+
+const siftStudioStage =
+    document.querySelector(
+        ".sift-studio-stage"
+    );
+
+const siftExampleGallery =
+    document.querySelector(
+        ".sift-example-gallery"
+    );
+
+const siftProgressLine =
+    document.querySelector(
+        ".sift-step-map-line span"
+    );
+
+const siftAutoPlay =
+    document.getElementById(
+        "siftAutoPlay"
+    );
 
-    const methodTitle =
-        document.getElementById(
-            "methodTitle"
-        );
 
-    const methodDescription =
-        document.getElementById(
-            "methodDescription"
-        );
+/* =========================================================
+   SIFT CONTENT
+========================================================= */
 
-    const methodPoints =
-        document.getElementById(
-            "methodPoints"
-        );
+const siftSteps = [
 
-    const methodTip =
-        document.getElementById(
-            "methodTip"
-        );
+    {
+        letter: "S",
+        code: "STOP",
+        sub: "PAUSE BEFORE TRUSTING",
 
+        status:
+            "PAUSING BEFORE TRUSTING",
 
-    const methods = {
+        percent: 25,
 
-        sift: {
+        claim:
+            "Có nên tin thông tin này?",
 
-            code: "SIFT",
+        state:
+            "Chưa được xác minh",
 
-            letter: "S",
+        image:
+    "https://images.unsplash.com/photo-1676565415274-15550cb4b75e?auto=format&fit=crop&w=1600&q=85",
 
-            tag:
-                "QUICK VERIFICATION",
+galleryMain:
+    "https://images.unsplash.com/photo-1555663173-830f65a7329a?auto=format&fit=crop&w=1600&q=85",
 
-            title:
-                "SIFT — 4 hành động kiểm chứng nhanh.",
+galleryOne:
+    "https://images.unsplash.com/photo-1777559542722-5301247fa3b8?auto=format&fit=crop&w=1600&q=85",
 
-            description:
-                "Một quy trình gồm Stop, Investigate, Find và Trace, giúp bạn xử lý một tuyên bố nhanh và có hệ thống.",
+galleryTwo:
+    "https://images.unsplash.com/photo-1603145733146-ae562a55031e?auto=format&fit=crop&w=1600&q=85",
 
-            points: [
-                "Stop — Dừng lại",
-                "Investigate — Điều tra nguồn",
-                "Find — Tìm nguồn tốt hơn",
-                "Trace — Truy xuất bối cảnh"
-            ],
+        galleryTitle:
+            "Dừng lại trước khi phản ứng",
 
-            tip:
-                "Phù hợp khi bạn cần nhanh chóng xác định mình nên kiểm tra điều gì trước."
-        },
+        galleryLook:
+            "Cảm xúc và tốc độ phản ứng",
 
+        galleryAvoid:
+            "Chia sẻ khi chưa kiểm chứng",
 
-        craap: {
+        title:
+            "Dừng lại trước khi tin.",
 
-            code: "CRAAP",
+        short:
+            "Tạo một khoảng dừng trước khi phản ứng.",
 
-            letter: "C",
+        explanation:
+            "STOP là bước đầu tiên của SIFT. " +
+            "Bạn chưa cần chứng minh thông tin đúng hoặc sai. " +
+            "Điều quan trọng là dừng lại, nhận biết phản ứng cảm xúc, " +
+            "xác định tuyên bố đang được đưa ra và quyết định " +
+            "rằng tuyên bố này cần được kiểm chứng.",
 
-            tag:
-                "SOURCE EVALUATION",
+        question:
+            "Tôi đang phản ứng với sự thật hay với cảm xúc?",
 
-            title:
-                "CRAAP — Đánh giá chất lượng nguồn.",
+        why:
+            "Nội dung gây sốc hoặc kích thích cảm xúc " +
+            "có thể khiến chúng ta phản ứng quá nhanh. " +
+            "STOP tạo ra khoảng dừng để chuyển từ phản ứng " +
+            "sang suy nghĩ có chủ đích.",
 
-            description:
-                "Có thể sử dụng các tiêu chí Currency, Relevance, Authority, Accuracy và Purpose để xem một nguồn có phù hợp với nhu cầu hay không.",
+        actions: [
+            "Nhận diện cảm xúc mà thông tin đang tạo ra.",
+            "Xác định chính xác tuyên bố cần kiểm chứng.",
+            "Tạm dừng trước khi bình luận hoặc chia sẻ."
+        ],
 
-            points: [
-                "Currency — Tính cập nhật",
-                "Relevance — Mức độ liên quan",
-                "Authority — Thẩm quyền",
-                "Accuracy — Độ chính xác",
-                "Purpose — Mục đích"
-            ],
+        doList: [
+            "Chậm lại trước thông tin gây sốc.",
+            "Xác định điều bạn thực sự cần kiểm chứng.",
+            "Tách cảm xúc khỏi quyết định."
+        ],
 
-            tip:
-                "Hữu ích khi bạn đang đánh giá một website, bài viết hoặc tài liệu."
-        },
+        dontList: [
+            "Chia sẻ chỉ vì nội dung đang viral.",
+            "Kết luận chỉ dựa vào cảm giác.",
+            "Tin ngay vì tiêu đề nghe thuyết phục."
+        ]
+    },
 
 
-        lateral: {
+    {
+        letter: "I",
+        code: "INVESTIGATE",
+        sub: "CHECK THE SOURCE",
 
-            code: "LATERAL",
+        status:
+            "INVESTIGATING THE SOURCE",
 
-            letter: "L",
+        percent: 50,
 
-            tag:
-                "CROSS-CHECK",
+        claim:
+            "Nguồn này đến từ đâu?",
 
-            title:
-                "Lateral Reading — Đọc ngang.",
+        state:
+            "Đang điều tra nguồn",
 
-            description:
-                "Thay vì chỉ đọc sâu một trang, hãy mở thêm các nguồn khác để kiểm tra tổ chức, tác giả hoặc tuyên bố đang được đề cập.",
+        image:
+    "https://images.unsplash.com/photo-1753005329490-ab77d21066c7?auto=format&fit=crop&w=1600&q=85",
 
-            points: [
-                "Mở nhiều nguồn",
-                "Tìm nguồn độc lập",
-                "So sánh cách giải thích",
-                "Xác định điểm đồng thuận"
-            ],
+galleryMain:
+    "https://images.unsplash.com/photo-1665686306265-c52ee9054479?auto=format&fit=crop&w=1600&q=85",
 
-            tip:
-                "Rất hữu ích với các website hoặc tài khoản mà bạn chưa từng biết."
-        },
+galleryOne:
+    "https://images.unsplash.com/photo-1661961111184-11317b40adb2?auto=format&fit=crop&w=1600&q=85",
 
+galleryTwo:
+    "https://images.unsplash.com/photo-1680602239323-da8299c5a7ba?auto=format&fit=crop&w=1600&q=85",
 
-        reverse: {
+        galleryTitle:
+            "Nhìn vào người đứng phía sau thông tin",
 
-            code: "REVERSE",
+        galleryLook:
+            "Tác giả, tổ chức, chuyên môn",
 
-            letter: "R",
+        galleryAvoid:
+            "Đánh giá nguồn chỉ qua thiết kế",
 
-            tag:
-                "VISUAL VERIFICATION",
+        title:
+            "Điều tra nguồn.",
 
-            title:
-                "Reverse Image Search — Tìm kiếm ngược hình ảnh.",
+        short:
+            "Biết ai đang nói trước khi tin điều họ nói.",
 
-            description:
-                "Dùng công cụ tìm kiếm hình ảnh để xem một hình ảnh xuất hiện ở đâu, được đăng từ khi nào và trong bối cảnh nào.",
+        explanation:
+            "INVESTIGATE chuyển sự chú ý từ bản thân tuyên bố " +
+            "sang người hoặc tổ chức đứng phía sau nó. " +
+            "Hãy tìm tác giả, tổ chức xuất bản, chuyên môn, " +
+            "uy tín, lịch sử hoạt động và mục đích của nguồn.",
 
-            points: [
-                "Tải ảnh lên",
-                "Tìm các bản sao",
-                "Kiểm tra thời điểm",
-                "Đối chiếu bối cảnh"
-            ],
+        question:
+            "Ai đang nói và họ có đáng tin không?",
 
-            tip:
-                "Đặc biệt hữu ích khi một hình ảnh được chia sẻ với chú thích mới."
-        },
+        why:
+            "Một nguồn có thể trình bày thông tin rất tự tin " +
+            "nhưng điều đó không tự động biến nó thành nguồn đáng tin. " +
+            "Hiểu nguồn giúp bạn đánh giá thông tin trước " +
+            "khi bị cuốn vào nội dung.",
 
+        actions: [
+            "Xác định tác giả hoặc tổ chức đứng phía sau.",
+            "Kiểm tra chuyên môn và uy tín của nguồn.",
+            "Tìm hiểu mục đích hoặc lợi ích của nguồn."
+        ],
 
-        date: {
+        doList: [
+            "Tìm trang giới thiệu hoặc hồ sơ tác giả.",
+            "Kiểm tra chuyên môn và lĩnh vực hoạt động.",
+            "Xem nguồn có lịch sử đáng tin hay không."
+        ],
 
-            code: "DATE",
+        dontList: [
+            "Tin chỉ vì website trông chuyên nghiệp.",
+            "Mặc định tài khoản có nhiều người theo dõi là đáng tin.",
+            "Nhầm nổi tiếng với chuyên môn."
+        ]
+    },
 
-            letter: "D",
 
-            tag:
-                "CONTEXT CHECK",
+    {
+        letter: "F",
+        code: "FIND",
+        sub: "FIND BETTER COVERAGE",
 
-            title:
-                "Check the Date — Kiểm tra thời điểm.",
+        status:
+            "FINDING BETTER COVERAGE",
 
-            description:
-                "Một nội dung cũ có thể được chia sẻ lại như một sự kiện mới. Kiểm tra ngày xuất hiện đầu tiên giúp xác định bối cảnh.",
+        percent: 75,
 
-            points: [
-                "Kiểm tra ngày đăng",
-                "Tìm phiên bản cũ",
-                "Đối chiếu sự kiện",
-                "Xác định bối cảnh thời gian"
-            ],
+        claim:
+            "Có nguồn tốt hơn để kiểm tra không?",
 
-            tip:
-                "Đừng chỉ hỏi 'Điều này có thật không?', hãy hỏi 'Điều này xảy ra khi nào?'"
-        },
+        state:
+            "Đang tìm nguồn độc lập",
 
+      image:
+    "https://images.unsplash.com/photo-1647510283846-ed174cc84a78?auto=format&fit=crop&w=1600&q=85",
 
-        source: {
+galleryMain:
+    "https://images.unsplash.com/photo-1664575196079-9ac04582854b?auto=format&fit=crop&w=1600&q=85",
 
-            code: "SOURCE",
+galleryOne:
+    "https://images.unsplash.com/photo-1726066012678-211c2e2d4fa7?auto=format&fit=crop&w=1600&q=85",
 
-            letter: "E",
+galleryTwo:
+    "https://images.unsplash.com/photo-1661961111184-11317b40adb2?auto=format&fit=crop&w=1600&q=85",
 
-            tag:
-                "SOURCE ANALYSIS",
+        galleryTitle:
+            "Tìm nguồn tốt hơn",
 
-            title:
-                "Source Evaluation — Đánh giá nguồn.",
+        galleryLook:
+            "Nguồn độc lập và chuyên môn",
 
-            description:
-                "Phân tích ai tạo ra nội dung, họ có chuyên môn gì, mục đích gì và có cung cấp bằng chứng để người đọc kiểm tra hay không.",
+        galleryAvoid:
+            "Chỉ đọc một bài duy nhất",
 
-            points: [
-                "Ai tạo nội dung?",
-                "Nguồn có chuyên môn?",
-                "Có bằng chứng?",
-                "Mục đích là gì?"
-            ],
+        title:
+            "Tìm nguồn tốt hơn.",
 
-            tip:
-                "Nguồn là một phần quan trọng của bằng chứng, nhưng nguồn tốt vẫn cần được kiểm tra."
-        }
+        short:
+            "Đừng phụ thuộc vào một nguồn duy nhất.",
 
-    };
+        explanation:
+            "FIND yêu cầu bạn rời khỏi nguồn ban đầu " +
+            "và tìm những nguồn độc lập, có chuyên môn " +
+            "hoặc có bằng chứng tốt hơn. " +
+            "Mục tiêu không phải tìm một nguồn nói điều bạn muốn nghe, " +
+            "mà là xem những nguồn chất lượng khác mô tả cùng vấn đề ra sao.",
 
+        question:
+            "Có nguồn độc lập nào kiểm tra tuyên bố này không?",
 
-    const methodOrder = [
-        "sift",
-        "craap",
-        "lateral",
-        "reverse",
-        "date",
-        "source"
-    ];
+        why:
+            "Một nguồn duy nhất có thể thiếu bối cảnh " +
+            "hoặc mắc sai sót. So sánh nhiều nguồn " +
+            "giúp giảm nguy cơ phụ thuộc vào một câu chuyện duy nhất.",
 
+        actions: [
+            "Tìm nguồn độc lập về cùng tuyên bố.",
+            "Ưu tiên nguồn có chuyên môn hoặc dữ liệu.",
+            "So sánh cách nhiều nguồn trình bày cùng vấn đề."
+        ],
 
-    function showMethod(
-        methodKey
-    ) {
+        doList: [
+            "Tìm ít nhất một nguồn độc lập.",
+            "Ưu tiên tài liệu chính thức hoặc chuyên ngành.",
+            "So sánh thông tin thay vì chỉ đọc một phía."
+        ],
 
-        const method =
-            methods[methodKey];
+        dontList: [
+            "Tìm nguồn thứ hai chỉ để xác nhận niềm tin sẵn có.",
+            "Cho rằng nhiều bài sao chép nhau là nhiều nguồn.",
+            "Đánh đồng số lượng bài đăng với độ tin cậy."
+        ]
+    },
 
-        if (!method) {
-            return;
-        }
 
+    {
+        letter: "T",
+        code: "TRACE",
+        sub: "RETURN TO ORIGINAL CONTEXT",
 
-        methodItems.forEach(item => {
+        status:
+            "TRACING ORIGINAL CONTEXT",
+
+        percent: 100,
+
+        claim:
+            "Bằng chứng gốc thực sự nói gì?",
+
+        state:
+            "Truy xuất về bằng chứng gốc",
+
+       image:
+    "https://images.unsplash.com/photo-1695388474402-ed805a890d8d?auto=format&fit=crop&w=1600&q=85",
+
+galleryMain:
+    "https://images.unsplash.com/photo-1665686306265-c52ee9054479?auto=format&fit=crop&w=1600&q=85",
+
+galleryOne:
+    "https://images.unsplash.com/photo-1647510283846-ed174cc84a78?auto=format&fit=crop&w=1600&q=85",
+
+galleryTwo:
+    "https://images.unsplash.com/photo-1680602239323-da8299c5a7ba?auto=format&fit=crop&w=1600&q=85",
+
+        galleryTitle:
+            "Truy xuất về nguồn gốc",
+
+        galleryLook:
+            "Tài liệu, số liệu, nghiên cứu gốc",
+
+        galleryAvoid:
+            "Tin vào đoạn trích mất bối cảnh",
+
+        title:
+            "Truy xuất về nguồn gốc.",
+
+        short:
+            "Quay về bằng chứng ban đầu.",
+
+        explanation:
+            "TRACE là lúc bạn quay trở lại tài liệu, dữ liệu, " +
+            "hình ảnh, nghiên cứu hoặc phát biểu gốc mà thông tin " +
+            "đang đề cập. Hãy kiểm tra xem bằng chứng gốc có thực sự " +
+            "nói điều mà bài đăng, video hoặc tiêu đề đang tuyên bố hay không.",
+
+        question:
+            "Bằng chứng gốc thực sự nói gì?",
+
+        why:
+            "Một hình ảnh, con số hoặc câu trích dẫn có thể bị cắt khỏi " +
+            "bối cảnh ban đầu. TRACE giúp bạn quay lại nguồn gốc " +
+            "để biết chính xác điều gì đã được nói và trong hoàn cảnh nào.",
+
+        actions: [
+            "Mở bài viết, nghiên cứu hoặc tài liệu gốc.",
+            "Đọc bối cảnh đầy đủ thay vì chỉ xem đoạn trích.",
+            "Đối chiếu hình ảnh, số liệu, trích dẫn và thời điểm."
+        ],
+
+        doList: [
+            "Tìm tài liệu hoặc phát biểu gốc.",
+            "Kiểm tra toàn bộ bối cảnh.",
+            "Đối chiếu số liệu và trích dẫn."
+        ],
+
+        dontList: [
+            "Tin một screenshot thay cho tài liệu gốc.",
+            "Dùng đoạn trích ngắn làm toàn bộ bằng chứng.",
+            "Bỏ qua thời điểm và hoàn cảnh của dữ liệu."
+        ]
+    }
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let activeSiftStep = 0;
+
+let siftAutoTimer = null;
+
+
+/* =========================================================
+   RENDER LIST
+========================================================= */
+
+function renderSiftList(
+    element,
+    items
+) {
+
+    if (!element) {
+        return;
+    }
+
+    element.innerHTML =
+        items
+            .map(
+                (
+                    item,
+                    index
+                ) => {
+
+                    return `
+                        <div>
+                            <span>
+                                ${String(index + 1).padStart(2,"0")}
+                            </span>
+
+                            <p>
+                                ${item}
+                            </p>
+                        </div>
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+/* =========================================================
+   ACTIVATE STEP
+========================================================= */
+
+function activateSiftStep(
+    index
+) {
+
+    const step =
+        siftSteps[index];
+
+    if (!step) {
+        return;
+    }
+
+    activeSiftStep =
+        index;
+
+
+    /* -----------------------------------------------------
+       ACTIVE NAV
+    ----------------------------------------------------- */
+
+    siftNavItems.forEach(
+        item => {
 
             item.classList.toggle(
                 "active",
-                item.dataset.method ===
-                methodKey
+                Number(
+                    item.dataset.siftStep
+                ) === index
             );
 
-        });
+        }
+    );
 
 
-        const index =
-            methodOrder.indexOf(
-                methodKey
-            ) + 1;
+    /* -----------------------------------------------------
+       PIPELINE
+    ----------------------------------------------------- */
+
+    siftPipelineSteps.forEach(
+        item => {
+
+            item.classList.toggle(
+                "active",
+                Number(
+                    item.dataset.siftStep
+                ) === index
+            );
+
+        }
+    );
 
 
-        methodCodeLabel.textContent =
-            method.code;
+    /* -----------------------------------------------------
+       CLAIM
+    ----------------------------------------------------- */
 
-        methodIndex.textContent =
-            `${String(index).padStart(2, "0")} / 06`;
+    if (siftClaimText) {
 
-        methodLetter.textContent =
-            method.letter;
+        siftClaimText.textContent =
+            step.claim;
 
-        methodTag.textContent =
-            method.tag;
-
-        methodTitle.textContent =
-            method.title;
-
-        methodDescription.textContent =
-            method.description;
-
-        methodTip.textContent =
-            method.tip;
+    }
 
 
-        methodPoints.innerHTML =
-            method.points
+    if (siftCurrentState) {
+
+        siftCurrentState.textContent =
+            step.state;
+
+    }
+
+
+    /* -----------------------------------------------------
+       IMAGES
+    ----------------------------------------------------- */
+
+    if (siftCaseImage) {
+
+        siftCaseImage.src =
+            step.image;
+
+    }
+
+    if (siftGalleryMain) {
+
+        siftGalleryMain.src =
+            step.galleryMain;
+
+    }
+
+    if (siftGallerySmallOne) {
+
+        siftGallerySmallOne.src =
+            step.galleryOne;
+
+    }
+
+    if (siftGallerySmallTwo) {
+
+        siftGallerySmallTwo.src =
+            step.galleryTwo;
+
+    }
+
+
+    /* -----------------------------------------------------
+       ACTIVE STEP
+    ----------------------------------------------------- */
+
+    if (siftActiveLetter) {
+
+        siftActiveLetter.textContent =
+            step.letter;
+
+    }
+
+    if (siftActiveCode) {
+
+        siftActiveCode.textContent =
+            step.code;
+
+    }
+
+    if (siftActiveSub) {
+
+        siftActiveSub.textContent =
+            step.sub;
+
+    }
+
+
+    /* -----------------------------------------------------
+       COUNTER
+    ----------------------------------------------------- */
+
+    if (siftStepCurrent) {
+
+        siftStepCurrent.textContent =
+            String(index + 1)
+                .padStart(
+                    2,
+                    "0"
+                );
+
+    }
+
+
+    /* -----------------------------------------------------
+       STATUS
+    ----------------------------------------------------- */
+
+    if (siftVisualPercent) {
+
+        siftVisualPercent.textContent =
+            step.percent;
+
+    }
+
+    if (siftVisualStatus) {
+
+        siftVisualStatus.textContent =
+            step.status;
+
+    }
+
+
+    /* -----------------------------------------------------
+       DETAIL
+    ----------------------------------------------------- */
+
+    if (siftExplanationKicker) {
+
+        siftExplanationKicker.textContent =
+            step.code;
+
+    }
+
+    if (siftExplanationLetter) {
+
+        siftExplanationLetter.textContent =
+            step.letter;
+
+    }
+
+    if (siftExplanationTitle) {
+
+        siftExplanationTitle.textContent =
+            step.title;
+
+    }
+
+    if (siftLongExplanation) {
+
+        siftLongExplanation.textContent =
+            step.explanation;
+
+    }
+
+    if (siftExplanationText) {
+
+        siftExplanationText.textContent =
+            step.short;
+
+    }
+
+
+    /* -----------------------------------------------------
+       QUESTION
+    ----------------------------------------------------- */
+
+    if (siftQuestion) {
+
+        siftQuestion.textContent =
+            step.question;
+
+    }
+
+
+    /* -----------------------------------------------------
+       WHY
+    ----------------------------------------------------- */
+
+    if (siftWhy) {
+
+        siftWhy.textContent =
+            step.why;
+
+    }
+
+
+    /* -----------------------------------------------------
+       ACTIONS
+    ----------------------------------------------------- */
+
+    if (siftActionList) {
+
+        siftActionList.innerHTML =
+            step.actions
                 .map(
-                    (point, pointIndex) => `
-                        <div>
-                            <span>
-                                ${String(
-                                    pointIndex + 1
-                                ).padStart(2, "0")}
-                            </span>
+                    (
+                        action,
+                        actionIndex
+                    ) => {
 
-                            ${point}
-                        </div>
-                    `
+                        return `
+                            <div class="sift-action-item">
+
+                                <span>
+                                    ${String(
+                                        actionIndex + 1
+                                    ).padStart(2,"0")}
+                                </span>
+
+                                <strong>
+                                    ${action}
+                                </strong>
+
+                            </div>
+                        `;
+
+                    }
                 )
                 .join("");
 
     }
 
 
-    methodItems.forEach(item => {
+    /* -----------------------------------------------------
+       DO / DON'T
+    ----------------------------------------------------- */
+
+    renderSiftList(
+        siftDoList,
+        step.doList
+    );
+
+    renderSiftList(
+        siftDontList,
+        step.dontList
+    );
+
+
+    /* -----------------------------------------------------
+       GALLERY
+    ----------------------------------------------------- */
+
+    if (siftGalleryTag) {
+
+        siftGalleryTag.textContent =
+            step.code;
+
+    }
+
+    if (siftGalleryTitle) {
+
+        siftGalleryTitle.textContent =
+            step.galleryTitle;
+
+    }
+
+    if (siftGalleryLook) {
+
+        siftGalleryLook.textContent =
+            step.galleryLook;
+
+    }
+
+    if (siftGalleryAvoid) {
+
+        siftGalleryAvoid.textContent =
+            step.galleryAvoid;
+
+    }
+
+
+    /* -----------------------------------------------------
+       PROGRESS BAR
+    ----------------------------------------------------- */
+
+    const progress =
+        ((index + 1) /
+            siftSteps.length) *
+        100;
+
+
+    document
+        .querySelectorAll(
+            ".sift-active-progress span"
+        )
+        .forEach(
+            bar => {
+
+                bar.style
+                    .setProperty(
+                        "--sift-progress",
+                        `${progress}%`
+                    );
+
+            }
+        );
+
+
+    if (siftProgressLine) {
+
+        siftProgressLine.style.width =
+            `${progress}%`;
+
+    }
+
+
+    /* -----------------------------------------------------
+       ANIMATION
+    ----------------------------------------------------- */
+
+    if (siftStudioStage) {
+
+        siftStudioStage.classList.remove(
+            "is-changing"
+        );
+
+        void siftStudioStage.offsetWidth;
+
+        siftStudioStage.classList.add(
+            "is-changing"
+        );
+
+    }
+
+
+    if (siftExampleGallery) {
+
+        siftExampleGallery.classList.remove(
+            "is-changing"
+        );
+
+        void siftExampleGallery.offsetWidth;
+
+        siftExampleGallery.classList.add(
+            "is-changing"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   NAV CLICK
+========================================================= */
+
+siftNavItems.forEach(
+    item => {
 
         item.addEventListener(
             "click",
             () => {
 
-                showMethod(
-                    item.dataset.method
+                activateSiftStep(
+                    Number(
+                        item.dataset.siftStep
+                    )
                 );
 
             }
         );
 
-    });
+    }
+);
 
 
-    showMethod("sift");
+/* =========================================================
+   PIPELINE CLICK
+========================================================= */
+
+siftPipelineSteps.forEach(
+    item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                activateSiftStep(
+                    Number(
+                        item.dataset.siftStep
+                    )
+                );
+
+            }
+        );
+
+    }
+);
 
 
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+siftNavItems.forEach(
+    item => {
+
+        item.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    activateSiftStep(
+                        Number(
+                            item.dataset.siftStep
+                        )
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   AUTO PLAY
+========================================================= */
+
+if (siftAutoPlay) {
+
+    siftAutoPlay.addEventListener(
+        "click",
+        () => {
+
+            if (siftAutoTimer) {
+
+                clearInterval(
+                    siftAutoTimer
+                );
+
+                siftAutoTimer =
+                    null;
+
+                siftAutoPlay.classList.remove(
+                    "active"
+                );
+
+                siftAutoPlay.textContent =
+                    "▶ TỰ ĐỘNG";
+
+                return;
+            }
+
+
+            siftAutoPlay.classList.add(
+                "active"
+            );
+
+            siftAutoPlay.textContent =
+                "Ⅱ ĐANG CHẠY";
+
+
+            siftAutoTimer =
+                setInterval(
+                    () => {
+
+                        const nextStep =
+                            (
+                                activeSiftStep + 1
+                            ) %
+                            siftSteps.length;
+
+                        activateSiftStep(
+                            nextStep
+                        );
+
+                    },
+                    4500
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+activateSiftStep(0);
+/* =========================================================
+   SIFT — INTERACTIVE PARALLAX
+========================================================= */
+
+const siftCaseImageWrap =
+    document.querySelector(
+        ".sift-case-image-wrap"
+    );
+
+const siftCaseImageElement =
+    document.getElementById(
+        "siftCaseImage"
+    );
+
+const siftGalleryCards =
+    document.querySelectorAll(
+        ".sift-gallery-card"
+    );
+
+const siftGalleryMainElement =
+    document.getElementById(
+        "siftGalleryMain"
+    );
+
+
+/* ---------------------------------------------------------
+   CASE IMAGE PARALLAX
+--------------------------------------------------------- */
+
+if (
+    siftCaseImageWrap &&
+    siftCaseImageElement
+) {
+
+    siftCaseImageWrap.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                window.matchMedia(
+                    "(max-width: 760px)"
+                ).matches
+            ) {
+                return;
+            }
+
+            const rect =
+                siftCaseImageWrap.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 7;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -6;
+
+
+            siftCaseImageWrap.style.transform =
+                `
+                rotate(0deg)
+                translateY(-5px)
+                perspective(900px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                `;
+
+        }
+    );
+
+
+    siftCaseImageWrap.addEventListener(
+        "mouseleave",
+        () => {
+
+            siftCaseImageWrap.style.transform =
+                "";
+
+        }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   MAIN GALLERY PARALLAX
+--------------------------------------------------------- */
+
+if (siftGalleryMainElement) {
+
+    siftGalleryMainElement.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                window.matchMedia(
+                    "(max-width: 760px)"
+                ).matches
+            ) {
+                return;
+            }
+
+            const rect =
+                siftGalleryMainElement.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const moveX =
+                ((x / rect.width) - .5) * 12;
+
+            const moveY =
+                ((y / rect.height) - .5) * 8;
+
+
+            siftGalleryMainElement.style.setProperty(
+                "--sift-mouse-x",
+                `${moveX}px`
+            );
+
+            siftGalleryMainElement.style.setProperty(
+                "--sift-mouse-y",
+                `${moveY}px`
+            );
+
+        }
+    );
+
+
+    siftGalleryMainElement.addEventListener(
+        "mouseleave",
+        () => {
+
+            siftGalleryMainElement.style.setProperty(
+                "--sift-mouse-x",
+                "0px"
+            );
+
+            siftGalleryMainElement.style.setProperty(
+                "--sift-mouse-y",
+                "0px"
+            );
+
+        }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL GALLERY TILT
+--------------------------------------------------------- */
+
+siftGalleryCards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                window.matchMedia(
+                    "(max-width: 760px)"
+                ).matches
+            ) {
+                return;
+            }
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -4;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 5;
+
+
+            card.style.transform =
+                `
+                translateY(-4px)
+                perspective(700px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                `;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+});
     /* =================================================
        QUIZ DATA
        -----------------------------------------------
@@ -2421,9 +3404,8 @@ function openResourceModal(type, url, title, readerId) {
                YOUTUBE URL
             --------------------------------------------- */
 
-            iframe.src =
-                `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0&iv_load_policy=3`;
-
+           iframe.src =
+    `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0&iv_load_policy=3`;
 
             iframe.title =
                 title || "YouTube video";
@@ -2787,5 +3769,75 @@ document.addEventListener(
             });
 
     }
+/* =====================================================
+   SIFT FEATURED VIDEO SERIES
+===================================================== */
 
+const siftFeaturedVideo =
+    document.getElementById("siftFeaturedVideo");
+
+const siftVideoItems =
+    document.querySelectorAll(".sift-video-item");
+
+if (
+    siftFeaturedVideo &&
+    siftVideoItems.length
+) {
+
+    siftVideoItems.forEach(item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                const videoId =
+                    item.dataset.siftVideo;
+
+                const videoTitle =
+                    item.dataset.siftTitle ||
+                    "SIFT Online Verification Skills";
+
+                if (!videoId) {
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   ĐỔI VIDEO
+                ----------------------------------------- */
+
+                siftFeaturedVideo.src =
+                    `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0`;
+
+
+                /* -----------------------------------------
+                   ĐỔI TITLE
+                ----------------------------------------- */
+
+                siftFeaturedVideo.title =
+                    videoTitle;
+
+
+                /* -----------------------------------------
+                   ACTIVE STATE
+                ----------------------------------------- */
+
+                siftVideoItems.forEach(
+                    videoItem => {
+                        videoItem.classList.remove(
+                            "active"
+                        );
+                    }
+                );
+
+                item.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    });
+
+}
 });
