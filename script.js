@@ -1863,7 +1863,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một robot hình người được cho là đã hoàn thành quãng đường 100 m trong 8,64 giây tại một cuộc thi ở Bắc Kinh. Thành tích này được so sánh với kỷ lục 9,58 giây ở nội dung 100 m của Usain Bolt. Tuyên bố trên là thật hay giả?",
+            "Robot hình người Trung Quốc chạy 100 m trong 8,64 giây tại một cuộc thi robot ở Bắc Kinh, nhanh hơn thành tích 9,58 giây của Usain Bolt. Nguồn: Reuters — 26/08/2026. Bạn đánh giá tuyên bố này là thật hay giả?",
 
         context:
             "Bạn bắt gặp tuyên bố này trên mạng xã hội. Hãy đánh giá dựa trên độ chính xác của con số, sự kiện được mô tả và khả năng truy xuất về nguồn gốc.",
@@ -1896,7 +1896,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Có thông tin cho rằng số người đăng ký dự thi Kỳ thi tốt nghiệp THPT năm 2026 đã vượt mốc một triệu người và lên tới hơn 1,2 triệu. Bạn đánh giá tuyên bố này là thật hay giả?",
+            "Kỳ thi tốt nghiệp THPT năm 2026 có hơn 1,2 triệu thí sinh đăng ký dự thi. Nguồn: Bộ Giáo dục và Đào tạo.  Bạn đánh giá tuyên bố này là thật hay giả?",
 
         context:
             "Đây là một tuyên bố về số liệu thống kê giáo dục. Hãy xem xét liệu con số được đưa ra có phù hợp với dữ liệu chính thức hay không.",
@@ -1929,7 +1929,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một bài đăng khẳng định rằng bắt đầu từ năm 2027, toàn bộ học sinh THPT trên cả nước sẽ bắt buộc thực hiện kỳ thi tốt nghiệp THPT bằng máy tính. Tuyên bố này là thật hay giả?",
+            "Từ năm 2027, tất cả học sinh THPT trên cả nước sẽ bắt buộc thi tốt nghiệp THPT bằng máy tính. Tuyên bố này là thật hay giả?",
 
         context:
             "Đây là một tuyên bố về thay đổi chính sách giáo dục trên phạm vi toàn quốc. Hãy đánh giá mức độ đáng tin cậy của tuyên bố trước khi chia sẻ.",
@@ -1962,7 +1962,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một bài viết cho biết học sinh sử dụng điện thoại trước khi ngủ có nguy cơ mất tập trung vào ngày hôm sau cao hơn 30%. Tuyên bố này là thật hay giả?",
+            "Một nghiên cứu cho thấy học sinh sử dụng điện thoại trước khi ngủ có nguy cơ mất tập trung trong ngày hôm sau cao hơn 30%. Nguồn: Trung tâm Nghiên cứu Giáo dục — Theo một nghiên cứu mới. Tuyên bố này là thật hay giả?",
 
         context:
             "Con số 30% nghe có vẻ thuyết phục, nhưng một tuyên bố khoa học cần có nghiên cứu cụ thể để kiểm chứng.",
@@ -1995,7 +1995,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một bài đăng cho rằng Việt Nam đã vượt mốc 100 triệu dân và hiện đứng thứ ba Đông Nam Á về quy mô dân số. Tuyên bố này là thật hay giả?",
+            "Việt Nam đã vượt mốc 100 triệu dân và hiện là quốc gia đông dân thứ ba Đông Nam Á. Nguồn: Tổng cục Thống kê — Số liệu dân số. Tuyên bố này là thật hay giả?",
 
         context:
             "Tuyên bố chứa hai dữ kiện khác nhau: quy mô dân số và thứ hạng trong khu vực. Cả hai đều cần được kiểm tra.",
@@ -2028,7 +2028,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Trong mùa tuyển sinh năm 2026, một số trường đại học tại Việt Nam vẫn sử dụng điểm SAT như một phương thức xét tuyển. Tuyên bố này là thật hay giả?",
+            "Một số trường đại học Việt Nam tiếp tục sử dụng kết quả SAT như một phương thức xét tuyển trong mùa tuyển sinh 2026. Nguồn: Báo Thanh Niên — Phóng viên Giáo dục. Tuyên bố này là thật hay giả?",
 
         context:
             "Thông tin liên quan đến phương thức tuyển sinh có thể khác nhau giữa các trường. Không nên suy luận từ một trường sang toàn bộ hệ thống.",
@@ -2061,7 +2061,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một bài đăng cho biết người dùng iPhone tại Việt Nam đã có thể sử dụng tính năng nhắn tin qua vệ tinh từ tháng 8/2026. Tuyên bố này là thật hay giả?",
+            "Apple vừa ra mắt tính năng nhắn tin qua vệ tinh cho iPhone tại Việt Nam vào tháng 8/2026. Tuyên bố này là thật hay giả?",
 
         context:
             "Đây là thông tin công nghệ phụ thuộc vào cả thời điểm và quốc gia được hỗ trợ. Một tính năng có thật không đồng nghĩa với việc nó đã có mặt ở mọi thị trường.",
@@ -2094,7 +2094,7 @@ siftGalleryCards.forEach(card => {
         },
 
         question:
-            "Một bài viết ngày 19/08/2026 cho rằng từ năm học 2026–2027, học sinh THPT sẽ bắt buộc học nội dung nhận diện tin giả và kiểm chứng thông tin như một phần của môn Ngữ văn. Tuyên bố này là thật hay giả?",
+            "Bộ GD&ĐT sẽ bổ sung kỹ năng nhận diện tin giả và kiểm chứng thông tin thành một nội dung bắt buộc trong môn Ngữ văn THPT từ năm học 2026–2027.19/08/2026 — Giáo dục 4.0 — Phạm Linh Tuyên bố này là thật hay giả?",
 
         context:
             "Nội dung nghe hợp lý vì năng lực kiểm chứng thông tin ngày càng được quan tâm. Tuy nhiên, tính hợp lý không thay thế cho văn bản chính thức.",
@@ -3838,6 +3838,671 @@ if (
         );
 
     });
+
+}
+/* =========================================================
+   VERITAS — FOUNDATION KNOWLEDGE HUB
+========================================================= */
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const foundationRevealItems =
+    document.querySelectorAll(
+        ".foundation-hub-section .reveal-up"
+    );
+
+
+if (
+    foundationRevealItems.length &&
+    "IntersectionObserver" in window
+) {
+
+    const foundationRevealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -60px 0px"
+            }
+        );
+
+
+    foundationRevealItems.forEach(item => {
+
+        foundationRevealObserver.observe(
+            item
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   COUNTER ANIMATION
+========================================================= */
+
+const foundationCounters =
+    document.querySelectorAll(
+        ".foundation-stat strong[data-count]"
+    );
+
+
+function animateFoundationCounter(element) {
+
+    const target =
+        Number(
+            element.dataset.count || 0
+        );
+
+    let current = 0;
+
+    const duration = 900;
+
+    const startTime =
+        performance.now();
+
+
+    function updateCounter(now) {
+
+        const progress =
+            Math.min(
+                (now - startTime) / duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        current =
+            Math.floor(
+                target * eased
+            );
+
+
+        element.textContent =
+            String(current).padStart(2, "0");
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        } else {
+
+            element.textContent =
+                String(target).padStart(2, "0");
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+if (
+    foundationCounters.length &&
+    "IntersectionObserver" in window
+) {
+
+    let countersAnimated = false;
+
+
+    const foundationCounterObserver =
+        new IntersectionObserver(
+            entries => {
+
+                if (
+                    countersAnimated ||
+                    !entries.some(
+                        entry =>
+                            entry.isIntersecting
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                countersAnimated = true;
+
+
+                foundationCounters.forEach(
+                    (counter, index) => {
+
+                        setTimeout(
+                            () => {
+
+                                animateFoundationCounter(
+                                    counter
+                                );
+
+                            },
+                            index * 130
+                        );
+
+                    }
+                );
+
+
+                foundationCounterObserver.disconnect();
+
+            },
+            {
+                threshold: .4
+            }
+        );
+
+
+    foundationCounterObserver.observe(
+        foundationCounters[0]
+    );
+
+}
+
+
+/* =========================================================
+   ACCORDION
+========================================================= */
+
+const foundationExpandButtons =
+    document.querySelectorAll(
+        ".foundation-hub-section .foundation-expand-btn"
+    );
+
+
+foundationExpandButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const isExpanded =
+                button.getAttribute(
+                    "aria-expanded"
+                ) === "true";
+
+
+            foundationExpandButtons.forEach(
+                otherButton => {
+
+                    if (
+                        otherButton !== button
+                    ) {
+
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            button.setAttribute(
+                "aria-expanded",
+                String(!isExpanded)
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   FOUNDATION FILTER
+========================================================= */
+
+const foundationFilterButtons =
+    document.querySelectorAll(
+        ".foundation-filter-btn"
+    );
+
+
+const foundationItems =
+    document.querySelectorAll(
+        ".foundation-item"
+    );
+
+
+foundationFilterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const filter =
+                (
+                    button.dataset
+                        .foundationFilter ||
+                    "all"
+                ).trim();
+
+
+            foundationFilterButtons.forEach(
+                item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            foundationItems.forEach(
+                item => {
+
+                    const category =
+                        item.dataset
+                            .foundationCategory ||
+                        "";
+
+
+                    const shouldShow =
+                        filter === "all" ||
+                        category === filter;
+
+
+                    if (shouldShow) {
+
+                        item.classList.remove(
+                            "is-hidden"
+                        );
+
+                        item.classList.remove(
+                            "filter-enter"
+                        );
+
+                        void item.offsetWidth;
+
+                        item.classList.add(
+                            "filter-enter"
+                        );
+
+                    } else {
+
+                        item.classList.add(
+                            "is-hidden"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   INFORMATION DISORDER TABS
+========================================================= */
+
+const disorderTabs =
+    document.querySelectorAll(
+        ".foundation-disorder-tab"
+    );
+
+
+const disorderPanels =
+    document.querySelectorAll(
+        ".foundation-disorder-panel"
+    );
+
+
+disorderTabs.forEach(tab => {
+
+    tab.addEventListener(
+        "click",
+        () => {
+
+            const target =
+                tab.dataset.disorder;
+
+
+            disorderTabs.forEach(item => {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            disorderPanels.forEach(panel => {
+
+                panel.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            tab.classList.add(
+                "active"
+            );
+
+
+            const targetPanel =
+                document.querySelector(
+                    `[data-disorder-panel="${target}"]`
+                );
+
+
+            if (targetPanel) {
+
+                targetPanel.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   FEATURED IMAGE PARALLAX
+========================================================= */
+
+const foundationVisual =
+    document.querySelector(
+        ".foundation-featured-visual"
+    );
+
+
+const foundationImage =
+    document.querySelector(
+        ".foundation-image-shell img"
+    );
+
+
+if (
+    foundationVisual &&
+    foundationImage &&
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+) {
+
+    foundationVisual.addEventListener(
+        "mousemove",
+        event => {
+
+            const rect =
+                foundationVisual.getBoundingClientRect();
+
+
+            const x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width -
+                .5;
+
+
+            const y =
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height -
+                .5;
+
+
+            foundationImage.style.transform =
+                `
+                scale(1.08)
+                translate(
+                    ${x * 8}px,
+                    ${y * 8}px
+                )
+                `;
+
+        }
+    );
+
+
+    foundationVisual.addEventListener(
+        "mouseleave",
+        () => {
+
+            foundationImage.style.transform =
+                "scale(1.04)";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FOUNDATION 3D TILT
+========================================================= */
+
+const foundationTiltCards =
+    document.querySelectorAll(
+        ".foundation-knowledge-card"
+    );
+
+
+foundationTiltCards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                !window.matchMedia(
+                    "(pointer:fine)"
+                ).matches
+            ) {
+
+                return;
+
+            }
+
+
+            const rect =
+                card.getBoundingClientRect();
+
+
+            const x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width -
+                .5;
+
+
+            const y =
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height -
+                .5;
+
+
+            card.style.transform =
+                `
+                perspective(1000px)
+                rotateX(${y * -3}deg)
+                rotateY(${x * 3}deg)
+                translateY(-9px)
+                `;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ACTIVE DISORDER AUTO HINT
+========================================================= */
+
+const disorderCard =
+    document.querySelector(
+        ".foundation-information-card"
+    );
+
+
+if (disorderCard) {
+
+    let disorderIndex = 0;
+
+    const disorderNames = [
+        "misinformation",
+        "disinformation",
+        "malinformation"
+    ];
+
+
+    setInterval(
+        () => {
+
+            if (
+                document.visibilityState !==
+                "visible"
+            ) {
+
+                return;
+
+            }
+
+
+            disorderIndex =
+                (
+                    disorderIndex + 1
+                ) %
+                disorderNames.length;
+
+
+            const target =
+                disorderNames[
+                    disorderIndex
+                ];
+
+
+            const targetTab =
+                disorderCard.querySelector(
+                    `[data-disorder="${target}"]`
+                );
+
+
+            if (targetTab) {
+
+                targetTab.click();
+
+            }
+
+        },
+        6000
+    );
+
+}
+
+
+/* =========================================================
+   ACTIVE SECTION GLOW
+========================================================= */
+
+const foundationSection =
+    document.querySelector(
+        ".foundation-hub-section"
+    );
+
+
+if (
+    foundationSection &&
+    "IntersectionObserver" in window
+) {
+
+    const foundationSectionObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    foundationSection.classList.toggle(
+                        "is-active-view",
+                        entry.isIntersecting
+                    );
+
+                });
+
+            },
+            {
+                threshold: .12
+            }
+        );
+
+
+    foundationSectionObserver.observe(
+        foundationSection
+    );
 
 }
 });
