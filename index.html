@@ -7745,7 +7745,466 @@ Critical Thinking Crisis
     </div>
 
 </footer>
+<!-- =====================================================
+     VERITAS TRANSLATION STUDIO
+===================================================== -->
 
+<div
+    class="veritas-translator"
+    id="veritasTranslator"
+>
+
+    <!-- =================================================
+         FLOATING BUTTON
+    ================================================== -->
+
+    <button
+        type="button"
+        class="translator-fab"
+        id="translatorFab"
+        aria-label="Mở Translation Studio"
+        aria-expanded="false"
+    >
+
+        <span class="translator-fab-icon">
+            文
+        </span>
+
+        <span class="translator-fab-text">
+            Dịch
+        </span>
+
+    </button>
+
+
+    <!-- =================================================
+         TRANSLATOR WINDOW
+    ================================================== -->
+
+    <section
+        class="translator-window"
+        id="translatorWindow"
+        aria-hidden="true"
+    >
+
+        <!-- HEADER -->
+
+        <header class="translator-header">
+
+            <div class="translator-brand">
+
+                <span class="translator-kicker">
+                    VERITAS TOOL
+                </span>
+
+                <h3>
+                    Translation Studio
+                </h3>
+
+                <p>
+                    Dịch và hiểu nội dung trong quá trình
+                    đọc, học tập và kiểm chứng thông tin.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="translator-close"
+                id="translatorClose"
+                aria-label="Đóng Translation Studio"
+            >
+                ×
+            </button>
+
+        </header>
+
+
+        <!-- LANGUAGE CONTROL -->
+
+        <div class="translator-language-card">
+
+            <div class="translator-language">
+
+                <span class="translator-control-label">
+                    NGÔN NGỮ GỐC
+                </span>
+
+                <select
+                    id="translatorFrom"
+                    aria-label="Ngôn ngữ gốc"
+                >
+
+                    <option value="auto">
+                        Tự động phát hiện
+                    </option>
+
+                    <option value="vi">
+                        Tiếng Việt
+                    </option>
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fr">
+                        Français
+                    </option>
+
+                    <option value="de">
+                        Deutsch
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                    <option value="it">
+                        Italiano
+                    </option>
+
+                    <option value="pt">
+                        Português
+                    </option>
+
+                    <option value="nl">
+                        Nederlands
+                    </option>
+
+                    <option value="id">
+                        Bahasa Indonesia
+                    </option>
+
+                    <option value="ja">
+                        日本語
+                    </option>
+
+                    <option value="ko">
+                        한국어
+                    </option>
+
+                    <option value="zh">
+                        中文
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="translator-swap"
+                id="translatorSwap"
+                aria-label="Đổi ngôn ngữ"
+                title="Đổi ngôn ngữ"
+            >
+                ⇄
+            </button>
+
+
+            <div class="translator-language">
+
+                <span class="translator-control-label">
+                    NGÔN NGỮ ĐÍCH
+                </span>
+
+                <select
+                    id="translatorTo"
+                    aria-label="Ngôn ngữ đích"
+                >
+
+                    <option value="vi">
+                        Tiếng Việt
+                    </option>
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fr">
+                        Français
+                    </option>
+
+                    <option value="de">
+                        Deutsch
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                    <option value="it">
+                        Italiano
+                    </option>
+
+                    <option value="pt">
+                        Português
+                    </option>
+
+                    <option value="nl">
+                        Nederlands
+                    </option>
+
+                    <option value="id">
+                        Bahasa Indonesia
+                    </option>
+
+                    <option value="ja">
+                        日本語
+                    </option>
+
+                    <option value="ko">
+                        한국어
+                    </option>
+
+                    <option value="zh">
+                        中文
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRANSLATION MODE -->
+
+        <div class="translator-mode-row">
+
+            <span class="translator-control-label">
+                CHẾ ĐỘ
+            </span>
+
+            <div class="translator-mode-options">
+
+                <button
+                    type="button"
+                    class="translator-mode active"
+                    data-mode="standard"
+                >
+                    Chung
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="academic"
+                >
+                    Học thuật
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="news"
+                >
+                    Tin tức
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="natural"
+                >
+                    Tự nhiên
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <div class="translator-section">
+
+            <div class="translator-section-head">
+
+                <label
+                    for="translatorInput"
+                    class="translator-section-title"
+                >
+                    VĂN BẢN GỐC
+                </label>
+
+                <span
+                    id="translatorCharacterCount"
+                    class="translator-count"
+                >
+                    0 / 500
+                </span>
+
+            </div>
+
+
+            <div class="translator-input-shell">
+
+                <textarea
+                    id="translatorInput"
+                    rows="7"
+                    maxlength="500"
+                    placeholder="Nhập từ, câu hoặc đoạn văn cần dịch..."
+                    spellcheck="true"
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="translator-inline-clear"
+                    id="translatorClear"
+                    aria-label="Xóa nội dung"
+                    title="Xóa"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div
+            class="translator-status"
+            id="translatorStatus"
+        >
+
+            <span class="translator-status-dot"></span>
+
+            <span id="translatorStatusText">
+                Sẵn sàng dịch
+            </span>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="translator-section">
+
+            <div class="translator-section-head">
+
+                <span class="translator-section-title">
+                    BẢN DỊCH
+                </span>
+
+                <button
+                    type="button"
+                    class="translator-copy"
+                    id="translatorCopy"
+                    disabled
+                >
+                    ⧉ Sao chép
+                </button>
+
+            </div>
+
+
+            <div
+                class="translator-result"
+                id="translatorResult"
+                aria-live="polite"
+            >
+
+                <div class="translator-result-empty">
+
+                    <span>
+                        文
+                    </span>
+
+                    <p>
+                        Bản dịch sẽ xuất hiện ở đây.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAIN ACTION -->
+
+        <div class="translator-actions">
+
+            <button
+                type="button"
+                class="translator-clear-button"
+                id="translatorClearSecondary"
+            >
+                Xóa
+            </button>
+
+
+            <button
+                type="button"
+                class="translator-translate"
+                id="translatorTranslate"
+            >
+
+                <span
+                    class="translator-translate-label"
+                >
+                    Dịch
+                </span>
+
+                <span
+                    class="translator-translate-arrow"
+                >
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- SHORTCUT -->
+
+        <div class="translator-shortcut">
+
+            <span>
+                PHÍM TẮT
+            </span>
+
+            <kbd>
+                Ctrl
+            </kbd>
+
+            <span>+</span>
+
+            <kbd>
+                Enter
+            </kbd>
+
+            <span>
+                để dịch
+            </span>
+
+        </div>
+
+
+        <!-- FOOTNOTE -->
+
+        <div class="translator-footnote">
+
+            <strong>
+                VERITAS
+            </strong>
+
+            <span>
+                Bản dịch hỗ trợ hiểu nội dung;
+                không thay thế việc kiểm tra nguồn gốc.
+            </span>
+
+        </div>
+
+    </section>
+
+</div>
 
 <!-- =====================================================
      RESOURCE VIEWER
