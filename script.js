@@ -4505,4 +4505,991 @@ if (
     );
 
 }
+/* =========================================================
+   VERITAS — TRANSLATION STUDIO
+========================================================= */
+
+const translatorRoot =
+    document.getElementById(
+        "veritasTranslator"
+    );
+
+const translatorFab =
+    document.getElementById(
+        "translatorFab"
+    );
+
+const translatorWindow =
+    document.getElementById(
+        "translatorWindow"
+    );
+
+const translatorClose =
+    document.getElementById(
+        "translatorClose"
+    );
+
+const translatorFrom =
+    document.getElementById(
+        "translatorFrom"
+    );
+
+const translatorTo =
+    document.getElementById(
+        "translatorTo"
+    );
+
+const translatorSwap =
+    document.getElementById(
+        "translatorSwap"
+    );
+
+const translatorInput =
+    document.getElementById(
+        "translatorInput"
+    );
+
+const translatorResult =
+    document.getElementById(
+        "translatorResult"
+    );
+
+const translatorTranslate =
+    document.getElementById(
+        "translatorTranslate"
+    );
+
+const translatorClear =
+    document.getElementById(
+        "translatorClear"
+    );
+
+const translatorCopy =
+    document.getElementById(
+        "translatorCopy"
+    );
+
+const translatorLookup =
+    document.getElementById(
+        "translatorLookup"
+    );
+
+const translatorCharacterCount =
+    document.getElementById(
+        "translatorCharacterCount"
+    );
+/* =========================================================
+   PROFESSIONAL TRANSLATOR STATE
+========================================================= */
+
+const translatorStatus =
+    document.getElementById(
+        "translatorStatus"
+    );
+
+const translatorStatusText =
+    document.getElementById(
+        "translatorStatusText"
+    );
+
+const translatorClearSecondary =
+    document.getElementById(
+        "translatorClearSecondary"
+    );
+
+const translatorModes =
+    document.querySelectorAll(
+        ".translator-mode"
+    );
+
+let activeTranslatorMode =
+    "standard";
+
+/* =========================================================
+   OPEN
+========================================================= */
+
+function openTranslatorStudio() {
+
+    if (
+        !translatorWindow ||
+        !translatorFab
+    ) {
+        return;
+    }
+
+
+    translatorWindow.classList.add(
+        "is-open"
+    );
+
+    translatorWindow.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    translatorFab.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+
+    setTimeout(
+        () => {
+
+            translatorInput?.focus();
+
+        },
+        250
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+function closeTranslatorStudio() {
+
+    if (
+        !translatorWindow ||
+        !translatorFab
+    ) {
+        return;
+    }
+
+
+    translatorWindow.classList.remove(
+        "is-open"
+    );
+
+    translatorWindow.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    translatorFab.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+
+translatorFab?.addEventListener(
+    "click",
+    () => {
+
+        const isOpen =
+            translatorWindow?.classList.contains(
+                "is-open"
+            );
+
+
+        if (isOpen) {
+
+            closeTranslatorStudio();
+
+        } else {
+
+            openTranslatorStudio();
+
+        }
+
+    }
+);
+
+
+translatorClose?.addEventListener(
+    "click",
+    closeTranslatorStudio
+);
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            translatorWindow?.classList.contains(
+                "is-open"
+            )
+        ) {
+
+            closeTranslatorStudio();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CHARACTER COUNT
+========================================================= */
+
+function updateTranslatorCharacterCount() {
+
+    if (
+        !translatorInput ||
+        !translatorCharacterCount
+    ) {
+        return;
+    }
+
+
+    const bytes =
+        new TextEncoder().encode(
+            translatorInput.value
+        ).length;
+
+
+    const visible =
+        Math.min(
+            bytes,
+            500
+        );
+
+
+    translatorCharacterCount.textContent =
+        `${visible} / 500`;
+
+}
+
+
+translatorInput?.addEventListener(
+    "input",
+    updateTranslatorCharacterCount
+);
+
+
+/* =========================================================
+   SWAP
+========================================================= */
+
+translatorSwap?.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !translatorFrom ||
+            !translatorTo
+        ) {
+            return;
+        }
+
+
+        const from =
+            translatorFrom.value;
+
+        const to =
+            translatorTo.value;
+
+
+        translatorFrom.value =
+            to;
+
+        translatorTo.value =
+            from;
+
+
+        translatorSwap.animate(
+            [
+                {
+                    transform:
+                        "rotate(0deg) scale(1)"
+                },
+                {
+                    transform:
+                        "rotate(180deg) scale(1.1)"
+                },
+                {
+                    transform:
+                        "rotate(360deg) scale(1)"
+                }
+            ],
+            {
+                duration:
+                    550,
+
+                easing:
+                    "cubic-bezier(.2,.8,.2,1)"
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function setTranslatorLoading(
+    loading
+) {
+
+    if (!translatorTranslate) {
+        return;
+    }
+
+
+    translatorTranslate.classList.toggle(
+        "is-loading",
+        loading
+    );
+
+
+    const label =
+        translatorTranslate.querySelector(
+            ".translator-translate-label"
+        );
+
+
+    if (label) {
+
+        label.textContent =
+            loading
+                ? "Đang dịch..."
+                : "Dịch";
+
+    }
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setTranslatorStatus(
+    type,
+    message
+) {
+
+    if (
+        !translatorStatus ||
+        !translatorStatusText
+    ) {
+        return;
+    }
+
+
+    translatorStatus.classList.remove(
+        "is-loading",
+        "is-error"
+    );
+
+
+    if (type === "loading") {
+
+        translatorStatus.classList.add(
+            "is-loading"
+        );
+
+    }
+
+
+    if (type === "error") {
+
+        translatorStatus.classList.add(
+            "is-error"
+        );
+
+    }
+
+
+    translatorStatusText.textContent =
+        message;
+
+}
+
+
+/* =========================================================
+   TRANSLATION MODE
+========================================================= */
+
+translatorModes.forEach(
+    mode => {
+
+        mode.addEventListener(
+            "click",
+            () => {
+
+                translatorModes.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                mode.classList.add(
+                    "active"
+                );
+
+
+                activeTranslatorMode =
+                    mode.dataset.mode ||
+                    "standard";
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showTranslatorError(
+    title,
+    message
+) {
+
+    if (!translatorResult) {
+        return;
+    }
+
+
+    translatorResult.innerHTML = `
+        <div class="translator-error-state">
+
+            <div class="translator-error-icon">
+                !
+            </div>
+
+            <strong>
+                ${title}
+            </strong>
+
+            <p>
+                ${message}
+            </p>
+
+        </div>
+    `;
+
+
+    if (translatorCopy) {
+
+        translatorCopy.disabled =
+            true;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESULT ANIMATION
+========================================================= */
+
+function animateTranslatorResult() {
+
+    if (!translatorResult) {
+        return;
+    }
+
+
+    translatorResult.classList.remove(
+        "is-changing"
+    );
+
+
+    void translatorResult.offsetWidth;
+
+
+    translatorResult.classList.add(
+        "is-changing"
+    );
+
+}
+
+
+/* =========================================================
+   TRANSLATE
+========================================================= */
+
+async function translateWithVeritas() {
+
+    if (
+        !translatorInput ||
+        !translatorResult ||
+        !translatorFrom ||
+        !translatorTo
+    ) {
+        return;
+    }
+
+
+    const text =
+        translatorInput.value.trim();
+
+
+    if (!text) {
+
+        showTranslatorError(
+            "Chưa có nội dung",
+            "Hãy nhập nội dung bạn muốn dịch."
+        );
+
+
+        setTranslatorStatus(
+            "error",
+            "Chưa có nội dung để dịch"
+        );
+
+
+        translatorInput.focus();
+
+        return;
+
+    }
+
+
+    const byteLength =
+        new TextEncoder()
+            .encode(text)
+            .length;
+
+
+    if (byteLength > 500) {
+
+        showTranslatorError(
+            "Nội dung quá dài",
+            "Nội dung hiện vượt giới hạn 500 bytes."
+        );
+
+
+        setTranslatorStatus(
+            "error",
+            "Nội dung vượt giới hạn"
+        );
+
+
+        return;
+
+    }
+
+
+    let sourceLang =
+        translatorFrom.value;
+
+
+    const targetLang =
+        translatorTo.value;
+
+
+    /*
+     * MyMemory hiện tại không có cơ chế
+     * auto-detect hoàn chỉnh trong request
+     * mà chúng ta đang sử dụng.
+     *
+     * Tạm thời dùng English làm fallback
+     * khi chọn AUTO.
+     */
+
+    if (
+        sourceLang === "auto"
+    ) {
+
+        sourceLang =
+            "en";
+
+    }
+
+
+    if (
+        sourceLang === targetLang
+    ) {
+
+        translatorResult.textContent =
+            text;
+
+
+        translatorCopy.disabled =
+            false;
+
+
+        animateTranslatorResult();
+
+
+        setTranslatorStatus(
+            "ready",
+            "Sẵn sàng"
+        );
+
+
+        return;
+
+    }
+
+
+    setTranslatorLoading(
+        true
+    );
+
+
+    setTranslatorStatus(
+        "loading",
+        "Đang dịch..."
+    );
+
+
+    translatorCopy.disabled =
+        true;
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/translate",
+                {
+                    method:
+                        "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            text,
+
+                            sourceLang,
+
+                            targetLang,
+
+                            mode:
+                                activeTranslatorMode
+
+                        })
+
+                }
+            );
+
+
+        let data = null;
+
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch {
+
+            throw new Error(
+                "Invalid server response"
+            );
+
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data?.error ||
+                "Translation failed"
+            );
+
+        }
+
+
+        const translation =
+            data?.translation?.trim();
+
+
+        if (!translation) {
+
+            throw new Error(
+                "Empty translation"
+            );
+
+        }
+
+
+        translatorResult.textContent =
+            translation;
+
+
+        translatorCopy.disabled =
+            false;
+
+
+        animateTranslatorResult();
+
+
+        setTranslatorStatus(
+            "ready",
+            "Đã dịch thành công"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Veritas Translator:",
+            error
+        );
+
+
+        showTranslatorError(
+            "Không thể dịch",
+            "Không kết nối được với dịch vụ dịch. Hãy thử lại."
+        );
+
+
+        setTranslatorStatus(
+            "error",
+            "Dịch không thành công"
+        );
+
+
+    } finally {
+
+        setTranslatorLoading(
+            false
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   TRANSLATOR — EVENTS
+========================================================= */
+
+
+/* =========================================================
+   TRANSLATE BUTTON
+========================================================= */
+
+translatorTranslate?.addEventListener(
+    "click",
+    translateWithVeritas
+);
+
+
+/* =========================================================
+   CTRL + ENTER
+========================================================= */
+
+translatorInput?.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter" &&
+            event.ctrlKey
+        ) {
+
+            event.preventDefault();
+
+            translateWithVeritas();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CLEAR
+========================================================= */
+
+function clearTranslator() {
+
+    if (translatorInput) {
+
+        translatorInput.value =
+            "";
+
+    }
+
+
+    if (translatorResult) {
+
+        translatorResult.innerHTML = `
+            <div class="translator-result-empty">
+
+                <span>
+                    文
+                </span>
+
+                <p>
+                    Bản dịch sẽ xuất hiện ở đây.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+
+    if (translatorCopy) {
+
+        translatorCopy.disabled =
+            true;
+
+    }
+
+
+    setTranslatorStatus(
+        "ready",
+        "Sẵn sàng dịch"
+    );
+
+
+    updateTranslatorCharacterCount();
+
+
+    translatorInput?.focus();
+
+}
+
+
+translatorClear?.addEventListener(
+    "click",
+    clearTranslator
+);
+
+
+if (translatorClearSecondary) {
+
+    translatorClearSecondary.addEventListener(
+        "click",
+        clearTranslator
+    );
+
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+translatorCopy?.addEventListener(
+    "click",
+    async () => {
+
+        if (!translatorResult) {
+            return;
+        }
+
+
+        const text =
+            translatorResult.textContent.trim();
+
+
+        if (
+            !text ||
+            text ===
+                "Bản dịch sẽ xuất hiện ở đây."
+        ) {
+            return;
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                text
+            );
+
+
+            const originalText =
+                translatorCopy.textContent;
+
+
+            translatorCopy.textContent =
+                "✓ Đã sao chép";
+
+
+            setTranslatorStatus(
+                "ready",
+                "Đã sao chép bản dịch"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    translatorCopy.textContent =
+                        originalText;
+
+                },
+                1500
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Veritas Copy:",
+                error
+            );
+
+
+            setTranslatorStatus(
+                "error",
+                "Không thể sao chép"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateTranslatorCharacterCount();
+
+
+/* =========================================================
+   CLOSE TRANSLATOR ON ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            translatorWindow?.classList.contains(
+                "is-open"
+            )
+        ) {
+
+            closeTranslatorStudio();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   END DOM CONTENT LOADED
+========================================================= */
+
 });
