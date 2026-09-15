@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Veritas | Thư viện
+    </title>
+
+    <meta
+        name="description"
+        content="Veritas Resource Library — thư viện tài liệu, nghiên cứu và video về kỹ năng số, media literacy và kiểm chứng thông tin."
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- VERITAS CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+<style>
+/* =====================================================
+   SIFT FEATURED VIDEO SERIES
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+
+/* VIDEO AREA */
+
+/* =====================================================
+   SIFT FEATURED VIDEO — CĂN KHUNG CHUẨN 16:9
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+.sift-featured-media {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 0 !important;
+    overflow: hidden;
+
+    aspect-ratio: 16 / 9;
+
+    background: #0f172a;
+}
+
+
+/* XÓA các thành phần trang trí cũ trên khung video */
+
+.sift-featured-media .featured-media-pattern {
+    display: none !important;
+}
+
+.sift-featured-media .featured-video-icon {
+    display: none !important;
+}
+
+
+/* NHÃN FEATURED */
+
+.sift-featured-media .media-label {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 10;
+}
+
+
+/* KHUNG CHỨA IFRAME */
+
+.sift-video-frame {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #0f172a;
+}
+
+
+/* IFRAME YOUTUBE */
+
+.sift-video-frame iframe {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+.sift-featured-media .media-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.sift-video-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.sift-video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* CONTENT */
+
+.sift-featured-content > h3 span {
+    display: block;
+}
+
+
+/* VIDEO SELECTOR */
+
+.sift-video-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px 0 30px;
+}
+
+.sift-video-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: 16px;
+
+    background: rgba(248, 250, 252, 0.85);
+
+    cursor: pointer;
+    text-align: left;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.sift-video-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.sift-video-item.active {
+    border-color: #2563EB;
+    background: rgba(37, 99, 235, 0.07);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10);
+}
+
+
+/* NUMBER */
+
+.sift-video-number {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: #2563EB;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* TEXT */
+
+.sift-video-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sift-video-info strong {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.sift-video-info small {
+    margin-top: 3px;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    color: #64748b;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ARROW */
+
+.sift-video-arrow {
+    margin-left: auto;
+    font-size: 18px;
+    opacity: 0.55;
+}
+
+
+/* ACTIVE ITEM */
+
+.sift-video-item.active .sift-video-number {
+    background: #2563EB;
+}
+
+.sift-video-item.active .sift-video-arrow {
+    opacity: 1;
+    color: #2563EB;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 680px) {
+
+    .sift-video-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .sift-video-item {
+        padding: 13px 14px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-video-frame {
+        aspect-ratio: 16 / 10;
+    }
+
+    .sift-video-number {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+}
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <div class="container">
+
+        <nav class="navbar">
+
+            <a
+                class="brand"
+                href="index.html"
+            >
+
+                <div class="brand-logo">
+
+                    <img
+                        src="assets/logo.png"
+                        alt="Logo Trường THPT Giồng Ông Tố"
+                    >
+
+                </div>
+
+                <div class="brand-copy">
+
+                    <strong>
+                        VERITAS
+                    </strong>
+
+                    <span>
+                        DIGITAL LITERACY HUB
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- DESKTOP NAV -->
+
+            <nav class="main-nav">
+
+                <a
+                    class="nav-link"
+                    href="index.html"
+                >
+                    Trang chủ
+                </a>
+
+                <a
+                    class="nav-link"
+                    href="knowledge.html"
+                >
+                    Kiến thức
+                </a>
+
+                <a
+                    class="nav-link"
+                    href="verify.html"
+                >
+                    Kiểm chứng
+                </a>
+
+                <a
+                    class="nav-link active"
+                    href="library.html"
+                >
+                    Thư viện
+                </a>
+
+                <a
+                    class="nav-link"
+                    href="tools.html"
+                >
+                    Công cụ
+                </a>
+
+                <a
+                    class="nav-link"
+                    href="challenge.html"
+                >
+                    Thử thách
+                </a>
+
+            </nav>
+
+
+            <a
+                class="header-cta"
+                href="challenge.html"
+            >
+                Thử thách
+            </a>
+
+
+            <!-- MOBILE -->
+
+            <button
+                class="mobile-toggle"
+                id="mobileToggle"
+                type="button"
+                aria-expanded="false"
+                aria-label="Mở menu"
+            >
+                ☰
+            </button>
+
+        </nav>
+
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+        >
+
+            <a href="index.html">
+                Trang chủ
+            </a>
+
+            <a href="knowledge.html">
+                Kiến thức
+            </a>
+
+            <a href="verify.html">
+                Kiểm chứng
+            </a>
+
+            <a
+                class="active"
+                href="library.html"
+            >
+                Thư viện
+            </a>
+
+            <a href="tools.html">
+                Công cụ
+            </a>
+
+            <a href="challenge.html">
+                Thử thách
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section
+    class="page-hero"
+    id="libraryHero"
+>
+
+    <div class="container">
+
+        <span class="section-kicker">
+            VERITAS RESOURCE LIBRARY
+        </span>
+
+        <h1>
+            Không chỉ đọc — hãy kiểm tra nguồn.
+        </h1>
+
+        <p>
+            Khám phá các nghiên cứu, video và tài liệu
+            giúp bạn hiểu môi trường thông tin số và
+            hình thành thói quen kiểm chứng có cơ sở.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESOURCE LIBRARY
+===================================================== -->
+
+<section
+    class="section library-section"
+    id="library"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    02 / THƯ VIỆN TÀI LIỆU
+                </span>
+
+                <h2>
+                    Góc nhìn từ
+                    <span>nhiều nguồn.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Khu vực này được thiết kế như một
+                thư viện nội dung. Bạn có thể tự bổ sung
+                video YouTube, hình ảnh, bài đọc hoặc tài liệu PDF.
+            </p>
+
+        </div>
+
+
+        <!-- LIBRARY NAV -->
+
+        <div class="library-toolbar">
+
+            <div class="library-tabs">
+
+                <button
+                    class="library-tab active"
+                    data-category="all"
+                >
+                    Tất cả
+                </button>
+
+                <button
+                    class="library-tab"
+                    data-category="video"
+                >
+                    Video
+                </button>
+
+
+                <button
+                    class="library-tab"
+                    data-category="research"
+                >
+                    Nghiên cứu
+                </button>
+
+               
+
+        
+
+            </div>
+
+
+            <div class="library-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="librarySearch"
+                    placeholder="Tìm tài liệu..."
+                    aria-label="Tìm tài liệu"
+                >
+
+            </div>
+
+        </div>
+
+
+       <!-- =====================================================
+     FEATURED RESOURCE — SIFT VIDEO SERIES
+===================================================== -->
+
+<article class="featured-resource sift-featured">
+
+    <!-- =================================================
+         VIDEO PLAYER
+    ================================================== -->
+
+    <div class="featured-media sift-featured-media">
+
+        <div class="media-label">
+            SIFT / ONLINE VERIFICATION SKILLS
+        </div>
+
+        <div class="sift-video-frame">
+            <iframe
+                id="siftFeaturedVideo"
+                src="https://www.youtube.com/embed/yBU2sDlUbp8?playsinline=1&rel=0"
+                title="Online Verification Skills — Video 1: Introductory Video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FEATURED CONTENT
+    ================================================== -->
+
+    <div class="featured-content sift-featured-content">
+
+        <span class="featured-category">
+            DIGITAL LITERACY
+        </span>
+
+        <h3>
+            SIFT — 4 video
+            <span>kiểm chứng thông tin trực tuyến.</span>
+        </h3>
+
+        <p>
+            Khám phá 4 bước của phương pháp SIFT qua
+            chuỗi video <strong>Online Verification Skills</strong>:
+            dừng lại, điều tra nguồn, tìm nguồn đáng tin cậy
+            và truy xuất về nguồn gốc ban đầu.
+        </p>
+
+
+        <!-- =================================================
+             SIFT VIDEO SELECTOR
+        ================================================== -->
+
+        <div class="sift-video-selector">
+
+            <button
+                type="button"
+                class="sift-video-item active"
+                data-sift-video="yBU2sDlUbp8"
+                data-sift-title="Online Verification Skills — Video 1: Introductory Video"
+            >
+                <span class="sift-video-number">01</span>
+
+                <span class="sift-video-info">
+                    <strong>STOP</strong>
+                    <small>
+                        Introductory Video
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="hB6qjIxKltA"
+                data-sift-title="Online Verification Skills — Video 2: Investigate the Source"
+            >
+                <span class="sift-video-number">02</span>
+
+                <span class="sift-video-info">
+                    <strong>INVESTIGATE</strong>
+                    <small>
+                        Investigate the Source
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="tRZ-N3OvvUs"
+                data-sift-title="Online Verification Skills — Video 3: Find the Original Source"
+            >
+                <span class="sift-video-number">03</span>
+
+                <span class="sift-video-info">
+                    <strong>TRACE</strong>
+                    <small>
+                        Find the Original Source
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="wJG7kFmS0FE"
+                data-sift-title="Online Verification Skills — Video 4: Look for Trusted Work"
+            >
+                <span class="sift-video-number">04</span>
+
+                <span class="sift-video-info">
+                    <strong>FIND</strong>
+                    <small>
+                        Look for Trusted Work
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             SOURCE
+        ================================================== -->
+
+        <div class="featured-source">
+
+            <span class="source-circle">
+                S
+            </span>
+
+            <div>
+                <strong>
+                    SIFT / Online Verification Skills
+                </strong>
+
+                <small>
+                    4 video hướng dẫn kiểm chứng
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+<!-- RESOURCE GRID -->
+
+<div
+    class="resource-grid"
+    id="resourceGrid"
+>
+
+    <!-- =================================================
+         01 — BRANDS VIETNAM
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="short form video brands vietnam content on trend"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://cdn.brvn.vn/topics/1280px/2021/320175_Shortform-video-6_1631520581.png"
+                alt="Short-form video - Brands Vietnam"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                RESEARCH
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>RESEARCH</span>
+                <span>•</span>
+                <span>BRANDS VIETNAM</span>
+            </div>
+
+            <h3>
+                Vì sao short-form video là dạng nội dung tiềm năng?
+            </h3>
+
+            <p>
+                Phân tích xu hướng short-form video
+                và khả năng thu hút người xem.
+            </p>
+
+            <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="brands"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         02 — PMC RESEARCH
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="short form video addiction academic procrastination attentional control research pmc"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://www.frontiersin.org/files/Articles/1298361/fpsyg-14-1298361-HTML/image_m/fpsyg-14-1298361-g001.jpg"
+                alt="Nghiên cứu về short-form video addiction"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                RESEARCH
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>RESEARCH</span>
+                <span>•</span>
+                <span>FRONTIERS</span>
+            </div>
+
+            <h3>
+                Short-form video addiction và trì hoãn học tập
+            </h3>
+
+            <p>
+                Nghiên cứu về video ngắn, khả năng kiểm soát
+                chú ý và academic procrastination.
+            </p>
+
+           <button
+    class="resource-link"
+    type="button"
+    data-resource-type="research"
+    data-resource-url="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1298361/full"
+>
+    Đọc nghiên cứu →
+</button>
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         03 — GITNUX
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="media literacy statistics gitnux digital literacy misinformation"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://gitnux.org/_next/image/?q=75&url=https%3A%2F%2Fgcm-headless-cms.s3.eu-north-1.amazonaws.com%2Fadmin-generated-images%2Ffeatured%2F1777844062487-media-literacy-7f74bd18.webp&w=3840"
+                alt="Media Literacy Statistics - Gitnux"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                STATISTICS
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>STATISTICS</span>
+                <span>•</span>
+                <span>GITNUX</span>
+            </div>
+
+            <h3>
+                Media Literacy Statistics 2026
+            </h3>
+
+            <p>
+                Tổng hợp dữ liệu và thống kê về
+                media literacy và misinformation.
+            </p>
+
+          <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="gitnux"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         04 — MEDIA LITERACY NOW
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="what is media literacy media literacy now education"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://medialiteracynow.org/wp-content/uploads/2023/06/22-copy-2.png"
+                alt="What is Media Literacy - Media Literacy Now"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                GUIDE
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>GUIDE</span>
+                <span>•</span>
+                <span>MEDIA LITERACY NOW</span>
+            </div>
+
+            <h3>
+                What is Media Literacy?
+            </h3>
+
+            <p>
+                Khái niệm, kỹ năng và vai trò của
+                media literacy trong môi trường số.
+            </p>
+
+           <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="medialiteracynow"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         05 — THANH NIÊN
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="video ngắn độc hại thanh nien mạng xã hội"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/8/24/base64-17875559186961508051180.jpeg"
+                alt="Video ngắn và mạng xã hội - Thanh Niên"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                NEWS
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>NEWS</span>
+                <span>•</span>
+                <span>THANH NIÊN</span>
+            </div>
+
+            <h3>
+                Tuyên chiến với các video ngắn độc hại
+            </h3>
+
+            <p>
+                Phân tích tác động của video ngắn độc hại
+                đối với người trẻ trên mạng xã hội.
+            </p>
+
+          <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="thanhnien"
+>
+    Đọc nghiên cứu →
+</button>
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         06 — YOUTUBE AWf...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="media literacy youtube video"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/AWf964m-mgc/maxresdefault.jpg"
+                alt="YouTube video"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                
+What Is Media Literacy? | Kate Wong 
+            </h3>
+
+            <p>
+                Video bổ sung cho phần kiến thức
+                về năng lực truyền thông.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/AWf964m-mgc"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         07 — YOUTUBE -Fx...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="fact checking misinformation youtube video"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/-FxVjgbV2rQ/maxresdefault.jpg"
+                alt="YouTube video"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                
+Critical Thinking Crisis
+            </h3>
+
+            <p>
+                Nội dung video hỗ trợ kỹ năng
+                kiểm tra và đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/-FxVjgbV2rQ"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         08 — CRASH COURSE
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="introduction media literacy crash course youtube"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/AD7N-1Mj-DU/maxresdefault.jpg"
+                alt="Introduction to Media Literacy - Crash Course"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRASH COURSE</span>
+            </div>
+
+            <h3>
+                Introduction to Media Literacy
+            </h3>
+
+            <p>
+                Crash Course giới thiệu những khái niệm
+                nền tảng về Media Literacy.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/AD7N-1Mj-DU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         09 — O5...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="how to read critically bad media literacy youtube"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/O5axQ_yy3MA/maxresdefault.jpg"
+                alt="How to read critically in the age of bad media literacy"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                How to read critically in the age of bad media literacy
+            </h3>
+
+            <p>
+                Video về cách đọc và tiếp nhận thông tin
+                một cách phản biện.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/O5axQ_yy3MA"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+    <!-- =================================================
+         10 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy phản biện định nghĩa câu hỏi phản biện kỹ năng tư duy"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/UjbKZvPw1MU/maxresdefault.jpg"
+                alt="Tư duy phản biện - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện:
+                Định nghĩa & 3 cách đặt câu hỏi
+            </h3>
+
+            <p>
+                Giới thiệu khái niệm tư duy phản biện
+                và cách đặt câu hỏi để đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/UjbKZvPw1MU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         11 — CRITICAL THINKING PRACTICE
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy biện luận luyện tập phản biện cách luyện tập"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/6HP5mg91ETU/maxresdefault.jpg"
+                alt="Tư duy biện luận - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy biện luận:
+                Cách luyện tập phản biện
+            </h3>
+
+            <p>
+                Video tập trung vào cách rèn luyện
+                khả năng suy luận và phản biện.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/6HP5mg91ETU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         12 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="tư duy phản biện critical thinking phân tích đánh giá thông tin"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/pNKRExRmvBQ/maxresdefault.jpg"
+                alt="Tư duy phản biện"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện
+            </h3>
+
+            <p>
+                Nội dung bổ sung cho kỹ năng phân tích,
+                đặt câu hỏi và đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/pNKRExRmvBQ"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+<!-- =================================================
+     13 — TIN AI? | VTV24
+================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="tin AI VTV24 phòng chống tin giả chiến dịch AI fake news kiểm chứng thông tin"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/FQWuU-AKAMg/maxresdefault.jpg"
+            alt="Chung tay phòng chống tin giả cùng chiến dịch TIN AI? - VTV24"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>VTV24</span>
+        </div>
+
+        <h3>
+            Chung tay phòng chống tin giả
+            cùng chiến dịch “TIN AI?”
+        </h3>
+
+        <p>
+            Video của VTV24 giới thiệu chiến dịch “TIN AI?”,
+            nhằm nâng cao nhận thức về tin giả và khuyến khích
+            người dùng chủ động kiểm chứng thông tin trong thời đại AI.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/FQWuU-AKAMg"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     14 — MEDIA MANIPULATION
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="truyền thông thao túng media manipulation tin giả thông tin Phạm Hoàng Beyond Limits"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/lLP7xbx8zaE/maxresdefault.jpg"
+            alt="Làm thế nào để không bị truyền thông thao túng - Phạm Hoàng"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>BEYOND LIMITS</span>
+        </div>
+
+        <h3>
+            Làm thế nào để không bị
+            truyền thông thao túng?
+        </h3>
+
+        <p>
+            Video của Phạm Hoàng phân tích cách truyền thông
+            có thể tác động đến cách chúng ta tiếp nhận,
+            đánh giá và phản ứng với thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/lLP7xbx8zaE"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     15 — SÓNG TRẺ
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="nội dung nhanh mạng xã hội bạn trẻ TikTok reels short form video tập trung"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SÓNG TRẺ</span>
+        </div>
+
+        <h3>
+            Hệ quả của “nội dung nhanh”
+            trên mạng xã hội với bạn trẻ
+        </h3>
+
+        <p>
+            Phân tích ảnh hưởng của nội dung ngắn đến
+            thời gian sử dụng mạng xã hội, khả năng tập trung
+            và thói quen tiếp nhận thông tin của người trẻ.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://songtre.com.vn/he-qua-cua-%E2%80%9Cnoi-dung-nhanh%E2%80%9D-tren-mang-xa-hoi-voi-ban-tre-p29418.html"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     16 — LATERAL READING
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="lateral reading đọc ngang đánh giá thông tin digital information credibility Wineburg McGrew Stanford"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SSRN / STANFORD</span>
+        </div>
+
+        <h3>
+            Lateral Reading:
+            Reading Less and Learning More
+        </h3>
+
+        <p>
+            Nghiên cứu về cách đánh giá độ tin cậy của
+            thông tin trực tuyến và phương pháp đọc ngang
+            được các fact-checker sử dụng.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3048994"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     17 — VOV
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="VOV tin giả thông tin sai sự thật không gian mạng nhận diện ngăn chặn deepfake giới trẻ"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            GUIDE
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>GUIDE</span>
+            <span>•</span>
+            <span>VOV</span>
+        </div>
+
+        <h3>
+            Chủ động nhận diện,
+            ngăn chặn tin giả trên không gian mạng
+        </h3>
+
+        <p>
+            Phân tích nguy cơ tin giả, thông tin sai sự thật
+            và sự cần thiết của kỹ năng nhận diện, sàng lọc
+            trước khi tiếp nhận hoặc chia sẻ thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://vov.vn/chinh-tri/chu-dong-nhan-dien-ngan-chan-tin-gia-tren-khong-gian-mang-post1294844.vov"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     18 — UNESCO
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="UNESCO media information literacy MIL policies education digital literacy misinformation critical thinking"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/article/2025-10/shutterstock_667978993.jpg.webp?itok=ej9pIox9"
+            alt="UNESCO Media and Information Literacy"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            UNESCO
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>UNESCO</span>
+        </div>
+
+        <h3>
+            New UNESCO Issue Brief:
+            Global Gaps in Media and Information Literacy
+        </h3>
+
+        <p>
+            Phân tích khoảng cách toàn cầu trong chính sách
+            và giáo dục Media and Information Literacy,
+            đồng thời nhấn mạnh vai trò của tư duy phản biện
+            và năng lực số.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://www.unesco.org/en/articles/new-unesco-issue-brief-reveals-global-gaps-media-and-information-literacy-policies-and-education"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+
+
+</div>
+        <!-- =================================================
+             LOAD MORE
+        ================================================== -->
+
+        <div
+            class="library-more-wrap"
+            id="libraryMoreWrap"
+        >
+
+            <button
+                class="library-more"
+                id="libraryMore"
+                type="button"
+            >
+                <span class="library-more-text">
+                    Xem thêm
+                </span>
+
+                <span class="library-more-arrow">
+                    ↓
+                </span>
+            </button>
+
+        </div>
+
+
+        <div
+            class="empty-results"
+            id="emptyResults"
+        >
+            Không tìm thấy nội dung phù hợp.
+        </div>
+
+
+        <div class="library-bottom">
+
+            <span>
+                Gợi ý cấu trúc:
+            </span>
+
+            <strong>
+                Video
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Bài đọc
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Nghiên cứu
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Hướng dẫn
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Case Study
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     RESOURCE VIEWER MODAL
+===================================================== -->
+
+<div
+    class="resource-modal"
+    id="resourceModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="resource-modal-backdrop"
+    ></div>
+
+
+    <div
+        class="resource-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resourceModalTitle"
+    >
+
+        <div
+            class="resource-modal-header"
+        >
+
+            <strong
+                id="resourceModalTitle"
+            >
+                Nội dung
+            </strong>
+
+
+            <button
+                class="resource-modal-close"
+                id="resourceModalClose"
+                type="button"
+                aria-label="Đóng"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="resource-modal-body"
+            id="resourceModalBody"
+        ></div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div class="footer-school">
+
+                <div class="footer-logo">
+
+                    <img
+                        src="assets/logo.png"
+                        alt="Logo Trường THPT Giồng Ông Tố"
+                    >
+
+                </div>
+
+                <div class="footer-school-info">
+
+                    <strong>
+                        TRƯỜNG THPT GIỒNG ÔNG TỐ
+                    </strong>
+
+                    <span>
+                        VERITAS DIGITAL LITERACY HUB
+                    </span>
+
+                    <small>
+                        Nền tảng giáo dục về kỹ năng số,
+                        kiểm chứng thông tin, tin giả,
+                        deepfake và tư duy phản biện.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>
+                    VERITAS
+                </strong>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="knowledge.html">
+                    Kiến thức
+                </a>
+
+                <a href="library.html">
+                    Thư viện
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>
+                    KIỂM CHỨNG
+                </strong>
+
+                <a href="verify.html">
+                    SIFT
+                </a>
+
+                <a href="tools.html">
+                    Công cụ
+                </a>
+
+                <a href="challenge.html">
+                    Thử thách
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>
+                    NGUYÊN TẮC
+                </strong>
+
+                <span>
+                    Think
+                </span>
+
+                <span>
+                    Verify
+                </span>
+
+                <span>
+                    Share
+                </span>
+
+            </div>
+
+
+            <div class="footer-about">
+
+                <strong>
+                    VỀ VERITAS
+                </strong>
+
+                <p>
+                    Veritas hướng đến việc giúp
+                    người trẻ hình thành năng lực
+                    tiếp nhận, đánh giá và kiểm chứng
+                    thông tin trong môi trường số.
+                </p>
+
+                <small>
+                    DIGITAL LITERACY · MEDIA LITERACY
+                </small>
+
+                <span>
+                    Học cách dừng lại trước khi tin.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span> Veritas.
+                All rights reserved.
+            </span>
+
+            <span>
+                Think · Verify · Share
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

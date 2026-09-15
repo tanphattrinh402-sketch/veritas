@@ -1,0 +1,8215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Veritas | Làm chủ luồng thông tin trong kỷ nguyên số
+    </title>
+
+    <meta
+        name="description"
+        content="Veritas - Nền tảng giáo dục về kỹ năng số, kiểm chứng thông tin, tin giả và deepfake."
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+    <style>
+        /* Tăng kích thước cho các đoạn văn bản đọc chính */
+        body, p, .hero-description, .section-heading p, 
+        .knowledge-card p, .resource-body p, .tool-card p, 
+        .quiz-context, #modalText, .feedback-content p {
+            font-size: 20px !important; 
+            line-height: 1.7 !important;
+        }
+/* =========================================
+   HERO BOTTOM — CÂN ĐỐI VỚI WEBSITE
+   ========================================= */
+
+.hero-bottom .hero-bottom-inner {
+    min-height: 72px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 24px !important;
+}
+
+/* Xây dựng thói quen */
+.hero-bottom .hero-bottom-inner > span {
+    display: block !important;
+
+    color: var(--ink-600) !important;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: .04em !important;
+
+    white-space: nowrap !important;
+
+    flex: 0 0 auto !important;
+}
+
+/* Nhóm các bước */
+.hero-bottom .hero-flow {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 16px !important;
+
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+}
+
+/* DỪNG / KIỂM TRA / ĐỐI CHIẾU / TRUY XUẤT / CHIA SẺ */
+.hero-bottom .hero-flow strong {
+    display: inline-block !important;
+
+    color: var(--ink-600) !important;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: .04em !important;
+
+    white-space: nowrap !important;
+
+    flex: 0 0 auto !important;
+}
+
+/* Dấu chấm phân cách */
+.hero-bottom .hero-flow i {
+    display: block !important;
+
+    flex: 0 0 4px !important;
+
+    width: 4px !important;
+    height: 4px !important;
+
+    background: var(--blue-400) !important;
+
+    border-radius: 50% !important;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1150px) {
+
+    .hero-bottom .hero-bottom-inner {
+        gap: 18px !important;
+    }
+
+    .hero-bottom .hero-bottom-inner > span {
+        font-size: 11px !important;
+    }
+
+    .hero-bottom .hero-flow {
+        gap: 11px !important;
+    }
+
+    .hero-bottom .hero-flow strong {
+        font-size: 13px !important;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 680px) {
+
+    .hero-bottom {
+        display: none !important;
+    }
+
+}
+
+
+        /* Tăng kích thước chữ cho thanh điều hướng (menu) và các nút bấm */
+        .nav-link, .button, .header-cta, .answer-button strong {
+            font-size: 20px !important;
+        }
+
+        /* Tăng kích thước cho các tiêu đề chính và phụ */
+        .section-heading h2 {
+            font-size: clamp(50px, 7vw, 75px) !important;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(50px, 7.5vw, 92px) !important;
+        }
+        
+        h3, .knowledge-card h3, .resource-body h3, .tool-card h3, .quiz-question {
+            font-size: 28px !important;
+        }
+
+        /* Tăng nhẹ font chữ cho các chú thích nhỏ */
+        .section-kicker, .card-category, .tool-type, .quiz-topic {
+            font-size: 25px !important;
+        }
+        /* ==============================
+   FOOTER OVERRIDE
+============================== */
+
+.site-footer,
+.site-footer p,
+.site-footer span,
+.site-footer small,
+.site-footer a {
+    line-height: 1.6;
+}
+
+.site-footer .footer-school span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-school small {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-column a,
+.site-footer .footer-column span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-about p {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-about small {
+    font-size: 9px !important;
+}
+
+.site-footer .footer-about span {
+    font-size: 10px !important;
+}
+
+.site-footer .footer-bottom {
+    font-size: 10px !important;
+}
+/* =====================================================
+   QUIZ — TĂNG KÍCH THƯỚC CHỮ
+===================================================== */
+
+/* CÂU HỎI 1 / 10 */
+.quiz-number > span {
+    font-size: 14px !important;
+}
+
+.quiz-number > strong {
+    font-size: 24px !important;
+}
+
+/* 10% */
+.quiz-progress > span {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+/* VERITAS TEST */
+.quiz-topic {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+/* HÌNH ẢNH / VIDEO + TÊN ẢNH */
+.media-info > span {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
+
+.media-info > strong {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+}
+
+/* ĐÁNH GIÁ NỘI DUNG */
+.question-kicker {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+/* NỘI DUNG CÂU HỎI */
+.quiz-question h3 {
+    font-size: 26px !important;
+    line-height: 1.45 !important;
+}
+
+/* ĐOẠN MÔ TẢ */
+.quiz-context {
+    font-size: 18px !important;
+    line-height: 1.65 !important;
+}
+
+/* PHƯƠNG ÁN A / B */
+.answer-button small {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+.answer-button strong {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+}
+
+.answer-symbol {
+    font-size: 22px !important;
+}
+
+/* CHÍNH XÁC / CHƯA CHÍNH XÁC */
+.feedback-content > strong {
+    font-size: 21px !important;
+    line-height: 1.35 !important;
+}
+
+.feedback-content > p {
+    font-size: 17px !important;
+    line-height: 1.65 !important;
+}
+
+/* DẤU HIỆU / BẰNG CHỨNG / BƯỚC TIẾP THEO */
+.feedback-grid > div > span {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+.feedback-grid > div > strong {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+}
+
+/* GỢI Ý */
+.quiz-tip p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* CÂU TIẾP THEO */
+.next-question {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+}
+/* =====================================================
+   LIBRARY BOTTOM — TĂNG KÍCH THƯỚC CHỮ
+===================================================== */
+
+.library-bottom {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+}
+
+.library-bottom > span {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.library-bottom > strong {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+}
+
+.library-bottom > i {
+    width: 6px !important;
+    height: 6px !important;
+    flex: 0 0 6px !important;
+}
+/* =====================================================
+   SIFT FEATURED VIDEO SERIES
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+
+/* VIDEO AREA */
+
+/* =====================================================
+   SIFT FEATURED VIDEO — CĂN KHUNG CHUẨN 16:9
+===================================================== */
+
+.sift-featured {
+    overflow: hidden;
+}
+
+.sift-featured-media {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 0 !important;
+    overflow: hidden;
+
+    aspect-ratio: 16 / 9;
+
+    background: #0f172a;
+}
+
+
+/* XÓA các thành phần trang trí cũ trên khung video */
+
+.sift-featured-media .featured-media-pattern {
+    display: none !important;
+}
+
+.sift-featured-media .featured-video-icon {
+    display: none !important;
+}
+
+
+/* NHÃN FEATURED */
+
+.sift-featured-media .media-label {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 10;
+}
+
+
+/* KHUNG CHỨA IFRAME */
+
+.sift-video-frame {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #0f172a;
+}
+
+
+/* IFRAME YOUTUBE */
+
+.sift-video-frame iframe {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 680px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-featured-media {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+.sift-featured-media .media-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.sift-video-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.sift-video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* CONTENT */
+
+.sift-featured-content > h3 span {
+    display: block;
+}
+
+
+/* VIDEO SELECTOR */
+
+.sift-video-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px 0 30px;
+}
+
+.sift-video-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: 16px;
+
+    background: rgba(248, 250, 252, 0.85);
+
+    cursor: pointer;
+    text-align: left;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.sift-video-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.sift-video-item.active {
+    border-color: #2563EB;
+    background: rgba(37, 99, 235, 0.07);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10);
+}
+
+
+/* NUMBER */
+
+.sift-video-number {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: #2563EB;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* TEXT */
+
+.sift-video-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sift-video-info strong {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.sift-video-info small {
+    margin-top: 3px;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    color: #64748b;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ARROW */
+
+.sift-video-arrow {
+    margin-left: auto;
+    font-size: 18px;
+    opacity: 0.55;
+}
+
+
+/* ACTIVE ITEM */
+
+.sift-video-item.active .sift-video-number {
+    background: #2563EB;
+}
+
+.sift-video-item.active .sift-video-arrow {
+    opacity: 1;
+    color: #2563EB;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 680px) {
+
+    .sift-video-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .sift-video-item {
+        padding: 13px 14px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .sift-video-frame {
+        aspect-ratio: 16 / 10;
+    }
+
+    .sift-video-number {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header" id="siteHeader">
+
+    <div class="container navbar">
+
+      <div class="brand-header-container" style="display: flex; align-items: center; gap: 16px;">
+            
+            <!-- Logo Trường THPT Giồng Ông Tố -->
+            <div class="brand-logo" style="display: flex; align-items: center;">
+                <img
+                    src="assets/logo.png"
+                    alt="Logo Trường THPT Giồng Ông Tố"
+                    style="height: 78px; width: 130px; object-fit: contain;"
+                >
+            </div>
+
+            <!-- Vạch phân cách giữa logo trường và logo Veritas -->
+            <div class="brand-divider" style="width: 1px; height: 28px; background-color: rgba(255, 255, 255, 0.25);"></div>
+
+            <!-- Logo SVG Độc Quyền & Tên VERITAS -->
+           <svg
+    class="veritas-logo-svg"
+    width="130"
+    height="78"
+    viewBox="0 0 420 270"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="Veritas Digital Literacy Hub"
+>
+
+    <defs>
+
+        <!-- BLUE -->
+        <linearGradient
+            id="vBlue"
+            x1="80"
+            y1="30"
+            x2="340"
+            y2="230"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0" stop-color="#38BDF8"/>
+            <stop offset="0.35" stop-color="#2563EB"/>
+            <stop offset="1" stop-color="#1D4ED8"/>
+        </linearGradient>
+
+        <!-- GOLD -->
+        <linearGradient
+            id="vGold"
+            x1="160"
+            y1="50"
+            x2="300"
+            y2="190"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0" stop-color="#FDE047"/>
+            <stop offset="0.45" stop-color="#FACC15"/>
+            <stop offset="1" stop-color="#F59E0B"/>
+        </linearGradient>
+
+        <!-- CYAN -->
+        <linearGradient
+            id="vCyan"
+            x1="100"
+            y1="40"
+            x2="340"
+            y2="120"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0" stop-color="#22D3EE"/>
+            <stop offset="1" stop-color="#06B6D4"/>
+        </linearGradient>
+
+        <!-- WHITE -->
+        <linearGradient
+            id="vBook"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+        >
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="1" stop-color="#E0F2FE"/>
+        </linearGradient>
+
+        <!-- SHADOW -->
+        <filter
+            id="logoShadow"
+            x="-40%"
+            y="-40%"
+            width="180%"
+            height="180%"
+        >
+            <feDropShadow
+                dx="0"
+                dy="5"
+                stdDeviation="5"
+                flood-color="#2563EB"
+                flood-opacity=".20"
+            />
+        </filter>
+
+    </defs>
+
+
+    <!-- =================================================
+         SHIELD
+    ================================================== -->
+
+    <path
+        d="
+            M210 12
+            L292 42
+            V102
+            C292 145 264 175 210 197
+            C156 175 128 145 128 102
+            V42
+            L210 12
+            Z
+        "
+        fill="url(#vBlue)"
+        fill-opacity=".13"
+        stroke="url(#vBlue)"
+        stroke-width="5"
+        stroke-linejoin="round"
+        filter="url(#logoShadow)"
+    />
+
+
+    <!-- INNER SHIELD -->
+
+    <path
+        d="
+            M210 29
+            L274 52
+            V99
+            C274 132 252 157 210 177
+            C168 157 146 132 146 99
+            V52
+            L210 29
+            Z
+        "
+        fill="none"
+        stroke="#93C5FD"
+        stroke-width="2"
+        opacity=".75"
+    />
+
+
+    <!-- =================================================
+         GLOBE
+    ================================================== -->
+
+    <circle
+        cx="210"
+        cy="86"
+        r="45"
+        fill="url(#vCyan)"
+        fill-opacity=".18"
+        stroke="#38BDF8"
+        stroke-width="3"
+    />
+
+
+    <!-- Globe longitude -->
+
+    <path
+        d="
+            M210 41
+            C194 52 187 68 187 86
+            C187 104 194 120 210 131
+            C226 120 233 104 233 86
+            C233 68 226 52 210 41
+        "
+        stroke="#7DD3FC"
+        stroke-width="2"
+        fill="none"
+    />
+
+
+    <!-- Globe latitude -->
+
+    <path
+        d="M167 86H253"
+        stroke="#7DD3FC"
+        stroke-width="2"
+    />
+
+    <path
+        d="
+            M173 67
+            C194 73 226 73 247 67
+        "
+        stroke="#7DD3FC"
+        stroke-width="1.5"
+        fill="none"
+    />
+
+    <path
+        d="
+            M173 105
+            C194 99 226 99 247 105
+        "
+        stroke="#7DD3FC"
+        stroke-width="1.5"
+        fill="none"
+    />
+
+
+    <!-- =================================================
+         LARGE V
+    ================================================== -->
+
+    <path
+        d="
+            M88 55
+            C108 55 123 58 139 70
+            L210 145
+            L282 69
+            C296 56 313 54 332 55
+            L257 166
+            C245 183 229 193 210 201
+            C191 193 175 183 163 166
+            Z
+        "
+        fill="url(#vBlue)"
+    />
+
+
+    <!-- Cyan left ribbon -->
+
+    <path
+        d="
+            M91 57
+            C109 57 125 61 139 72
+            L181 126
+            L162 145
+            Z
+        "
+        fill="url(#vCyan)"
+    />
+
+
+    <!-- =================================================
+         GOLD PAGE / FEATHER
+    ================================================== -->
+
+    <path
+        d="
+            M210 145
+            C227 118 249 87 284 67
+            C306 54 329 48 347 45
+            C333 67 312 90 289 105
+            C266 121 240 135 210 145
+            Z
+        "
+        fill="url(#vGold)"
+    />
+
+
+    <path
+        d="
+            M220 135
+            C241 115 264 96 302 69
+        "
+        stroke="#FFF7AE"
+        stroke-width="5"
+        stroke-linecap="round"
+        opacity=".9"
+    />
+
+
+    <!-- =================================================
+         OPEN BOOK
+    ================================================== -->
+
+    <path
+        d="
+            M104 155
+            C132 143 160 144 210 169
+            C260 144 288 143 316 155
+            L316 188
+            C281 176 254 179 210 201
+            C166 179 139 176 104 188
+            Z
+        "
+        fill="url(#vBook)"
+        stroke="#BFDBFE"
+        stroke-width="2"
+    />
+
+
+    <!-- Book center -->
+
+    <path
+        d="M210 169V201"
+        stroke="#2563EB"
+        stroke-width="3"
+        stroke-linecap="round"
+    />
+
+
+    <!-- Gold book trim -->
+
+    <path
+        d="
+            M107 184
+            C140 174 168 178 210 198
+            C252 178 280 174 313 184
+        "
+        stroke="url(#vGold)"
+        stroke-width="4"
+        stroke-linecap="round"
+    />
+
+
+    <!-- =================================================
+         MAGNIFYING GLASS
+    ================================================== -->
+
+    <circle
+        cx="151"
+        cy="105"
+        r="31"
+        fill="#FFFFFF"
+        fill-opacity=".95"
+        stroke="#2563EB"
+        stroke-width="6"
+        filter="url(#logoShadow)"
+    />
+
+    <circle
+        cx="151"
+        cy="105"
+        r="21"
+        fill="url(#vCyan)"
+        fill-opacity=".20"
+        stroke="#38BDF8"
+        stroke-width="3"
+    />
+
+
+    <!-- Check -->
+
+    <path
+        d="
+            M138 105
+            L147 115
+            L167 91
+        "
+        stroke="#FFFFFF"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+
+
+    <!-- Magnifying glass handle -->
+
+    <path
+        d="
+            M128 129
+            L112 150
+        "
+        stroke="#2563EB"
+        stroke-width="10"
+        stroke-linecap="round"
+    />
+
+
+    <path
+        d="
+            M126 131
+            L112 149
+        "
+        stroke="#0EA5E9"
+        stroke-width="4"
+        stroke-linecap="round"
+    />
+
+
+    <!-- =================================================
+         PIXELS
+    ================================================== -->
+
+    <rect
+        x="300"
+        y="104"
+        width="10"
+        height="10"
+        rx="2"
+        fill="#38BDF8"
+    />
+
+    <rect
+        x="317"
+        y="114"
+        width="8"
+        height="8"
+        rx="2"
+        fill="#FACC15"
+    />
+
+    <rect
+        x="332"
+        y="99"
+        width="13"
+        height="13"
+        rx="2"
+        fill="#06B6D4"
+    />
+
+    <rect
+        x="317"
+        y="130"
+        width="12"
+        height="12"
+        rx="2"
+        fill="#2563EB"
+    />
+
+    <rect
+        x="337"
+        y="125"
+        width="8"
+        height="8"
+        rx="2"
+        fill="#F59E0B"
+    />
+
+
+    <!-- =================================================
+         STAR
+    ================================================== -->
+
+    <path
+        d="
+            M291 23
+            L296 35
+            L308 40
+            L296 45
+            L291 57
+            L286 45
+            L274 40
+            L286 35
+            Z
+        "
+        fill="#FACC15"
+    />
+
+
+    <!-- =================================================
+         VERITAS WORDMARK
+    ================================================== -->
+
+    <text
+        x="210"
+        y="232"
+        text-anchor="middle"
+        fill="url(#vBlue)"
+        font-family="Plus Jakarta Sans, Inter, sans-serif"
+        font-size="62"
+        font-weight="800"
+        letter-spacing="1"
+    >
+        VERITAS
+    </text>
+
+
+    <!-- =================================================
+          Digital LITERACY HUB
+    ================================================== -->
+<rect 
+    x="70" 
+    y="235" 
+    width="280" 
+    height="38" 
+    rx="19" 
+    fill="url(#vBlue)" 
+/>
+
+<text 
+    x="210" 
+    y="260" 
+    text-anchor="middle" 
+    fill="#FFFFFF" 
+    font-family="Inter, sans-serif" 
+    font-size="19" 
+    font-weight="800" 
+    letter-spacing="1.5"
+>
+    DIGITAL LITERACY HUB
+</text>
+
+</svg>
+        </div>
+
+
+       <nav class="main-nav">
+
+    <a class="nav-link active" href="index.html">
+        Trang chủ
+    </a>
+
+    <a class="nav-link" href="knowledge.html">
+        Kiến thức
+    </a>
+
+    <a class="nav-link" href="verify.html">
+        Kiểm chứng
+    </a>
+
+    <a class="nav-link" href="library.html">
+        Thư viện
+    </a>
+
+    <a class="nav-link" href="tools.html">
+        Công cụ
+    </a>
+
+    <a class="nav-link" href="challenge.html">
+        Thử thách
+    </a>
+
+</nav>
+
+
+        <a class="header-cta" href="challenge.html">
+            Kiểm tra ngay
+            <span>→</span>
+        </a>
+
+
+        <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Mở menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+
+   <nav class="mobile-nav" id="mobileNav">
+
+    <a href="index.html">
+        Trang chủ
+    </a>
+
+    <a href="knowledge.html">
+        Kiến thức
+    </a>
+
+    <a href="verify.html">
+        Kiểm chứng
+    </a>
+
+    <a href="library.html">
+        Thư viện
+    </a>
+
+    <a href="tools.html">
+        Công cụ
+    </a>
+
+    <a href="challenge.html">
+        Thử thách
+    </a>
+
+</nav>
+
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-pattern"></div>
+
+    <div class="container hero-layout">
+
+        <!-- =========================
+             CỘT TRÁI
+        ========================== -->
+
+       <div class="hero-content">
+
+    <div class="hero-label">
+
+        <span class="live-dot"></span>
+
+        NỀN TẢNG NĂNG LỰC SỐ
+
+        <span class="hero-label-line"></span>
+
+        GIÁO DỤC • KIỂM CHỨNG • AN TOÀN
+
+    </div>
+
+
+    <h1>
+
+        Làm chủ
+
+        <span>luồng thông tin</span>
+
+        trong kỷ nguyên số.
+
+    </h1>
+
+
+    <p class="hero-description">
+
+        Veritas giúp bạn hiểu thông tin,
+
+        nhận diện tin giả, kiểm tra nguồn,
+
+        phát hiện dấu hiệu deepfake và
+
+        đưa ra quyết định dựa trên bằng chứng.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+        <a
+            href="#challenge"
+            class="button primary-button"
+        >
+
+            Bắt đầu bài kiểm tra
+
+            <span>→</span>
+
+        </a>
+
+
+        <a
+            href="knowledge.html"
+            class="button secondary-button"
+        >
+
+            Khám phá kiến thức
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO METRICS
+    ===================================================== -->
+
+    <div class="hero-metrics">
+
+        <div class="metric">
+
+            <strong>06</strong>
+
+            <span>
+                Phương pháp
+            </span>
+
+        </div>
+
+
+        <div class="metric-divider"></div>
+
+
+        <div class="metric">
+
+            <strong>10+</strong>
+
+            <span>
+                Công cụ
+            </span>
+
+        </div>
+
+
+        <div class="metric-divider"></div>
+
+
+        <div class="metric">
+
+            <strong>10</strong>
+
+            <span>
+                Câu thử thách
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO VISUAL
+===================================================== -->
+
+<div class="hero-visual">
+
+   <svg
+    class="veritas-hero-svg"
+    viewBox="0 0 720 720"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="Điện thoại Veritas đang được quét radar và kiểm chứng thông tin"
+>
+
+    <defs>
+
+        <!-- BLUE -->
+        <linearGradient
+            id="vHeroBlue"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1"
+        >
+            <stop offset="0%" stop-color="#67E8F9"/>
+            <stop offset="45%" stop-color="#2563EB"/>
+            <stop offset="100%" stop-color="#1D4ED8"/>
+        </linearGradient>
+
+        <!-- CYAN -->
+        <linearGradient
+            id="vHeroCyan"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1"
+        >
+            <stop offset="0%" stop-color="#A5F3FC"/>
+            <stop offset="100%" stop-color="#06B6D4"/>
+        </linearGradient>
+
+        <!-- GOLD -->
+        <linearGradient
+            id="vHeroGold"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1"
+        >
+            <stop offset="0%" stop-color="#FEF08A"/>
+            <stop offset="50%" stop-color="#FACC15"/>
+            <stop offset="100%" stop-color="#F59E0B"/>
+        </linearGradient>
+
+        <!-- SCREEN -->
+        <linearGradient
+            id="vHeroScreen"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+        >
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="45%" stop-color="#F0F8FF"/>
+            <stop offset="100%" stop-color="#E7F2FF"/>
+        </linearGradient>
+
+        <!-- RADAR GLOW -->
+        <radialGradient id="vHeroRadarGlow">
+
+            <stop
+                offset="0%"
+                stop-color="#38BDF8"
+                stop-opacity=".22"
+            />
+
+            <stop
+                offset="55%"
+                stop-color="#2563EB"
+                stop-opacity=".08"
+            />
+
+            <stop
+                offset="100%"
+                stop-color="#2563EB"
+                stop-opacity="0"
+            />
+
+        </radialGradient>
+
+        <!-- SHADOW -->
+        <filter
+            id="vHeroShadow"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%"
+        >
+
+            <feDropShadow
+                dx="0"
+                dy="28"
+                stdDeviation="24"
+                flood-color="#1D4ED8"
+                flood-opacity=".18"
+            />
+
+        </filter>
+
+        <!-- PHONE CLIP -->
+        <clipPath id="vHeroPhoneClip">
+
+            <rect
+                x="250"
+                y="76"
+                width="220"
+                height="505"
+                rx="38"
+            />
+
+        </clipPath>
+
+    </defs>
+
+
+    <!-- =================================================
+         RADAR BACKGROUND
+    ================================================== -->
+
+    <circle
+        cx="360"
+        cy="350"
+        r="330"
+        fill="url(#vHeroRadarGlow)"
+    />
+
+
+    <circle
+        cx="360"
+        cy="350"
+        r="315"
+        fill="none"
+        stroke="#2563EB"
+        stroke-width="1"
+        opacity=".08"
+    />
+
+
+    <circle
+        cx="360"
+        cy="350"
+        r="270"
+        fill="none"
+        stroke="#2563EB"
+        stroke-width="1.5"
+        opacity=".12"
+    >
+
+        <animate
+            attributeName="opacity"
+            values=".08;.20;.08"
+            dur="4s"
+            repeatCount="indefinite"
+        />
+
+    </circle>
+
+
+    <circle
+        cx="360"
+        cy="350"
+        r="220"
+        fill="none"
+        stroke="#38BDF8"
+        stroke-width="1"
+        stroke-dasharray="5 8"
+        opacity=".22"
+    >
+
+        <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 360 350"
+            to="360 360 350"
+            dur="18s"
+            repeatCount="indefinite"
+        />
+
+    </circle>
+
+
+    <circle
+        cx="360"
+        cy="350"
+        r="165"
+        fill="none"
+        stroke="#2563EB"
+        stroke-width="1.2"
+        opacity=".16"
+    />
+
+
+    <!-- =================================================
+         RADAR CROSSHAIR
+    ================================================== -->
+
+    <g
+        stroke="#2563EB"
+        opacity=".08"
+    >
+
+        <line
+            x1="45"
+            y1="350"
+            x2="675"
+            y2="350"
+        />
+
+        <line
+            x1="360"
+            y1="32"
+            x2="360"
+            y2="668"
+        />
+
+    </g>
+
+
+    <!-- =================================================
+         RADAR SWEEP
+    ================================================== -->
+
+    <g
+        transform="translate(360 350)"
+    >
+
+        <path
+            d="
+                M0 0
+                L0 -315
+                A315 315 0 0 1 155 -274
+                Z
+            "
+            fill="url(#vHeroCyan)"
+            opacity=".18"
+        >
+
+            <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0"
+                to="360"
+                dur="4.5s"
+                repeatCount="indefinite"
+            />
+
+        </path>
+
+
+        <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="-315"
+            stroke="#38BDF8"
+            stroke-width="3"
+            stroke-linecap="round"
+        >
+
+            <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0"
+                to="360"
+                dur="4.5s"
+                repeatCount="indefinite"
+            />
+
+        </line>
+
+    </g>
+
+
+    <!-- =================================================
+         RADAR SIGNALS
+    ================================================== -->
+
+    <g>
+
+        <circle
+            cx="105"
+            cy="215"
+            r="6"
+            fill="#38BDF8"
+        >
+
+            <animate
+                attributeName="r"
+                values="5;13;5"
+                dur="2s"
+                repeatCount="indefinite"
+            />
+
+            <animate
+                attributeName="opacity"
+                values=".35;1;.35"
+                dur="2s"
+                repeatCount="indefinite"
+            />
+
+        </circle>
+
+
+        <circle
+            cx="585"
+            cy="190"
+            r="6"
+            fill="#FACC15"
+        >
+
+            <animate
+                attributeName="r"
+                values="5;12;5"
+                dur="2.4s"
+                repeatCount="indefinite"
+            />
+
+        </circle>
+
+
+        <circle
+            cx="610"
+            cy="470"
+            r="6"
+            fill="#A855F7"
+        >
+
+            <animate
+                attributeName="r"
+                values="5;13;5"
+                dur="2.7s"
+                repeatCount="indefinite"
+            />
+
+        </circle>
+
+
+        <circle
+            cx="110"
+            cy="500"
+            r="6"
+            fill="#22C55E"
+        >
+
+            <animate
+                attributeName="r"
+                values="5;12;5"
+                dur="2.2s"
+                repeatCount="indefinite"
+            />
+
+        </circle>
+
+    </g>
+
+
+    <!-- =================================================
+         PHONE
+    ================================================== -->
+
+    <g filter="url(#vHeroShadow)">
+
+        <g>
+
+            <animateTransform
+                attributeName="transform"
+                type="translate"
+                values="0 0; 0 -7; 0 0"
+                dur="5s"
+                repeatCount="indefinite"
+            />
+
+
+            <g
+                transform="rotate(-7 360 350)"
+            >
+
+                <!-- PHONE FRAME -->
+
+                <rect
+                    x="237"
+                    y="60"
+                    width="246"
+                    height="535"
+                    rx="44"
+                    fill="#AFC5DD"
+                    stroke="#6F91B6"
+                    stroke-width="1.5"
+                />
+
+
+                <rect
+                    x="239"
+                    y="62"
+                    width="242"
+                    height="531"
+                    rx="42"
+                    fill="#DCEAF8"
+                    stroke="#F8FCFF"
+                    stroke-width="1.5"
+                />
+
+
+                <!-- DARK BEZEL -->
+
+                <rect
+                    x="245"
+                    y="68"
+                    width="230"
+                    height="519"
+                    rx="38"
+                    fill="#0B1220"
+                />
+
+
+                <!-- SCREEN -->
+
+                <rect
+                    x="250"
+                    y="76"
+                    width="220"
+                    height="505"
+                    rx="38"
+                    fill="url(#vHeroScreen)"
+                />
+
+
+                <rect
+                    x="253"
+                    y="79"
+                    width="214"
+                    height="499"
+                    rx="35"
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="1.2"
+                    opacity=".80"
+                />
+
+
+                <!-- DYNAMIC ISLAND -->
+
+                <rect
+                    x="313"
+                    y="89"
+                    width="94"
+                    height="27"
+                    rx="16"
+                    fill="#050A11"
+                />
+
+
+                <circle
+                    cx="389"
+                    cy="102"
+                    r="4"
+                    fill="#1F2937"
+                />
+
+
+                <!-- STATUS -->
+
+                <text
+                    x="266"
+                    y="111"
+                    font-family="Inter, sans-serif"
+                    font-size="8"
+                    font-weight="800"
+                    fill="#0F172A"
+                >
+                    9:41
+                </text>
+
+
+                <text
+                    x="392"
+                    y="111"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#64748B"
+                >
+                    ●●● WiFi 100%
+                </text>
+
+
+                <!-- VERITAS APP HEADER -->
+
+                <rect
+                    x="265"
+                    y="129"
+                    width="190"
+                    height="49"
+                    rx="15"
+                    fill="#FFFFFF"
+                    stroke="#DCEAF9"
+                />
+
+
+                <rect
+                    x="275"
+                    y="139"
+                    width="28"
+                    height="28"
+                    rx="9"
+                    fill="url(#vHeroBlue)"
+                />
+
+
+                <text
+                    x="289"
+                    y="158"
+                    text-anchor="middle"
+                    font-family="Plus Jakarta Sans, sans-serif"
+                    font-size="12"
+                    font-weight="800"
+                    fill="#FFFFFF"
+                >
+                    V
+                </text>
+
+
+                <text
+                    x="310"
+                    y="151"
+                    font-family="Plus Jakarta Sans, sans-serif"
+                    font-size="10"
+                    font-weight="800"
+                    fill="#0F172A"
+                >
+                    Veritas
+                </text>
+
+
+                <text
+                    x="310"
+                    y="164"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    fill="#94A3B8"
+                >
+                    FACT INTELLIGENCE
+                </text>
+
+
+                <circle
+                    cx="439"
+                    cy="154"
+                    r="4"
+                    fill="#22C55E"
+                />
+
+
+                <!-- CONTENT HEADER -->
+
+                <text
+                    x="267"
+                    y="197"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    letter-spacing="1"
+                    fill="#2563EB"
+                >
+                    CONTENT SCAN
+                </text>
+
+
+                <text
+                    x="430"
+                    y="197"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#16A34A"
+                >
+                    LIVE
+                </text>
+
+
+                <!-- SOCIAL CARD -->
+
+                <rect
+                    x="265"
+                    y="207"
+                    width="190"
+                    height="129"
+                    rx="15"
+                    fill="#FFFFFF"
+                    stroke="#E0EAF5"
+                />
+
+
+                <circle
+                    cx="281"
+                    cy="225"
+                    r="12"
+                    fill="#64748B"
+                />
+
+
+                <text
+                    x="281"
+                    y="229"
+                    text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="7"
+                    font-weight="800"
+                    fill="#FFFFFF"
+                >
+                    N
+                </text>
+
+
+                <text
+                    x="299"
+                    y="222"
+                    font-family="Inter, sans-serif"
+                    font-size="7"
+                    font-weight="800"
+                    fill="#334155"
+                >
+                    News Feed
+                </text>
+
+
+                <text
+                    x="299"
+                    y="233"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    fill="#94A3B8"
+                >
+                    12 phút trước
+                </text>
+
+
+                <text
+                    x="276"
+                    y="252"
+                    font-family="Plus Jakarta Sans, sans-serif"
+                    font-size="9"
+                    font-weight="800"
+                    fill="#0F172A"
+                >
+                    90% chuyên gia
+                </text>
+
+
+                <text
+                    x="276"
+                    y="265"
+                    font-family="Plus Jakarta Sans, sans-serif"
+                    font-size="9"
+                    font-weight="800"
+                    fill="#0F172A"
+                >
+                    đã xác nhận thông tin này
+                </text>
+
+
+                <!-- IMAGE -->
+
+                <rect
+                    x="276"
+                    y="275"
+                    width="168"
+                    height="47"
+                    rx="10"
+                    fill="#E8F6FF"
+                />
+
+
+                <g
+                    stroke="#7DD3FC"
+                    opacity=".48"
+                >
+
+                    <line x1="276" y1="287" x2="444" y2="287"/>
+                    <line x1="276" y1="299" x2="444" y2="299"/>
+                    <line x1="276" y1="311" x2="444" y2="311"/>
+
+                    <line x1="293" y1="275" x2="293" y2="322"/>
+                    <line x1="310" y1="275" x2="310" y2="322"/>
+                    <line x1="327" y1="275" x2="327" y2="322"/>
+                    <line x1="344" y1="275" x2="344" y2="322"/>
+                    <line x1="361" y1="275" x2="361" y2="322"/>
+                    <line x1="378" y1="275" x2="378" y2="322"/>
+                    <line x1="395" y1="275" x2="395" y2="322"/>
+                    <line x1="412" y1="275" x2="412" y2="322"/>
+                    <line x1="429" y1="275" x2="429" y2="322"/>
+
+                </g>
+
+
+                <circle
+                    cx="360"
+                    cy="298"
+                    r="18"
+                    fill="#FFFFFF"
+                    stroke="#38BDF8"
+                    stroke-width="2"
+                />
+
+
+                <text
+                    x="360"
+                    y="304"
+                    text-anchor="middle"
+                    font-family="Plus Jakarta Sans, sans-serif"
+                    font-size="15"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    ?
+                </text>
+
+
+                <!-- ANALYSIS -->
+
+                <rect
+                    x="265"
+                    y="345"
+                    width="190"
+                    height="141"
+                    rx="15"
+                    fill="#FFFFFF"
+                    stroke="#DCEBFA"
+                />
+
+
+                <text
+                    x="276"
+                    y="363"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    letter-spacing=".7"
+                    fill="#2563EB"
+                >
+                    VERITAS ANALYSIS
+                </text>
+
+
+                <text
+                    x="427"
+                    y="363"
+                    font-family="Inter, sans-serif"
+                    font-size="8"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    86%
+                </text>
+
+
+                <!-- ROW 1 -->
+
+                <circle
+                    cx="281"
+                    cy="381"
+                    r="9"
+                    fill="#EFF6FF"
+                />
+
+
+                <text
+                    x="281"
+                    y="384"
+                    text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="8"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    ✓
+                </text>
+
+
+                <text
+                    x="295"
+                    y="378"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#94A3B8"
+                >
+                    SOURCE
+                </text>
+
+
+                <text
+                    x="295"
+                    y="387"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#334155"
+                >
+                    Checking source
+                </text>
+
+
+                <text
+                    x="432"
+                    y="384"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    72%
+                </text>
+
+
+                <!-- ROW 2 -->
+
+                <circle
+                    cx="281"
+                    cy="417"
+                    r="9"
+                    fill="#FEF9C3"
+                />
+
+
+                <text
+                    x="281"
+                    y="420"
+                    text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="8"
+                    font-weight="800"
+                    fill="#A16207"
+                >
+                    ?
+                </text>
+
+
+                <text
+                    x="295"
+                    y="414"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#94A3B8"
+                >
+                    CONTEXT
+                </text>
+
+
+                <text
+                    x="295"
+                    y="423"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#334155"
+                >
+                    Checking date
+                </text>
+
+
+                <text
+                    x="432"
+                    y="420"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#A16207"
+                >
+                    61%
+                </text>
+
+
+                <!-- ROW 3 -->
+
+                <circle
+                    cx="281"
+                    cy="453"
+                    r="9"
+                    fill="#F3E8FF"
+                />
+
+
+                <text
+                    x="281"
+                    y="456"
+                    text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#9333EA"
+                >
+                    AI
+                </text>
+
+
+                <text
+                    x="295"
+                    y="450"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#94A3B8"
+                >
+                    VISUAL
+                </text>
+
+
+                <text
+                    x="295"
+                    y="459"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#334155"
+                >
+                    No clear match
+                </text>
+
+
+                <text
+                    x="432"
+                    y="456"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#9333EA"
+                >
+                    84%
+                </text>
+
+
+                <!-- CONFIDENCE -->
+
+                <text
+                    x="276"
+                    y="473"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#94A3B8"
+                >
+                    OVERALL CONFIDENCE
+                </text>
+
+
+                <text
+                    x="423"
+                    y="473"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    86%
+                </text>
+
+
+                <rect
+                    x="276"
+                    y="477"
+                    width="168"
+                    height="4"
+                    rx="2"
+                    fill="#E7F0FA"
+                />
+
+
+                <rect
+                    x="276"
+                    y="477"
+                    width="144"
+                    height="4"
+                    rx="2"
+                    fill="url(#vHeroBlue)"
+                >
+
+                    <animate
+                        attributeName="width"
+                        values="124;154;124"
+                        dur="2.4s"
+                        repeatCount="indefinite"
+                    />
+
+                </rect>
+
+
+                <!-- VERDICT -->
+
+                <rect
+                    x="265"
+                    y="495"
+                    width="190"
+                    height="42"
+                    rx="13"
+                    fill="#F0FDF4"
+                    stroke="#BBF7D0"
+                />
+
+
+                <circle
+                    cx="281"
+                    cy="516"
+                    r="10"
+                    fill="#DCFCE7"
+                />
+
+
+                <text
+                    x="281"
+                    y="520"
+                    text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="9"
+                    font-weight="900"
+                    fill="#15803D"
+                >
+                    ✓
+                </text>
+
+
+                <text
+                    x="296"
+                    y="512"
+                    font-family="Inter, sans-serif"
+                    font-size="5"
+                    font-weight="800"
+                    fill="#65A30D"
+                >
+                    VERITAS STATUS
+                </text>
+
+
+                <text
+                    x="296"
+                    y="523"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#166534"
+                >
+                    VERIFY BEFORE SHARING
+                </text>
+
+
+                <!-- BOTTOM NAV -->
+
+                <rect
+                    x="248"
+                    y="532"
+                    width="224"
+                    height="46"
+                    fill="#FFFFFF"
+                    opacity=".97"
+                />
+
+
+                <line
+                    x1="248"
+                    y1="532"
+                    x2="472"
+                    y2="532"
+                    stroke="#E2E8F0"
+                />
+
+
+                <text
+                    x="294"
+                    y="558"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="800"
+                    fill="#2563EB"
+                >
+                    Scan
+                </text>
+
+
+                <text
+                    x="347"
+                    y="558"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#94A3B8"
+                >
+                    Sources
+                </text>
+
+
+                <text
+                    x="410"
+                    y="558"
+                    font-family="Inter, sans-serif"
+                    font-size="6"
+                    font-weight="700"
+                    fill="#94A3B8"
+                >
+                    Tools
+                </text>
+
+
+                <!-- SCAN LINE -->
+
+                <rect
+                    x="248"
+                    y="80"
+                    width="224"
+                    height="2"
+                    fill="#38BDF8"
+                    opacity=".85"
+                    clip-path="url(#vHeroPhoneClip)"
+                >
+
+                    <animate
+                        attributeName="y"
+                        values="82;574;82"
+                        dur="3.2s"
+                        repeatCount="indefinite"
+                    />
+
+                    <animate
+                        attributeName="opacity"
+                        values=".10;1;.10"
+                        dur="3.2s"
+                        repeatCount="indefinite"
+                    />
+
+                </rect>
+
+
+                <!-- SIDE BUTTONS -->
+
+                <rect
+                    x="232"
+                    y="151"
+                    width="4"
+                    height="24"
+                    rx="2"
+                    fill="#718EAF"
+                />
+
+
+                <rect
+                    x="232"
+                    y="202"
+                    width="4"
+                    height="30"
+                    rx="2"
+                    fill="#718EAF"
+                />
+
+
+                <rect
+                    x="232"
+                    y="241"
+                    width="4"
+                    height="30"
+                    rx="2"
+                    fill="#718EAF"
+                />
+
+
+                <rect
+                    x="483"
+                    y="221"
+                    width="4"
+                    height="68"
+                    rx="2"
+                    fill="#6685A7"
+                />
+
+
+                <!-- REFLECTION -->
+
+                <path
+                    d="
+                        M269 63
+                        C320 56 420 58 458 72
+                    "
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    opacity=".90"
+                />
+
+
+                <path
+                    d="
+                        M267 589
+                        C322 597 420 597 460 582
+                    "
+                    fill="none"
+                    stroke="#7898BA"
+                    stroke-width="1.5"
+                    opacity=".42"
+                />
+
+
+                <path
+                    d="
+                        M243 105
+                        C240 180 240 470 245 550
+                    "
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="1.2"
+                    opacity=".65"
+                />
+
+
+                <path
+                    d="
+                        M479 105
+                        C482 180 482 470 477 550
+                    "
+                    fill="none"
+                    stroke="#6D8FB2"
+                    stroke-width="1.2"
+                    opacity=".50"
+                />
+
+            </g>
+
+        </g>
+
+    </g>
+
+
+    <!-- =================================================
+         SWIPE INDICATOR
+    ================================================== -->
+
+    <g>
+
+        <path
+            d="M132 578 C172 558 210 558 242 570"
+            fill="none"
+            stroke="#2563EB"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="8 8"
+        >
+
+            <animate
+                attributeName="stroke-dashoffset"
+                from="0"
+                to="-32"
+                dur="1s"
+                repeatCount="indefinite"
+            />
+
+        </path>
+
+
+        <path
+            d="M232 560 L246 570 L232 578"
+            fill="none"
+            stroke="#2563EB"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+
+
+        <text
+            x="134"
+            y="599"
+            font-family="Inter, sans-serif"
+            font-size="8"
+            font-weight="800"
+            letter-spacing="1"
+            fill="#2563EB"
+        >
+            SWIPE TO VERIFY
+        </text>
+
+    </g>
+
+
+    <!-- =================================================
+         FLOATING INFORMATION CARDS
+    ================================================== -->
+
+    <!-- SOURCE -->
+
+    <g>
+
+        <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 -8; 0 0"
+            dur="4s"
+            repeatCount="indefinite"
+        />
+
+
+        <rect
+            x="33"
+            y="132"
+            width="130"
+            height="49"
+            rx="14"
+            fill="#FFFFFF"
+            stroke="#DBEAFE"
+            filter="url(#vHeroShadow)"
+        />
+
+
+        <circle
+            cx="58"
+            cy="156"
+            r="14"
+            fill="#EFF6FF"
+        />
+
+
+        <text
+            x="58"
+            y="160"
+            text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="10"
+            font-weight="900"
+            fill="#2563EB"
+        >
+            ✓
+        </text>
+
+
+        <text
+            x="80"
+            y="152"
+            font-family="Inter, sans-serif"
+            font-size="6"
+            font-weight="800"
+            fill="#94A3B8"
+        >
+            SOURCE
+        </text>
+
+
+        <text
+            x="80"
+            y="165"
+            font-family="Inter, sans-serif"
+            font-size="9"
+            font-weight="800"
+            fill="#334155"
+        >
+            Verified
+        </text>
+
+    </g>
+
+
+    <!-- AI -->
+
+    <g>
+
+        <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 7; 0 0"
+            dur="4.6s"
+            repeatCount="indefinite"
+        />
+
+
+        <rect
+            x="509"
+            y="260"
+            width="143"
+            height="49"
+            rx="14"
+            fill="#FFFFFF"
+            stroke="#E9D5FF"
+            filter="url(#vHeroShadow)"
+        />
+
+
+        <circle
+            cx="534"
+            cy="284"
+            r="14"
+            fill="#F3E8FF"
+        />
+
+
+        <text
+            x="534"
+            y="288"
+            text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="7"
+            font-weight="900"
+            fill="#9333EA"
+        >
+            AI
+        </text>
+
+
+        <text
+            x="556"
+            y="280"
+            font-family="Inter, sans-serif"
+            font-size="6"
+            font-weight="800"
+            fill="#94A3B8"
+        >
+            AI ANALYSIS
+        </text>
+
+
+        <text
+            x="556"
+            y="293"
+            font-family="Inter, sans-serif"
+            font-size="9"
+            font-weight="800"
+            fill="#334155"
+        >
+            Scanning
+        </text>
+
+    </g>
+
+
+    <!-- SIFT -->
+
+    <g>
+
+        <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 -7; 0 0"
+            dur="4.3s"
+            repeatCount="indefinite"
+        />
+
+
+        <rect
+            x="40"
+            y="470"
+            width="125"
+            height="49"
+            rx="14"
+            fill="#FFFFFF"
+            stroke="#FEF3C7"
+            filter="url(#vHeroShadow)"
+        />
+
+
+        <circle
+            cx="65"
+            cy="494"
+            r="14"
+            fill="#FEF9C3"
+        />
+
+
+        <text
+            x="65"
+            y="498"
+            text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="9"
+            font-weight="900"
+            fill="#A16207"
+        >
+            S
+        </text>
+
+
+        <text
+            x="87"
+            y="490"
+            font-family="Inter, sans-serif"
+            font-size="6"
+            font-weight="800"
+            fill="#94A3B8"
+        >
+            METHOD
+        </text>
+
+
+        <text
+            x="87"
+            y="503"
+            font-family="Inter, sans-serif"
+            font-size="9"
+            font-weight="800"
+            fill="#334155"
+        >
+            SIFT
+        </text>
+
+    </g>
+
+
+    <!-- SCORE -->
+
+    <g>
+
+        <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0; 0 8; 0 0"
+            dur="5s"
+            repeatCount="indefinite"
+        />
+
+
+        <rect
+            x="502"
+            y="510"
+            width="155"
+            height="52"
+            rx="15"
+            fill="#FFFFFF"
+            stroke="#BBF7D0"
+            filter="url(#vHeroShadow)"
+        />
+
+
+        <circle
+            cx="530"
+            cy="536"
+            r="15"
+            fill="#DCFCE7"
+        />
+
+
+        <text
+            x="530"
+            y="540"
+            text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="8"
+            font-weight="900"
+            fill="#15803D"
+        >
+            ✓
+        </text>
+
+
+        <text
+            x="553"
+            y="532"
+            font-family="Inter, sans-serif"
+            font-size="6"
+            font-weight="800"
+            fill="#94A3B8"
+        >
+            CONFIDENCE
+        </text>
+
+
+        <text
+            x="553"
+            y="546"
+            font-family="Inter, sans-serif"
+            font-size="9"
+            font-weight="800"
+            fill="#334155"
+        >
+            Strong signal · 86%
+        </text>
+
+    </g>
+
+
+    <!-- =================================================
+         SCANNING STATUS
+    ================================================== -->
+
+    <g>
+
+        <rect
+            x="265"
+            y="647"
+            width="190"
+            height="45"
+            rx="22"
+            fill="#FFFFFF"
+            stroke="#DBEAFE"
+            filter="url(#vHeroShadow)"
+        />
+
+
+        <circle
+            cx="290"
+            cy="669"
+            r="6"
+            fill="#2563EB"
+        >
+
+            <animate
+                attributeName="r"
+                values="4;9;4"
+                dur="1.7s"
+                repeatCount="indefinite"
+            />
+
+            <animate
+                attributeName="opacity"
+                values=".4;1;.4"
+                dur="1.7s"
+                repeatCount="indefinite"
+            />
+
+        </circle>
+
+
+        <text
+            x="305"
+            y="666"
+            font-family="Inter, sans-serif"
+            font-size="7"
+            font-weight="800"
+            letter-spacing="1"
+            fill="#334155"
+        >
+            SCANNING
+        </text>
+
+
+        <text
+            x="305"
+            y="680"
+            font-family="Inter, sans-serif"
+            font-size="6"
+            fill="#94A3B8"
+        >
+            INFORMATION SIGNALS
+        </text>
+
+    </g>
+
+</svg>
+
+</div>
+</div>
+
+
+
+    <!-- =========================
+         HERO BOTTOM
+    ========================== -->
+
+    <div class="hero-bottom">
+
+        <div class="container hero-bottom-inner">
+
+            <span>
+                Xây dựng thói quen:
+            </span>
+
+            <div class="hero-flow">
+
+                <strong>DỪNG</strong>
+
+                <i></i>
+
+                <strong>KIỂM TRA</strong>
+
+                <i></i>
+
+                <strong>ĐỐI CHIẾU</strong>
+
+                <i></i>
+
+                <strong>TRUY XUẤT</strong>
+
+                <i></i>
+
+                <strong>CHIA SẺ</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     FOUNDATION — KNOWLEDGE HUB
+===================================================== -->
+
+<section
+    class="section foundation-hub-section"
+    id="foundation"
+>
+
+    <div class="foundation-hub-bg">
+        <span class="foundation-orb foundation-orb-a"></span>
+        <span class="foundation-orb foundation-orb-b"></span>
+        <span class="foundation-grid-lines"></span>
+    </div>
+
+
+    <div class="container">
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="foundation-hub-header reveal-up">
+
+            <div class="foundation-hub-heading">
+
+                <span class="section-kicker">
+                    01 / KIẾN THỨC NỀN TẢNG
+                </span>
+
+                <h2>
+                    Hiểu đúng trước khi
+                    <span>kiểm chứng.</span>
+                </h2>
+
+                <p>
+                    Trước khi hỏi một thông tin có đúng hay không,
+                    bạn cần hiểu mình đang đối diện với loại thông tin nào,
+                    nó đến từ đâu, có thể bị thao túng ra sao và bằng cách nào
+                    để đánh giá nó một cách có căn cứ.
+                </p>
+
+            </div>
+
+
+            <div class="foundation-hub-stats">
+
+                <div class="foundation-stat">
+                    <strong data-count="07">0</strong>
+                    <span>chủ đề cốt lõi</span>
+                </div>
+
+                <div class="foundation-stat">
+                    <strong data-count="03">0</strong>
+                    <span>dạng information disorder</span>
+                </div>
+
+                <div class="foundation-stat">
+                    <strong data-count="02">0</strong>
+                    <span>nguồn nghiên cứu chính</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FILTER
+        ================================================== -->
+
+        <div class="foundation-filter reveal-up">
+
+            <button
+                type="button"
+                class="foundation-filter-btn active"
+                data-foundation-filter="all"
+            >
+                Tất cả
+            </button>
+
+            <button
+                type="button"
+                class="foundation-filter-btn"
+                data-foundation-filter="literacy"
+            >
+                Năng lực số
+            </button>
+
+            <button
+                type="button"
+                class="foundation-filter-btn"
+                data-foundation-filter="information"
+            >
+                Thông tin
+            </button>
+
+            <button
+                type="button"
+                class="foundation-filter-btn"
+                data-foundation-filter="ai"
+            >
+                AI & Deepfake
+            </button>
+
+            <button
+                type="button"
+                class="foundation-filter-btn"
+                data-foundation-filter="thinking"
+            >
+                Tư duy
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             FEATURED KNOWLEDGE
+        ================================================== -->
+
+        <article
+            class="foundation-featured-card foundation-item reveal-up"
+            data-foundation-category="literacy"
+        >
+
+            <div class="foundation-featured-copy">
+
+                <div class="foundation-card-topline">
+                    <span class="foundation-card-number">
+                        01
+                    </span>
+
+                    <span class="foundation-card-category">
+                        DIGITAL LITERACY
+                    </span>
+                </div>
+
+                <h3>
+                    Kỹ năng số không chỉ là
+                    <span>biết dùng công nghệ.</span>
+                </h3>
+
+                <p class="foundation-lead">
+                    Digital literacy là năng lực giúp một người
+                    tìm, quản lý, đánh giá, tạo và giao tiếp thông tin
+                    một cách an toàn và phù hợp thông qua công nghệ số.
+                </p>
+
+
+                <div class="foundation-pill-row">
+
+                    <span>
+                        Access
+                    </span>
+
+                    <span>
+                        Evaluate
+                    </span>
+
+                    <span>
+                        Use
+                    </span>
+
+                    <span>
+                        Create
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="foundation-expand-btn"
+                    aria-expanded="false"
+                >
+                    <span>
+                        Hiểu chi tiết
+                    </span>
+
+                    <i>
+                        +
+                    </i>
+                </button>
+
+
+                <div class="foundation-expand-content">
+
+                    <div class="foundation-detail-block">
+
+                        <strong>
+                            Điều này có nghĩa gì?
+                        </strong>
+
+                        <p>
+                            Một người có kỹ năng số không chỉ biết mở trình duyệt,
+                            tìm Google hay đăng bài trên mạng xã hội. Họ còn phải
+                            biết cách xác định nhu cầu thông tin, tìm nguồn phù hợp,
+                            đánh giá độ tin cậy, sử dụng thông tin đúng mục đích
+                            và tạo nội dung có trách nhiệm.
+                        </p>
+
+                    </div>
+
+
+                    <div class="foundation-detail-block">
+
+                        <strong>
+                            Ví dụ
+                        </strong>
+
+                        <p>
+                            Khi bạn nhận được một bài đăng nói rằng “ngày mai
+                            học sinh toàn thành phố được nghỉ”, kỹ năng số không
+                            phải là biết chụp màn hình bài đăng đó. Kỹ năng số là
+                            biết tìm thông báo chính thức, kiểm tra ngày đăng,
+                            xác định cơ quan ban hành và đối chiếu với nguồn khác.
+                        </p>
+
+                    </div>
+
+
+                    <div class="foundation-source">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <a
+                            href="https://unesdoc.unesco.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            UNESCO — Digital Literacy
+                            ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="foundation-featured-visual">
+
+                <div class="foundation-visual-label">
+                    DIGITAL KNOWLEDGE
+                </div>
+
+                <div class="foundation-image-shell">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85"
+                        alt="Người sử dụng máy tính để tìm kiếm và xử lý thông tin"
+                        loading="lazy"
+                    >
+
+                    <div class="foundation-image-overlay"></div>
+
+                    <div class="foundation-floating-tag foundation-tag-a">
+                        SEARCH
+                    </div>
+
+                    <div class="foundation-floating-tag foundation-tag-b">
+                        EVALUATE
+                    </div>
+
+                    <div class="foundation-floating-tag foundation-tag-c">
+                        CREATE
+                    </div>
+
+                </div>
+
+                <div class="foundation-visual-caption">
+
+                    <span>
+                        THE DIGITAL SKILL LOOP
+                    </span>
+
+                    <strong>
+                        Tìm → Đánh giá → Sử dụng → Tạo
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             KNOWLEDGE GRID
+        ================================================== -->
+
+        <div class="foundation-knowledge-grid">
+
+
+            <!-- =================================================
+                 MEDIA & INFORMATION LITERACY
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-item reveal-up"
+                data-foundation-category="literacy"
+            >
+
+                <div class="foundation-card-number">
+                    02
+                </div>
+
+                <div class="foundation-card-icon">
+                    ◎
+                </div>
+
+                <span class="foundation-card-category">
+                    UNESCO / MIL
+                </span>
+
+                <h3>
+                    Media & Information Literacy
+                </h3>
+
+                <p>
+                    Năng lực tiếp cận, phân tích, đánh giá và tạo
+                    nội dung trên nhiều nền tảng truyền thông và thông tin.
+                </p>
+
+
+                <div class="foundation-mini-diagram">
+
+                    <span>
+                        ACCESS
+                    </span>
+
+                    <i>→</i>
+
+                    <span>
+                        ANALYZE
+                    </span>
+
+                    <i>→</i>
+
+                    <span>
+                        EVALUATE
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="foundation-expand-btn"
+                    aria-expanded="false"
+                >
+                    <span>
+                        Xem giải thích
+                    </span>
+                    <i>+</i>
+                </button>
+
+
+                <div class="foundation-expand-content">
+
+                    <p>
+                        UNESCO mô tả Media and Information Literacy (MIL)
+                        là tập hợp các kỹ năng cho phép con người tiếp cận,
+                        phân tích, đánh giá và tạo nội dung một cách có phê phán
+                        trên nhiều nền tảng.
+                    </p>
+
+                    <p>
+                        MIL còn giúp nhận diện thiên kiến, hiểu cách thông tin
+                        được sản xuất và phát tán, đồng thời hỗ trợ con người
+                        ra quyết định có thông tin hơn trong môi trường số.
+                    </p>
+
+                    <div class="foundation-source">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <a
+                            href="https://www.unesco.org/en/query-list/m/media-and-information-literacy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            UNESCO — Media and Information Literacy ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 INFORMATION DISORDER
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-information-card foundation-item reveal-up"
+                data-foundation-category="information"
+            >
+
+                <div class="foundation-card-number">
+                    03
+                </div>
+
+                <div class="foundation-card-icon">
+                    !
+                </div>
+
+                <span class="foundation-card-category">
+                    INFORMATION DISORDER
+                </span>
+
+                <h3>
+                    Không phải mọi “tin giả” đều giống nhau.
+                </h3>
+
+                <p>
+                    Hãy phân biệt thông tin sai do nhầm lẫn,
+                    thông tin sai được phát tán có chủ đích
+                    và thông tin thật bị sử dụng để gây hại.
+                </p>
+
+
+                <div class="foundation-disorder-tabs">
+
+                    <button
+                        type="button"
+                        class="foundation-disorder-tab active"
+                        data-disorder="misinformation"
+                    >
+                        Misinformation
+                    </button>
+
+                    <button
+                        type="button"
+                        class="foundation-disorder-tab"
+                        data-disorder="disinformation"
+                    >
+                        Disinformation
+                    </button>
+
+                    <button
+                        type="button"
+                        class="foundation-disorder-tab"
+                        data-disorder="malinformation"
+                    >
+                        Malinformation
+                    </button>
+
+                </div>
+
+
+                <div class="foundation-disorder-content">
+
+                    <div
+                        class="foundation-disorder-panel active"
+                        data-disorder-panel="misinformation"
+                    >
+
+                        <strong>
+                            Sai nhưng không nhất thiết có ý định lừa dối.
+                        </strong>
+
+                        <p>
+                            Ví dụ: một người chia sẻ lại thông tin cũ
+                            về lịch nghỉ học vì nghĩ rằng thông tin vẫn còn đúng.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="foundation-disorder-panel"
+                        data-disorder-panel="disinformation"
+                    >
+
+                        <strong>
+                            Sai và được phát tán với ý định đánh lừa.
+                        </strong>
+
+                        <p>
+                            Ví dụ: ai đó biết một hình ảnh đã bị chỉnh sửa
+                            nhưng vẫn đăng nó như một bằng chứng có thật.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="foundation-disorder-panel"
+                        data-disorder-panel="malinformation"
+                    >
+
+                        <strong>
+                            Thông tin có thật nhưng được sử dụng để gây hại.
+                        </strong>
+
+                        <p>
+                            Nội dung có thể dựa trên sự thật nhưng bị đưa ra
+                            khỏi ngữ cảnh hoặc khai thác nhằm làm tổn hại cá nhân,
+                            tổ chức hay cộng đồng.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="foundation-source">
+
+                    <span>
+                        SOURCE
+                    </span>
+
+                    <a
+                        href="https://www.unesco.org/sites/default/files/journalism_fake_news_disinformation_print_friendly_0.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        UNESCO — Journalism, Fake News & Disinformation ↗
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DEEPFAKE
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-ai-card foundation-item reveal-up"
+                data-foundation-category="ai"
+            >
+
+                <div class="foundation-card-number">
+                    04
+                </div>
+
+                <div class="foundation-card-icon">
+                    AI
+                </div>
+
+                <span class="foundation-card-category">
+                    AI GENERATED MEDIA
+                </span>
+
+                <h3>
+                    Deepfake & Synthetic Media
+                </h3>
+
+                <p>
+                    Hình ảnh, video hoặc âm thanh có thể được tạo hoặc
+                    thao túng bằng AI để mô phỏng người thật và làm thay đổi
+                    cách người xem hiểu về một sự kiện.
+                </p>
+
+
+                <div class="foundation-ai-visual">
+
+                    <div class="foundation-ai-bar">
+                        <span></span>
+                    </div>
+
+                    <div class="foundation-ai-labels">
+                        <small>
+                            REAL
+                        </small>
+
+                        <small>
+                            SYNTHETIC
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="foundation-expand-btn"
+                    aria-expanded="false"
+                >
+                    <span>
+                        Hiểu sâu hơn
+                    </span>
+                    <i>
+                        +
+                    </i>
+                </button>
+
+
+                <div class="foundation-expand-content">
+
+                    <p>
+                        Deepfake là một dạng synthetic media có khả năng
+                        mô phỏng rất thuyết phục giọng nói, khuôn mặt hoặc
+                        hành động của một người.
+                    </p>
+
+                    <p>
+                        Cần nhớ rằng “AI-generated” không đồng nghĩa với
+                        “disinformation”. Một hình ảnh AI dùng để minh họa
+                        cho một bài học có thể hoàn toàn hợp lệ. Vấn đề nằm
+                        ở việc nội dung đó được gắn nhãn, trình bày và sử dụng
+                        như thế nào.
+                    </p>
+
+                    <div class="foundation-example-strip">
+
+                        <span>
+                            FACE SWAP
+                        </span>
+
+                        <span>
+                            VOICE CLONING
+                        </span>
+
+                        <span>
+                            SYNTHETIC VIDEO
+                        </span>
+
+                    </div>
+
+                    <div class="foundation-source">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <a
+                            href="https://www.unesco.org/en/articles/deepfakes-and-crisis-knowing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            UNESCO — Deepfakes and the Crisis of Knowing ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 SOURCE CREDIBILITY
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-source-card foundation-item reveal-up"
+                data-foundation-category="thinking"
+            >
+
+                <div class="foundation-card-number">
+                    05
+                </div>
+
+                <div class="foundation-card-icon">
+                    ↗
+                </div>
+
+                <span class="foundation-card-category">
+                    SOURCE CREDIBILITY
+                </span>
+
+                <h3>
+                    Nguồn đáng tin được xác định thế nào?
+                </h3>
+
+                <p>
+                    Một website trông chuyên nghiệp chưa đủ để chứng minh
+                    rằng thông tin bên trong nó là đáng tin.
+                </p>
+
+
+                <div class="foundation-source-checklist">
+
+                    <div>
+                        <span>01</span>
+                        <strong>
+                            Ai đứng sau nguồn?
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <strong>
+                            Họ có chuyên môn gì?
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <strong>
+                            Nguồn khác nói gì?
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>04</span>
+                        <strong>
+                            Bằng chứng gốc ở đâu?
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="foundation-micro-example">
+
+                    <span>
+                        WEBSITE
+                    </span>
+
+                    <i>
+                        →
+                    </i>
+
+                    <span>
+                        SEARCH
+                    </span>
+
+                    <i>
+                        →
+                    </i>
+
+                    <span>
+                        OTHER SOURCES
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="foundation-expand-btn"
+                    aria-expanded="false"
+                >
+                    <span>
+                        Tại sao?
+                    </span>
+
+                    <i>
+                        +
+                    </i>
+                </button>
+
+
+                <div class="foundation-expand-content">
+
+                    <p>
+                        Stanford phát hiện rằng các fact-checker chuyên nghiệp
+                        đánh giá thông tin trực tuyến hiệu quả hơn khi họ không
+                        chỉ đọc sâu trang đang mở mà còn nhanh chóng mở các
+                        tab khác để tìm bối cảnh và nguồn độc lập.
+                    </p>
+
+                    <p>
+                        Chiến lược này được gọi là
+                        <strong>lateral reading</strong>.
+                    </p>
+
+                    <div class="foundation-source">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <a
+                            href="https://news.stanford.edu/stories/2017/10/fact-checkers-outperform-historians-evaluating-online-information"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Stanford — Fact-checkers & Online Information ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 CRITICAL THINKING
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-thinking-card foundation-item reveal-up"
+                data-foundation-category="thinking"
+            >
+
+                <div class="foundation-card-number">
+                    06
+                </div>
+
+                <div class="foundation-card-icon">
+                    ?
+                </div>
+
+                <span class="foundation-card-category">
+                    CRITICAL THINKING
+                </span>
+
+                <h3>
+                    Tư duy phản biện không có nghĩa là nghi ngờ mọi thứ.
+                </h3>
+
+                <p>
+                    Mục tiêu là kiểm tra bằng chứng, giả định, ngữ cảnh
+                    và cách lập luận trước khi chấp nhận một kết luận.
+                </p>
+
+
+                <div class="foundation-thinking-meter">
+
+                    <div class="foundation-thinking-line">
+                        <span></span>
+                    </div>
+
+                    <div>
+                        <small>
+                            CLAIM
+                        </small>
+
+                        <small>
+                            EVIDENCE
+                        </small>
+
+                        <small>
+                            JUDGMENT
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="foundation-expand-btn"
+                    aria-expanded="false"
+                >
+                    <span>
+                        Xem ví dụ
+                    </span>
+
+                    <i>
+                        +
+                    </i>
+                </button>
+
+
+                <div class="foundation-expand-content">
+
+                    <p>
+                        Tư duy phản biện không yêu cầu bạn phản đối mọi thông tin.
+                        Nó yêu cầu bạn phân biệt giữa một claim có bằng chứng
+                        và một claim chỉ nghe có vẻ thuyết phục.
+                    </p>
+
+                    <div class="foundation-thinking-example">
+
+                        <div>
+                            <span>
+                                CLAIM
+                            </span>
+
+                            <strong>
+                                “Bài đăng này có 500.000 lượt xem.”
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>
+                                QUESTION
+                            </span>
+
+                            <strong>
+                                “500.000 lượt xem có chứng minh nó đúng không?”
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>
+                                ANSWER
+                            </span>
+
+                            <strong>
+                                Không. Lượt xem đo mức độ lan truyền,
+                                không tự nó xác nhận tính chính xác.
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="foundation-source">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <a
+                            href="https://www.unesco.org/en/media-information-literacy/five-laws"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            UNESCO — Five Laws of MIL ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 VIRAL ≠ VERIFIED
+            ================================================== -->
+
+            <article
+                class="foundation-knowledge-card foundation-viral-card foundation-item reveal-up"
+                data-foundation-category="information"
+            >
+
+                <div class="foundation-card-number">
+                    07
+                </div>
+
+                <div class="foundation-card-icon">
+                    #
+                </div>
+
+                <span class="foundation-card-category">
+                    BEFORE YOU SHARE
+                </span>
+
+                <h3>
+                    VIRAL
+                    <span>≠</span>
+                    VERIFIED
+                </h3>
+
+                <p>
+                    Một nội dung có thể lan truyền rất nhanh mà vẫn chưa
+                    được xác minh. Mức độ phổ biến và độ chính xác là hai
+                    câu hỏi hoàn toàn khác nhau.
+                </p>
+
+
+                <div class="foundation-viral-counter">
+
+                    <div>
+                        <strong>
+                            500K
+                        </strong>
+
+                        <span>
+                            VIEWS
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>
+                            ?
+                        </strong>
+
+                        <span>
+                            VERIFIED
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="foundation-viral-question">
+
+                    <span>
+                        ASK FIRST
+                    </span>
+
+                    <strong>
+                        “Ai đã kiểm chứng điều này?”
+                    </strong>
+
+                </div>
+
+
+                <div class="foundation-source">
+
+                    <span>
+                        PRINCIPLE
+                    </span>
+
+                    <a
+                        href="https://news.stanford.edu/stories/2017/10/fact-checkers-outperform-historians-evaluating-online-information"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Evidence matters more than popularity ↗
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- =================================================
+             EVIDENCE STRIP
+        ================================================== -->
+
+        <div class="foundation-evidence-section reveal-up">
+
+            <div class="foundation-evidence-heading">
+
+                <span class="section-kicker">
+                    EVIDENCE
+                </span>
+
+                <h3>
+                    Một kỹ năng nhỏ có thể thay đổi
+                    cách bạn đọc Internet.
+                </h3>
+
+                <p>
+                    Stanford nghiên cứu cách các nhóm người khác nhau
+                    đánh giá thông tin trực tuyến. Các fact-checker chuyên nghiệp
+                    sử dụng lateral reading một cách nhất quán hơn,
+                    thay vì chỉ ở lại trên một trang để đánh giá nó.
+                </p>
+
+            </div>
+
+
+            <div class="foundation-evidence-visual">
+
+                <div class="foundation-browser-window">
+
+                    <div class="foundation-browser-top">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                    <div class="foundation-browser-content">
+
+                        <div class="foundation-browser-page"></div>
+
+                        <div class="foundation-browser-tabs">
+
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="foundation-lateral-arrow">
+                    <span></span>
+                    <strong>
+                        OPEN OTHER TABS
+                    </strong>
+                </div>
+
+
+                <div class="foundation-browser-mini-grid">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+
+            <a
+                class="foundation-evidence-link"
+                href="https://news.stanford.edu/stories/2017/10/fact-checkers-outperform-historians-evaluating-online-information"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Đọc nghiên cứu Stanford
+                <span>↗</span>
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             KNOWLEDGE PRINCIPLE
+        ================================================== -->
+
+        <div class="foundation-principle reveal-up">
+
+            <div class="foundation-principle-mark">
+                !
+            </div>
+
+            <div>
+
+                <span>
+                    MỘT NGUYÊN TẮC QUAN TRỌNG
+                </span>
+
+                <h3>
+                    Đừng hỏi “Tôi có tin không?”
+                </h3>
+
+                <p>
+                    Hãy bắt đầu bằng:
+                    <strong>
+                        “Bằng chứng nào khiến tôi tin điều này?”
+                    </strong>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TRANSITION TO SIFT
+        ================================================== -->
+
+        <div class="foundation-transition reveal-up">
+
+            <div>
+
+                <span>
+                    KIẾN THỨC → THỰC HÀNH
+                </span>
+
+                <h3>
+                    Đã hiểu thông tin.
+                    <span>Giờ hãy học cách kiểm chứng.</span>
+                </h3>
+
+            </div>
+
+
+            <a
+                href="verify.html"
+                class="foundation-transition-btn"
+            >
+                Khám phá SIFT
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     RESOURCE LIBRARY
+===================================================== -->
+
+<section
+    class="section library-section"
+    id="library"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    02 / THƯ VIỆN TÀI LIỆU
+                </span>
+
+                <h2>
+                    Góc nhìn từ
+                    <span>nhiều nguồn.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Khu vực này được thiết kế như một
+                thư viện nội dung. Bạn có thể tự bổ sung
+                video YouTube, hình ảnh, bài đọc hoặc tài liệu PDF.
+            </p>
+
+        </div>
+
+
+        <!-- LIBRARY NAV -->
+
+        <div class="library-toolbar">
+
+            <div class="library-tabs">
+
+                <button
+                    class="library-tab active"
+                    data-category="all"
+                >
+                    Tất cả
+                </button>
+
+                <button
+                    class="library-tab"
+                    data-category="video"
+                >
+                    Video
+                </button>
+
+
+                <button
+                    class="library-tab"
+                    data-category="research"
+                >
+                    Nghiên cứu
+                </button>
+
+               
+
+        
+
+            </div>
+
+
+            <div class="library-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="librarySearch"
+                    placeholder="Tìm tài liệu..."
+                    aria-label="Tìm tài liệu"
+                >
+
+            </div>
+
+        </div>
+
+
+       <!-- =====================================================
+     FEATURED RESOURCE — SIFT VIDEO SERIES
+===================================================== -->
+
+<article class="featured-resource sift-featured">
+
+    <!-- =================================================
+         VIDEO PLAYER
+    ================================================== -->
+
+    <div class="featured-media sift-featured-media">
+
+        <div class="media-label">
+            SIFT / ONLINE VERIFICATION SKILLS
+        </div>
+
+        <div class="sift-video-frame">
+            <iframe
+                id="siftFeaturedVideo"
+                src="https://www.youtube.com/embed/yBU2sDlUbp8?playsinline=1&rel=0"
+                title="Online Verification Skills — Video 1: Introductory Video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FEATURED CONTENT
+    ================================================== -->
+
+    <div class="featured-content sift-featured-content">
+
+        <span class="featured-category">
+            DIGITAL LITERACY
+        </span>
+
+        <h3>
+            SIFT — 4 video
+            <span>kiểm chứng thông tin trực tuyến.</span>
+        </h3>
+
+        <p>
+            Khám phá 4 bước của phương pháp SIFT qua
+            chuỗi video <strong>Online Verification Skills</strong>:
+            dừng lại, điều tra nguồn, tìm nguồn đáng tin cậy
+            và truy xuất về nguồn gốc ban đầu.
+        </p>
+
+
+        <!-- =================================================
+             SIFT VIDEO SELECTOR
+        ================================================== -->
+
+        <div class="sift-video-selector">
+
+            <button
+                type="button"
+                class="sift-video-item active"
+                data-sift-video="yBU2sDlUbp8"
+                data-sift-title="Online Verification Skills — Video 1: Introductory Video"
+            >
+                <span class="sift-video-number">01</span>
+
+                <span class="sift-video-info">
+                    <strong>STOP</strong>
+                    <small>
+                        Introductory Video
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="hB6qjIxKltA"
+                data-sift-title="Online Verification Skills — Video 2: Investigate the Source"
+            >
+                <span class="sift-video-number">02</span>
+
+                <span class="sift-video-info">
+                    <strong>INVESTIGATE</strong>
+                    <small>
+                        Investigate the Source
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="tRZ-N3OvvUs"
+                data-sift-title="Online Verification Skills — Video 3: Find the Original Source"
+            >
+                <span class="sift-video-number">03</span>
+
+                <span class="sift-video-info">
+                    <strong>TRACE</strong>
+                    <small>
+                        Find the Original Source
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-video-item"
+                data-sift-video="wJG7kFmS0FE"
+                data-sift-title="Online Verification Skills — Video 4: Look for Trusted Work"
+            >
+                <span class="sift-video-number">04</span>
+
+                <span class="sift-video-info">
+                    <strong>FIND</strong>
+                    <small>
+                        Look for Trusted Work
+                    </small>
+                </span>
+
+                <span class="sift-video-arrow">
+                    →
+                </span>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             SOURCE
+        ================================================== -->
+
+        <div class="featured-source">
+
+            <span class="source-circle">
+                S
+            </span>
+
+            <div>
+                <strong>
+                    SIFT / Online Verification Skills
+                </strong>
+
+                <small>
+                    4 video hướng dẫn kiểm chứng
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+<!-- RESOURCE GRID -->
+
+<div
+    class="resource-grid"
+    id="resourceGrid"
+>
+
+    <!-- =================================================
+         01 — BRANDS VIETNAM
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="short form video brands vietnam content on trend"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://cdn.brvn.vn/topics/1280px/2021/320175_Shortform-video-6_1631520581.png"
+                alt="Short-form video - Brands Vietnam"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                RESEARCH
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>RESEARCH</span>
+                <span>•</span>
+                <span>BRANDS VIETNAM</span>
+            </div>
+
+            <h3>
+                Vì sao short-form video là dạng nội dung tiềm năng?
+            </h3>
+
+            <p>
+                Phân tích xu hướng short-form video
+                và khả năng thu hút người xem.
+            </p>
+
+            <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="brands"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         02 — PMC RESEARCH
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="short form video addiction academic procrastination attentional control research pmc"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://www.frontiersin.org/files/Articles/1298361/fpsyg-14-1298361-HTML/image_m/fpsyg-14-1298361-g001.jpg"
+                alt="Nghiên cứu về short-form video addiction"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                RESEARCH
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>RESEARCH</span>
+                <span>•</span>
+                <span>FRONTIERS</span>
+            </div>
+
+            <h3>
+                Short-form video addiction và trì hoãn học tập
+            </h3>
+
+            <p>
+                Nghiên cứu về video ngắn, khả năng kiểm soát
+                chú ý và academic procrastination.
+            </p>
+
+           <button
+    class="resource-link"
+    type="button"
+    data-resource-type="research"
+    data-resource-url="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1298361/full"
+>
+    Đọc nghiên cứu →
+</button>
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         03 — GITNUX
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="media literacy statistics gitnux digital literacy misinformation"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://gitnux.org/_next/image/?q=75&url=https%3A%2F%2Fgcm-headless-cms.s3.eu-north-1.amazonaws.com%2Fadmin-generated-images%2Ffeatured%2F1777844062487-media-literacy-7f74bd18.webp&w=3840"
+                alt="Media Literacy Statistics - Gitnux"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                STATISTICS
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>STATISTICS</span>
+                <span>•</span>
+                <span>GITNUX</span>
+            </div>
+
+            <h3>
+                Media Literacy Statistics 2026
+            </h3>
+
+            <p>
+                Tổng hợp dữ liệu và thống kê về
+                media literacy và misinformation.
+            </p>
+
+          <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="gitnux"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         04 — MEDIA LITERACY NOW
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="what is media literacy media literacy now education"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://medialiteracynow.org/wp-content/uploads/2023/06/22-copy-2.png"
+                alt="What is Media Literacy - Media Literacy Now"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                GUIDE
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>GUIDE</span>
+                <span>•</span>
+                <span>MEDIA LITERACY NOW</span>
+            </div>
+
+            <h3>
+                What is Media Literacy?
+            </h3>
+
+            <p>
+                Khái niệm, kỹ năng và vai trò của
+                media literacy trong môi trường số.
+            </p>
+
+           <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="medialiteracynow"
+>
+    Đọc nghiên cứu →
+</button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         05 — THANH NIÊN
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="research"
+        data-search="video ngắn độc hại thanh nien mạng xã hội"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/8/24/base64-17875559186961508051180.jpeg"
+                alt="Video ngắn và mạng xã hội - Thanh Niên"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                NEWS
+            </span>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>NEWS</span>
+                <span>•</span>
+                <span>THANH NIÊN</span>
+            </div>
+
+            <h3>
+                Tuyên chiến với các video ngắn độc hại
+            </h3>
+
+            <p>
+                Phân tích tác động của video ngắn độc hại
+                đối với người trẻ trên mạng xã hội.
+            </p>
+
+          <button
+    class="resource-link"
+    type="button"
+    data-resource-type="reader"
+    data-reader-id="thanhnien"
+>
+    Đọc nghiên cứu →
+</button>
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         06 — YOUTUBE AWf...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="media literacy youtube video"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/AWf964m-mgc/maxresdefault.jpg"
+                alt="YouTube video"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                
+What Is Media Literacy? | Kate Wong 
+            </h3>
+
+            <p>
+                Video bổ sung cho phần kiến thức
+                về năng lực truyền thông.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/AWf964m-mgc"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         07 — YOUTUBE -Fx...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="fact checking misinformation youtube video"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/-FxVjgbV2rQ/maxresdefault.jpg"
+                alt="YouTube video"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                
+Critical Thinking Crisis
+            </h3>
+
+            <p>
+                Nội dung video hỗ trợ kỹ năng
+                kiểm tra và đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/-FxVjgbV2rQ"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         08 — CRASH COURSE
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="introduction media literacy crash course youtube"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/AD7N-1Mj-DU/maxresdefault.jpg"
+                alt="Introduction to Media Literacy - Crash Course"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRASH COURSE</span>
+            </div>
+
+            <h3>
+                Introduction to Media Literacy
+            </h3>
+
+            <p>
+                Crash Course giới thiệu những khái niệm
+                nền tảng về Media Literacy.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/AD7N-1Mj-DU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         09 — O5...
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="how to read critically bad media literacy youtube"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/O5axQ_yy3MA/maxresdefault.jpg"
+                alt="How to read critically in the age of bad media literacy"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>YOUTUBE</span>
+            </div>
+
+            <h3>
+                How to read critically in the age of bad media literacy
+            </h3>
+
+            <p>
+                Video về cách đọc và tiếp nhận thông tin
+                một cách phản biện.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/O5axQ_yy3MA"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+    <!-- =================================================
+         10 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy phản biện định nghĩa câu hỏi phản biện kỹ năng tư duy"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/UjbKZvPw1MU/maxresdefault.jpg"
+                alt="Tư duy phản biện - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện:
+                Định nghĩa & 3 cách đặt câu hỏi
+            </h3>
+
+            <p>
+                Giới thiệu khái niệm tư duy phản biện
+                và cách đặt câu hỏi để đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/UjbKZvPw1MU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         11 — CRITICAL THINKING PRACTICE
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="critical thinking tư duy biện luận luyện tập phản biện cách luyện tập"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/6HP5mg91ETU/maxresdefault.jpg"
+                alt="Tư duy biện luận - Critical Thinking"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy biện luận:
+                Cách luyện tập phản biện
+            </h3>
+
+            <p>
+                Video tập trung vào cách rèn luyện
+                khả năng suy luận và phản biện.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/6HP5mg91ETU"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         12 — CRITICAL THINKING
+    ================================================== -->
+
+    <article
+        class="resource-card"
+        data-category="video"
+        data-search="tư duy phản biện critical thinking phân tích đánh giá thông tin"
+    >
+
+        <div class="resource-cover">
+
+            <img
+                src="https://i.ytimg.com/vi/pNKRExRmvBQ/maxresdefault.jpg"
+                alt="Tư duy phản biện"
+                loading="lazy"
+            >
+
+            <span class="cover-label">
+                VIDEO
+            </span>
+
+            <div class="cover-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="resource-body">
+
+            <div class="resource-meta">
+                <span>VIDEO</span>
+                <span>•</span>
+                <span>CRITICAL THINKING</span>
+            </div>
+
+            <h3>
+                Tư duy phản biện
+            </h3>
+
+            <p>
+                Nội dung bổ sung cho kỹ năng phân tích,
+                đặt câu hỏi và đánh giá thông tin.
+            </p>
+
+            <button
+                class="resource-link"
+                type="button"
+                data-resource-type="youtube"
+                data-resource-url="https://www.youtube.com/embed/pNKRExRmvBQ"
+            >
+                Xem video
+                <span>▶</span>
+            </button>
+
+        </div>
+
+    </article>
+
+<!-- =================================================
+     13 — TIN AI? | VTV24
+================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="tin AI VTV24 phòng chống tin giả chiến dịch AI fake news kiểm chứng thông tin"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/FQWuU-AKAMg/maxresdefault.jpg"
+            alt="Chung tay phòng chống tin giả cùng chiến dịch TIN AI? - VTV24"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>VTV24</span>
+        </div>
+
+        <h3>
+            Chung tay phòng chống tin giả
+            cùng chiến dịch “TIN AI?”
+        </h3>
+
+        <p>
+            Video của VTV24 giới thiệu chiến dịch “TIN AI?”,
+            nhằm nâng cao nhận thức về tin giả và khuyến khích
+            người dùng chủ động kiểm chứng thông tin trong thời đại AI.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/FQWuU-AKAMg"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     14 — MEDIA MANIPULATION
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="video"
+    data-search="truyền thông thao túng media manipulation tin giả thông tin Phạm Hoàng Beyond Limits"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://i.ytimg.com/vi/lLP7xbx8zaE/maxresdefault.jpg"
+            alt="Làm thế nào để không bị truyền thông thao túng - Phạm Hoàng"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            VIDEO
+        </span>
+
+        <div class="cover-play">
+            ▶
+        </div>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>VIDEO</span>
+            <span>•</span>
+            <span>BEYOND LIMITS</span>
+        </div>
+
+        <h3>
+            Làm thế nào để không bị
+            truyền thông thao túng?
+        </h3>
+
+        <p>
+            Video của Phạm Hoàng phân tích cách truyền thông
+            có thể tác động đến cách chúng ta tiếp nhận,
+            đánh giá và phản ứng với thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="youtube"
+            data-resource-url="https://www.youtube.com/embed/lLP7xbx8zaE"
+        >
+            Xem video
+            <span>▶</span>
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     15 — SÓNG TRẺ
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="nội dung nhanh mạng xã hội bạn trẻ TikTok reels short form video tập trung"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SÓNG TRẺ</span>
+        </div>
+
+        <h3>
+            Hệ quả của “nội dung nhanh”
+            trên mạng xã hội với bạn trẻ
+        </h3>
+
+        <p>
+            Phân tích ảnh hưởng của nội dung ngắn đến
+            thời gian sử dụng mạng xã hội, khả năng tập trung
+            và thói quen tiếp nhận thông tin của người trẻ.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://songtre.com.vn/he-qua-cua-%E2%80%9Cnoi-dung-nhanh%E2%80%9D-tren-mang-xa-hoi-voi-ban-tre-p29418.html"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     16 — LATERAL READING
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="lateral reading đọc ngang đánh giá thông tin digital information credibility Wineburg McGrew Stanford"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            RESEARCH
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>SSRN / STANFORD</span>
+        </div>
+
+        <h3>
+            Lateral Reading:
+            Reading Less and Learning More
+        </h3>
+
+        <p>
+            Nghiên cứu về cách đánh giá độ tin cậy của
+            thông tin trực tuyến và phương pháp đọc ngang
+            được các fact-checker sử dụng.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3048994"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     17 — VOV
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="VOV tin giả thông tin sai sự thật không gian mạng nhận diện ngăn chặn deepfake giới trẻ"
+>
+
+    <div class="resource-cover">
+
+        <div class="cover-document">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <span class="cover-label">
+            GUIDE
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>GUIDE</span>
+            <span>•</span>
+            <span>VOV</span>
+        </div>
+
+        <h3>
+            Chủ động nhận diện,
+            ngăn chặn tin giả trên không gian mạng
+        </h3>
+
+        <p>
+            Phân tích nguy cơ tin giả, thông tin sai sự thật
+            và sự cần thiết của kỹ năng nhận diện, sàng lọc
+            trước khi tiếp nhận hoặc chia sẻ thông tin.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://vov.vn/chinh-tri/chu-dong-nhan-dien-ngan-chan-tin-gia-tren-khong-gian-mang-post1294844.vov"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+<!-- =================================================
+     18 — UNESCO
+===================================================== -->
+
+<article
+    class="resource-card"
+    data-category="research"
+    data-search="UNESCO media information literacy MIL policies education digital literacy misinformation critical thinking"
+>
+
+    <div class="resource-cover">
+
+        <img
+            src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/article/2025-10/shutterstock_667978993.jpg.webp?itok=ej9pIox9"
+            alt="UNESCO Media and Information Literacy"
+            loading="lazy"
+        >
+
+        <span class="cover-label">
+            UNESCO
+        </span>
+
+    </div>
+
+    <div class="resource-body">
+
+        <div class="resource-meta">
+            <span>RESEARCH</span>
+            <span>•</span>
+            <span>UNESCO</span>
+        </div>
+
+        <h3>
+            New UNESCO Issue Brief:
+            Global Gaps in Media and Information Literacy
+        </h3>
+
+        <p>
+            Phân tích khoảng cách toàn cầu trong chính sách
+            và giáo dục Media and Information Literacy,
+            đồng thời nhấn mạnh vai trò của tư duy phản biện
+            và năng lực số.
+        </p>
+
+        <button
+            class="resource-link"
+            type="button"
+            data-resource-type="research"
+            data-resource-url="https://www.unesco.org/en/articles/new-unesco-issue-brief-reveals-global-gaps-media-and-information-literacy-policies-and-education"
+        >
+            Đọc nghiên cứu →
+        </button>
+
+    </div>
+
+</article>
+
+
+
+</div>
+        <!-- =================================================
+             LOAD MORE
+        ================================================== -->
+
+        <div
+            class="library-more-wrap"
+            id="libraryMoreWrap"
+        >
+
+            <button
+                class="library-more"
+                id="libraryMore"
+                type="button"
+            >
+                <span class="library-more-text">
+                    Xem thêm
+                </span>
+
+                <span class="library-more-arrow">
+                    ↓
+                </span>
+            </button>
+
+        </div>
+
+
+        <div
+            class="empty-results"
+            id="emptyResults"
+        >
+            Không tìm thấy nội dung phù hợp.
+        </div>
+
+
+        <div class="library-bottom">
+
+            <span>
+                Gợi ý cấu trúc:
+            </span>
+
+            <strong>
+                Video
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Bài đọc
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Nghiên cứu
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Hướng dẫn
+            </strong>
+
+            <i></i>
+
+            <strong>
+                Case Study
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SIFT — VERIFICATION STUDIO
+===================================================== -->
+
+<section
+    class="section sift-studio-section"
+    id="methods"
+>
+
+    <div class="container">
+
+
+        <!-- =================================================
+             INTRO
+        ================================================== -->
+
+        <div class="sift-studio-intro">
+
+            <div class="sift-studio-intro-copy">
+
+                <span class="section-kicker">
+                    03 / PHƯƠNG PHÁP KIỂM CHỨNG
+                </span>
+
+                <h2>
+                    Học cách kiểm chứng
+                    <span>trước khi tin.</span>
+                </h2>
+
+                <p>
+                    SIFT là một phương pháp kiểm chứng thông tin
+                    được xây dựng quanh bốn chuyển động:
+                    Stop, Investigate, Find và Trace.
+                    Mỗi bước giúp bạn đặt một câu hỏi khác nhau
+                    trước khi đưa ra kết luận.
+                </p>
+
+            </div>
+
+
+            <div class="sift-studio-intro-side">
+
+                <div class="sift-studio-index">
+                    <strong>
+                        04
+                    </strong>
+
+                    <span>
+                        MOVES
+                    </span>
+                </div>
+
+                <div>
+
+                    <strong>
+                        VERIFICATION STUDIO
+                    </strong>
+
+                    <p>
+                        Một không gian thực hành
+                        kiểm chứng thông tin.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STEP MAP
+        ================================================== -->
+
+        <div class="sift-step-map">
+
+            <div class="sift-step-map-line">
+                <span></span>
+            </div>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item active"
+                data-sift-step="0"
+            >
+
+                <span class="sift-studio-step-number">
+                    01
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    S
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        STOP
+                    </strong>
+
+                    <small>
+                        Dừng lại
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="1"
+            >
+
+                <span class="sift-studio-step-number">
+                    02
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    I
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        INVESTIGATE
+                    </strong>
+
+                    <small>
+                        Điều tra nguồn
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="2"
+            >
+
+                <span class="sift-studio-step-number">
+                    03
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    F
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        FIND
+                    </strong>
+
+                    <small>
+                        Tìm nguồn tốt hơn
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sift-studio-step sift-nav-item"
+                data-sift-step="3"
+            >
+
+                <span class="sift-studio-step-number">
+                    04
+                </span>
+
+                <span class="sift-studio-step-letter">
+                    T
+                </span>
+
+                <span class="sift-studio-step-copy">
+
+                    <strong>
+                        TRACE
+                    </strong>
+
+                    <small>
+                        Truy xuất nguồn gốc
+                    </small>
+
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERIFICATION STAGE
+        ================================================== -->
+
+        <div class="sift-studio-stage">
+
+
+            <!-- =============================================
+                 CASE VISUAL
+            ============================================== -->
+
+            <article class="sift-case-panel">
+
+                <div class="sift-case-glow glow-a"></div>
+                <div class="sift-case-glow glow-b"></div>
+
+                <div class="sift-case-top">
+
+                    <span>
+                        CASE STUDY / INFORMATION CHECK
+                    </span>
+
+                    <span>
+                        #004
+                    </span>
+
+                </div>
+
+
+                <div class="sift-case-content">
+
+                    <div class="sift-case-label">
+                        CLAIM UNDER REVIEW
+                    </div>
+
+                    <h3 id="siftClaimText">
+                        Có nên tin thông tin này?
+                    </h3>
+
+                    <p>
+                        Một tuyên bố có thể trông rất thuyết phục
+                        trên mạng xã hội. Nhưng trước khi tin hoặc chia sẻ,
+                        chúng ta cần biết nguồn ở đâu, bằng chứng là gì
+                        và thông tin có còn đúng với bối cảnh ban đầu hay không.
+                    </p>
+
+                </div>
+
+
+                <div class="sift-case-image-wrap">
+
+                    <img
+                        id="siftCaseImage"
+                        src="assets/quiz/anh1.jpg"
+                        alt="Ví dụ thông tin cần kiểm chứng"
+                    >
+
+                    <div class="sift-case-image-overlay"></div>
+
+
+                    <div class="sift-image-tag">
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <strong>
+                            UNVERIFIED
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="sift-case-bottom">
+
+                    <div>
+
+                        <span>
+                            CURRENT STATE
+                        </span>
+
+                        <strong id="siftCurrentState">
+                            Chưa được xác minh
+                        </strong>
+
+                    </div>
+
+                    <div class="sift-case-meter">
+
+                        <span></span>
+
+                        <span></span>
+
+                        <span></span>
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =============================================
+                 ACTIVE STEP
+            ============================================== -->
+
+            <aside class="sift-studio-active">
+
+                <div class="sift-active-header">
+
+                    <div>
+
+                        <span>
+                            CURRENT MOVE
+                        </span>
+
+                        <strong>
+                            <b id="siftStepCurrent">
+                                01
+                            </b>
+                            / 04
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="sift-auto-button"
+                        id="siftAutoPlay"
+                    >
+                        ▶ TỰ ĐỘNG
+                    </button>
+
+                </div>
+
+
+                <div class="sift-active-identity">
+
+                    <div class="sift-active-letter">
+
+                        <span id="siftActiveLetter">
+                            S
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span id="siftActiveCode">
+                            STOP
+                        </span>
+
+                        <small id="siftActiveSub">
+                            PAUSE BEFORE TRUSTING
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sift-active-progress">
+
+                    <span></span>
+
+                    <strong id="siftVisualPercent">
+                        25
+                    </strong>%
+
+                </div>
+
+
+                <div class="sift-active-description">
+
+                    <span>
+                        MỤC TIÊU
+                    </span>
+
+                    <p id="siftExplanationText">
+                        Khi gặp một thông tin trực tuyến,
+                        đừng lập tức phản ứng hoặc chia sẻ.
+                        Hãy tạo một khoảng dừng trước khi quyết định.
+                    </p>
+
+                </div>
+
+
+                <div class="sift-status-line">
+
+                    <span></span>
+
+                    <strong id="siftVisualStatus">
+                        PAUSING BEFORE TRUSTING
+                    </strong>
+
+                </div>
+
+            </aside>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             VISUAL EXAMPLE GALLERY
+        ================================================== -->
+
+        <div class="sift-example-section">
+
+            <div class="sift-example-heading">
+
+                <div>
+
+                    <span>
+                        VISUAL EXAMPLES
+                    </span>
+
+                    <h3>
+                        Nhìn thấy vấn đề
+                        <span>trước khi xử lý.</span>
+                    </h3>
+
+                </div>
+
+                <p>
+                    Mỗi bước SIFT gắn với một kiểu bằng chứng
+                    hoặc tín hiệu khác nhau. Hãy quan sát hình ảnh
+                    để hiểu bạn cần tìm gì.
+                </p>
+
+            </div>
+
+
+            <div class="sift-example-gallery">
+
+                <div class="sift-gallery-main">
+
+                    <img
+                        id="siftGalleryMain"
+                        src="assets/quiz/anh1.jpg"
+                        alt="Ví dụ SIFT"
+                    >
+
+                    <div class="sift-gallery-overlay"></div>
+
+                    <div class="sift-gallery-caption">
+
+                        <span id="siftGalleryTag">
+                            STOP
+                        </span>
+
+                        <strong id="siftGalleryTitle">
+                            Dừng lại trước khi phản ứng
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sift-gallery-side">
+
+                    <div class="sift-gallery-card">
+
+                        <img
+                            id="siftGallerySmallOne"
+                            src="assets/quiz/anh2.jpg"
+                            alt="Ví dụ kiểm chứng nguồn"
+                        >
+
+                        <div>
+                            <span>
+                                LOOK FOR
+                            </span>
+
+                            <strong id="siftGalleryLook">
+                                Cảm xúc và tốc độ phản ứng
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="sift-gallery-card">
+
+                        <img
+                            id="siftGallerySmallTwo"
+                            src="assets/quiz/anh3.jpg"
+                            alt="Ví dụ thông tin cần đối chiếu"
+                        >
+
+                        <div>
+                            <span>
+                                AVOID
+                            </span>
+
+                            <strong id="siftGalleryAvoid">
+                                Chia sẻ khi chưa kiểm chứng
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DETAIL + ACTION
+        ================================================== -->
+
+        <div class="sift-learning-grid">
+
+
+            <!-- DETAIL -->
+
+            <article class="sift-learning-detail">
+
+                <div class="sift-detail-top">
+
+                    <span>
+                        WHAT THIS STEP MEANS
+                    </span>
+
+                    <div>
+                        SIFT /
+                        <strong id="siftExplanationKicker">
+                            STOP
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="sift-detail-body">
+
+                    <div class="sift-detail-mark">
+
+                        <span id="siftExplanationLetter">
+                            S
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 id="siftExplanationTitle">
+                            Dừng lại trước khi tin.
+                        </h3>
+
+                        <p id="siftLongExplanation">
+                            STOP không yêu cầu bạn phải kết luận
+                            thông tin đúng hay sai ngay lập tức.
+                            Mục tiêu đầu tiên là tạo ra một khoảng dừng
+                            để nhận biết cảm xúc, xác định tuyên bố
+                            cần kiểm chứng và tránh hành động quá sớm.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ACTION -->
+
+            <article class="sift-learning-action">
+
+                <div class="sift-learning-action-head">
+
+                    <div>
+
+                        <span>
+                            PRACTICE
+                        </span>
+
+                        <h3>
+                            Hãy làm gì tiếp theo?
+                        </h3>
+
+                    </div>
+
+                    <span class="sift-action-arrow">
+                        ↗
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="sift-action-list"
+                    id="siftActionList"
+                >
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            Nhận diện phản ứng cảm xúc của bạn.
+                        </strong>
+
+                    </div>
+
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            Xác định chính xác tuyên bố cần kiểm chứng.
+                        </strong>
+
+                    </div>
+
+
+                    <div class="sift-action-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            Tạm dừng trước khi bình luận hoặc chia sẻ.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             DO / DON'T
+        ================================================== -->
+
+        <div class="sift-do-dont-grid">
+
+
+            <article class="sift-do-panel">
+
+                <div class="sift-do-heading">
+
+                    <span>
+                        ✓ DO
+                    </span>
+
+                    <strong>
+                        Nên làm
+                    </strong>
+
+                </div>
+
+
+                <div id="siftDoList">
+
+                    <div>
+                        <span>01</span>
+                        <p>
+                            Chậm lại trước thông tin gây sốc.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <p>
+                            Xác định điều bạn thực sự cần kiểm chứng.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <p>
+                            Tách cảm xúc khỏi quyết định.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="sift-dont-panel">
+
+                <div class="sift-dont-heading">
+
+                    <span>
+                        × DON'T
+                    </span>
+
+                    <strong>
+                        Không nên làm
+                    </strong>
+
+                </div>
+
+
+                <div id="siftDontList">
+
+                    <div>
+                        <span>01</span>
+                        <p>
+                            Chia sẻ chỉ vì nội dung đang viral.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <p>
+                            Kết luận chỉ dựa vào cảm giác.
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <p>
+                            Tin ngay vì tiêu đề nghe thuyết phục.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUESTION
+        ================================================== -->
+
+        <div class="sift-question-banner">
+
+            <div class="sift-question-symbol">
+                ?
+            </div>
+
+            <div class="sift-question-content">
+
+                <span>
+                    CÂU HỎI KIỂM TRA
+                </span>
+
+                <strong id="siftQuestion">
+                    Tôi đang phản ứng với sự thật
+                    hay với cảm xúc?
+                </strong>
+
+            </div>
+
+
+            <div class="sift-question-tip">
+                ASK
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             WHY
+        ================================================== -->
+
+        <div class="sift-why-strip">
+
+            <div>
+
+                <span>
+                    WHY IT MATTERS
+                </span>
+
+                <h3>
+                    Một bước nhỏ có thể
+                    <strong>thay đổi quyết định.</strong>
+                </h3>
+
+            </div>
+
+
+            <p id="siftWhy">
+                Nội dung gây sốc hoặc kích thích cảm xúc
+                có thể khiến chúng ta phản ứng quá nhanh.
+                STOP tạo ra một khoảng dừng để chuyển từ phản ứng
+                sang suy nghĩ có chủ đích.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUICK CHECK
+        ================================================== -->
+
+        <div class="sift-quick-check">
+
+            <div class="sift-quick-heading">
+
+                <span>
+                    QUICK CHECK
+                </span>
+
+                <h3>
+                    Trước khi sang bước tiếp theo
+                </h3>
+
+            </div>
+
+
+            <div class="sift-quick-items">
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Tôi đã xác định tuyên bố chưa?
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Tôi biết mình cần kiểm tra điều gì?
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Tôi có đang vội đưa ra kết luận không?
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERIFICATION TRAIL
+        ================================================== -->
+
+        <div class="sift-verification-trail">
+
+            <div class="sift-trail-label">
+
+                <span></span>
+
+                VERIFICATION TRAIL
+
+            </div>
+
+
+            <div class="sift-trail">
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step active"
+                    data-sift-step="0"
+                >
+                    S
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="1"
+                >
+                    I
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="2"
+                >
+                    F
+                </button>
+
+                <i></i>
+
+                <button
+                    type="button"
+                    class="sift-pipeline-step"
+                    data-sift-step="3"
+                >
+                    T
+                </button>
+
+                <i></i>
+
+                <strong>
+                    BETTER JUDGMENT
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="sift-studio-footnote">
+
+            <span>
+                SIFT không phải một bài kiểm tra “đúng / sai”
+                ngay lập tức. Đây là quy trình giúp bạn
+                tiến gần hơn tới thông tin đáng tin cậy.
+            </span>
+
+            <strong>
+                STOP → INVESTIGATE → FIND → TRACE
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     TOOLKIT
+===================================================== -->
+
+<section
+    class="section toolkit-section"
+    id="toolkit"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    04 / VERIFICATION TOOLKIT
+                </span>
+
+                <h2>
+                    Bộ công cụ
+                    <span>kiểm chứng.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Mỗi công cụ có một nhiệm vụ khác nhau.
+                Không nên dựa vào duy nhất một công cụ
+                để đưa ra kết luận cuối cùng.
+            </p>
+
+        </div>
+
+
+        <div class="toolkit-grid">
+
+
+            <article class="tool-card blue">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        01
+                    </span>
+
+                    <span class="tool-icon">
+                        S
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    FACT CHECK
+                </span>
+
+                <h3>
+                    Snopes
+                </h3>
+
+                <p>
+                    Tra cứu các tuyên bố,
+                    tin đồn và nội dung viral.
+                </p>
+
+                <a
+                    href="https://www.snopes.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card orange">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        02
+                    </span>
+
+                    <span class="tool-icon">
+                        R
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    NEWS
+                </span>
+
+                <h3>
+                    Reuters Fact Check
+                </h3>
+
+                <p>
+                    Tham khảo các bài kiểm chứng
+                    và đối chiếu tuyên bố.
+                </p>
+
+                <a
+                    href="https://www.reuters.com/fact-check/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card purple">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        03
+                    </span>
+
+                    <span class="tool-icon">
+                        AFP
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    FACT CHECK
+                </span>
+
+                <h3>
+                    AFP Fact Check
+                </h3>
+
+                <p>
+                    Kiểm tra hình ảnh,
+                    video và tuyên bố.
+                </p>
+
+                <a
+                    href="https://factcheck.afp.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card green">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        04
+                    </span>
+
+                    <span class="tool-icon">
+                        L
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    IMAGE SEARCH
+                </span>
+
+                <h3>
+                    Google Lens
+                </h3>
+
+                <p>
+                    Tìm kiếm hình ảnh để
+                    kiểm tra nguồn và bối cảnh.
+                </p>
+
+                <a
+                    href="https://lens.google.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card yellow">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        05
+                    </span>
+
+                    <span class="tool-icon dark-text">
+                        I
+                    </span>
+
+                </div>
+
+                <span class="tool-type dark-text">
+                    VIDEO
+                </span>
+
+                <h3 class="dark-text">
+                    InVID
+                </h3>
+
+                <p class="dark-text">
+                    Hỗ trợ phân tích video
+                    và hình ảnh từ video.
+                </p>
+
+                <a
+                    href="https://www.invid-project.eu/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use dark-text"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card light-blue">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        06
+                    </span>
+
+                    <span class="tool-icon">
+                        F
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    FACT CHECK
+                </span>
+
+                <h3>
+                    FactCheck.org
+                </h3>
+
+                <p>
+                    Kiểm tra các tuyên bố
+                    trong đời sống và chính sách.
+                </p>
+
+                <a
+                    href="https://www.factcheck.org/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card mint">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        07
+                    </span>
+
+                    <span class="tool-icon">
+                        ↗
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    WEB
+                </span>
+
+                <h3>
+                    Wayback Machine
+                </h3>
+
+                <p>
+                    Xem lại các phiên bản
+                    trước đây của một trang web.
+                </p>
+
+                <a
+                    href="https://web.archive.org/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card sky">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        08
+                    </span>
+
+                    <span class="tool-icon">
+                        G
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    SEARCH
+                </span>
+
+                <h3>
+                    Google Search
+                </h3>
+
+                <p>
+                    Tìm nguồn khác để đối chiếu
+                    một tuyên bố hoặc sự kiện.
+                </p>
+
+                <a
+                    href="https://www.google.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card peach">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        09
+                    </span>
+
+                    <span class="tool-icon">
+                        ✓
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    SOURCES
+                </span>
+
+                <h3>
+                    Google Scholar
+                </h3>
+
+                <p>
+                    Tìm kiếm nghiên cứu,
+                    bài báo và tài liệu học thuật.
+                </p>
+
+                <a
+                    href="https://scholar.google.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <article class="tool-card violet">
+
+                <div class="tool-top">
+
+                    <span class="tool-number">
+                        10
+                    </span>
+
+                    <span class="tool-icon">
+                        ?
+                    </span>
+
+                </div>
+
+                <span class="tool-type">
+                    RESEARCH
+                </span>
+
+                <h3>
+                    Semantic Scholar
+                </h3>
+
+                <p>
+                    Khám phá nghiên cứu học thuật
+                    liên quan đến chủ đề.
+                </p>
+
+                <a
+                    href="https://www.semanticscholar.org/"
+                    target="_blank"
+                    rel="noopener"
+                    class="tool-use"
+                >
+                    Sử dụng ngay
+                    <span>→</span>
+                </a>
+
+            </article>
+
+        </div>
+
+
+        <div class="toolkit-tip">
+
+            <div class="toolkit-tip-icon">
+                !
+            </div>
+
+            <div>
+
+                <strong>
+                    Hãy kết hợp công cụ.
+                </strong>
+
+                <p>
+                    Công cụ hỗ trợ quá trình kiểm chứng;
+                    bằng chứng và bối cảnh mới là cơ sở
+                    để đưa ra kết luận.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ / CHALLENGE
+===================================================== -->
+
+<section
+    class="section challenge-section"
+    id="challenge"
+>
+
+    <div class="container">
+
+        <div class="section-heading challenge-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    05 / THE ULTIMATE CHALLENGE
+                </span>
+
+                <h2>
+                    Thử thách Veritas:
+                    <span>Bạn có bị lừa?</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Mỗi câu hỏi mô phỏng một tình huống
+                thực tế. Bạn có thể đưa ảnh, video,
+                YouTube hoặc deepfake vào từng câu.
+            </p>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+            <!-- QUIZ HEADER -->
+
+            <div class="quiz-header">
+
+                <div class="quiz-number">
+
+                    <span>
+                        CÂU HỎI
+                    </span>
+
+                    <strong>
+                        <span id="quizCurrent">
+                            1
+                        </span>
+
+                        /
+
+                        <span id="quizTotal">
+                            10
+                        </span>
+                    </strong>
+
+                </div>
+
+
+                <div class="quiz-progress">
+
+                    <div class="quiz-progress-track">
+
+                        <span
+                            id="quizProgress"
+                            style="width: 10%"
+                        ></span>
+
+                    </div>
+
+                    <span
+                        id="quizProgressLabel"
+                    >
+                        10%
+                    </span>
+
+                </div>
+
+
+                <span class="quiz-topic">
+                    VERITAS TEST
+                </span>
+
+            </div>
+
+
+            <!-- QUIZ BODY -->
+
+            <div class="quiz-body">
+
+                <!-- MEDIA -->
+
+                <div class="quiz-media-box">
+
+                    <div
+                        class="quiz-media"
+                        id="quizMedia"
+                    >
+
+                        <div class="media-placeholder">
+
+                            <div class="placeholder-icon">
+                                ▶
+                            </div>
+
+                            <strong>
+                                KHU VỰC MEDIA
+                            </strong>
+
+                            <p>
+                                Chèn ảnh, video,
+                                YouTube hoặc deepfake
+                                vào đây.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="media-info">
+
+                        <span id="quizMediaType">
+                            HÌNH ẢNH / VIDEO
+                        </span>
+
+                        <strong id="quizMediaLabel">
+                            Nội dung cần phân tích
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION -->
+
+                <div class="quiz-question">
+
+                    <span class="question-kicker">
+                        ĐÁNH GIÁ NỘI DUNG
+                    </span>
+
+                    <h3 id="quizQuestion">
+                        Nội dung này nên được đánh giá
+                        là sự thật hay tin giả?
+                    </h3>
+
+
+                    <p
+                        class="quiz-context"
+                        id="quizContext"
+                    >
+                        Hãy quan sát kỹ nguồn,
+                        hình ảnh, thời gian và bối cảnh.
+                    </p>
+
+
+                    <div class="answer-buttons">
+
+                        <button
+                            class="answer-button truth"
+                            data-answer="true"
+                        >
+
+                            <span class="answer-symbol">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <small>
+                                    PHƯƠNG ÁN A
+                                </small>
+
+                                <strong>
+                                    Sự thật
+                                </strong>
+
+                            </div>
+
+                        </button>
+
+
+                        <button
+                            class="answer-button fake"
+                            data-answer="false"
+                        >
+
+                            <span class="answer-symbol">
+                                ×
+                            </span>
+
+                            <div>
+
+                                <small>
+                                    PHƯƠNG ÁN B
+                                </small>
+
+                                <strong>
+                                    Tin giả
+                                </strong>
+
+                            </div>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- EXPLANATION -->
+
+                    <div
+                        class="quiz-feedback"
+                        id="quizFeedback"
+                    >
+
+                        <div
+                            class="feedback-icon"
+                            id="feedbackIcon"
+                        >
+                            i
+                        </div>
+
+                        <div class="feedback-content">
+
+                            <strong
+                                id="feedbackTitle"
+                            >
+                                Cách suy nghĩ
+                            </strong>
+
+                            <p
+                                id="feedbackText"
+                            >
+                                Hãy tìm bằng chứng trước
+                                khi kết luận.
+                            </p>
+
+                            <div class="feedback-grid">
+
+                                <div>
+
+                                    <span>
+                                        DẤU HIỆU
+                                    </span>
+
+                                    <strong
+                                        id="feedbackSignal"
+                                    >
+                                        —
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        BẰNG CHỨNG
+                                    </span>
+
+                                    <strong
+                                        id="feedbackEvidence"
+                                    >
+                                        —
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        BƯỚC TIẾP THEO
+                                    </span>
+
+                                    <strong
+                                        id="feedbackNext"
+                                    >
+                                        —
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEXT -->
+
+            <div class="quiz-footer">
+
+                <div class="quiz-tip">
+                    <span>
+                        💡
+                    </span>
+
+                    <p>
+                        Gợi ý:
+                        Không kết luận chỉ vì
+                        một dấu hiệu duy nhất.
+                    </p>
+                </div>
+
+
+                <button
+                    class="next-question"
+                    id="nextQuestion"
+                >
+                    Câu tiếp theo
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+            class="quiz-result"
+            id="quizResult"
+        >
+
+            <div class="result-score">
+
+                <div
+                    class="score-ring"
+                    id="scoreRing"
+                    style="--score: 0"
+                >
+
+                    <div>
+
+                        <strong id="scorePercent">
+                            0%
+                        </strong>
+
+                        <span>
+                            ĐIỂM
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="result-content">
+
+                <span class="result-label">
+                    KẾT QUẢ VERITAS
+                </span>
+
+                <h3>
+                    Bạn là
+                    <span id="resultBadge">
+                        Tân binh Veritas
+                    </span>
+                </h3>
+
+                <p id="resultDescription">
+                    Hãy tiếp tục luyện tập khả năng
+                    kiểm tra nguồn, bằng chứng và bối cảnh.
+                </p>
+
+
+                <div class="result-stats">
+
+                    <div>
+
+                        <span>
+                            ĐÚNG
+                        </span>
+
+                        <strong
+                            id="resultCorrect"
+                        >
+                            0/10
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ĐỘ CHÍNH XÁC
+                        </span>
+
+                        <strong
+                            id="resultAccuracy"
+                        >
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            CẤP ĐỘ
+                        </span>
+
+                        <strong
+                            id="resultLevel"
+                        >
+                            Cần luyện tập
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="button primary-button"
+                    id="restartQuiz"
+                >
+                    Làm lại bài test
+                    <span>↻</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="final-section">
+
+    <div class="container">
+
+        <div class="final-card">
+
+            <div class="final-content">
+
+                <span>
+                    THINK • VERIFY • SHARE
+                </span>
+
+                <h2>
+                    Không chỉ đọc thông tin.
+                    <strong>
+                        Hãy học cách kiểm chứng.
+                    </strong>
+                </h2>
+
+                <p>
+                    Mỗi lần bạn kiểm tra một nguồn,
+                    bạn đang giảm một cơ hội để thông tin sai
+                    tiếp tục lan truyền.
+                </p>
+
+                <a
+                    href="#challenge"
+                    class="button white-button"
+                >
+                    Thử thách Veritas
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <div class="final-visual">
+
+                <div class="final-circle"></div>
+                <div class="final-circle second"></div>
+
+                <div class="final-center">
+                    ✓
+                </div>
+
+                <span class="final-node node-s">
+                    S
+                </span>
+
+                <span class="final-node node-i">
+                    I
+                </span>
+
+                <span class="final-node node-f">
+                    F
+                </span>
+
+                <span class="final-node node-t">
+                    T
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container footer-main">
+
+        <!-- TRƯỜNG -->
+        <div class="footer-school">
+
+            <div class="footer-logo">
+
+                <img
+                    src="assets/logo.png"
+                    alt="Logo Trường THPT Giồng Ông Tố"
+                >
+
+            </div>
+
+            <div class="footer-school-info">
+
+                <strong>
+                    TRƯỜNG THPT GIỒNG ÔNG TỐ
+                </strong>
+
+                <span>
+                    Sở Giáo dục và Đào tạo Thành phố Hồ Chí Minh
+                </span>
+
+                <small>
+                    Đồng hành xây dựng năng lực số
+                    và văn hóa kiểm chứng thông tin.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- VERITAS -->
+        <div class="footer-column">
+
+            <strong>
+                VERITAS
+            </strong>
+
+            <a href="#home">
+                Trang chủ
+            </a>
+
+            <a href="knowledge.html">
+                Kiến thức
+            </a>
+
+            <a href="library.html">
+                Thư viện
+            </a>
+
+        </div>
+
+
+        <!-- KIỂM CHỨNG -->
+        <div class="footer-column">
+
+            <strong>
+                KIỂM CHỨNG
+            </strong>
+
+            <a href="methods.html">
+                Phương pháp
+            </a>
+
+            <a href="toolkit.html">
+                Bộ công cụ
+            </a>
+
+            <a href="challenge.html">
+                Bài test
+            </a>
+
+        </div>
+
+
+        <!-- NGUYÊN TẮC -->
+        <div class="footer-column">
+
+            <strong>
+                NGUYÊN TẮC
+            </strong>
+
+            <span>
+                Think
+            </span>
+
+            <span>
+                Verify
+            </span>
+
+            <span>
+                Share
+            </span>
+
+        </div>
+
+
+        <!-- VỀ CHÚNG TÔI -->
+        <div class="footer-about">
+
+            <strong>
+                VỀ CHÚNG TÔI
+            </strong>
+
+            <p>
+                Nhóm xây dựng Veritas với mục tiêu tạo ra
+                một không gian học tập trực quan, giúp học sinh
+                nâng cao năng lực số và hình thành thói quen
+                kiểm chứng thông tin trước khi tin hoặc chia sẻ.
+            </p>
+
+            <small>
+                MỤC ĐÍCH WEBSITE
+            </small>
+
+            <span>
+                Cung cấp kiến thức, phương pháp, công cụ và
+                bài thực hành về kiểm chứng thông tin, tin giả
+                và nội dung do AI tạo ra.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="container footer-bottom">
+
+        <span>
+            © <span id="year"></span>
+            Veritas Digital Literacy Hub.
+            All rights reserved.
+        </span>
+
+        <span>
+            Designed for education • Information literacy • Fact-checking
+        </span>
+
+    </div>
+
+</footer>
+<!-- =====================================================
+     VERITAS TRANSLATION STUDIO
+===================================================== -->
+
+<div
+    class="veritas-translator"
+    id="veritasTranslator"
+>
+
+    <!-- =================================================
+         FLOATING BUTTON
+    ================================================== -->
+
+    <button
+        type="button"
+        class="translator-fab"
+        id="translatorFab"
+        aria-label="Mở Translation Studio"
+        aria-expanded="false"
+    >
+
+        <span class="translator-fab-icon">
+            文
+        </span>
+
+        <span class="translator-fab-text">
+            Dịch
+        </span>
+
+    </button>
+
+
+    <!-- =================================================
+         TRANSLATOR WINDOW
+    ================================================== -->
+
+    <section
+        class="translator-window"
+        id="translatorWindow"
+        aria-hidden="true"
+    >
+
+        <!-- HEADER -->
+
+        <header class="translator-header">
+
+            <div class="translator-brand">
+
+                <span class="translator-kicker">
+                    VERITAS TOOL
+                </span>
+
+                <h3>
+                    Translation Studio
+                </h3>
+
+                <p>
+                    Dịch và hiểu nội dung trong quá trình
+                    đọc, học tập và kiểm chứng thông tin.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="translator-close"
+                id="translatorClose"
+                aria-label="Đóng Translation Studio"
+            >
+                ×
+            </button>
+
+        </header>
+
+
+        <!-- LANGUAGE CONTROL -->
+
+        <div class="translator-language-card">
+
+            <div class="translator-language">
+
+                <span class="translator-control-label">
+                    NGÔN NGỮ GỐC
+                </span>
+
+                <select
+                    id="translatorFrom"
+                    aria-label="Ngôn ngữ gốc"
+                >
+
+                    <option value="auto">
+                        Tự động phát hiện
+                    </option>
+
+                    <option value="vi">
+                        Tiếng Việt
+                    </option>
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fr">
+                        Français
+                    </option>
+
+                    <option value="de">
+                        Deutsch
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                    <option value="it">
+                        Italiano
+                    </option>
+
+                    <option value="pt">
+                        Português
+                    </option>
+
+                    <option value="nl">
+                        Nederlands
+                    </option>
+
+                    <option value="id">
+                        Bahasa Indonesia
+                    </option>
+
+                    <option value="ja">
+                        日本語
+                    </option>
+
+                    <option value="ko">
+                        한국어
+                    </option>
+
+                    <option value="zh">
+                        中文
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="translator-swap"
+                id="translatorSwap"
+                aria-label="Đổi ngôn ngữ"
+                title="Đổi ngôn ngữ"
+            >
+                ⇄
+            </button>
+
+
+            <div class="translator-language">
+
+                <span class="translator-control-label">
+                    NGÔN NGỮ ĐÍCH
+                </span>
+
+                <select
+                    id="translatorTo"
+                    aria-label="Ngôn ngữ đích"
+                >
+
+                    <option value="vi">
+                        Tiếng Việt
+                    </option>
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fr">
+                        Français
+                    </option>
+
+                    <option value="de">
+                        Deutsch
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                    <option value="it">
+                        Italiano
+                    </option>
+
+                    <option value="pt">
+                        Português
+                    </option>
+
+                    <option value="nl">
+                        Nederlands
+                    </option>
+
+                    <option value="id">
+                        Bahasa Indonesia
+                    </option>
+
+                    <option value="ja">
+                        日本語
+                    </option>
+
+                    <option value="ko">
+                        한국어
+                    </option>
+
+                    <option value="zh">
+                        中文
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRANSLATION MODE -->
+
+        <div class="translator-mode-row">
+
+            <span class="translator-control-label">
+                CHẾ ĐỘ
+            </span>
+
+            <div class="translator-mode-options">
+
+                <button
+                    type="button"
+                    class="translator-mode active"
+                    data-mode="standard"
+                >
+                    Chung
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="academic"
+                >
+                    Học thuật
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="news"
+                >
+                    Tin tức
+                </button>
+
+                <button
+                    type="button"
+                    class="translator-mode"
+                    data-mode="natural"
+                >
+                    Tự nhiên
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <div class="translator-section">
+
+            <div class="translator-section-head">
+
+                <label
+                    for="translatorInput"
+                    class="translator-section-title"
+                >
+                    VĂN BẢN GỐC
+                </label>
+
+                <span
+                    id="translatorCharacterCount"
+                    class="translator-count"
+                >
+                    0 / 500
+                </span>
+
+            </div>
+
+
+            <div class="translator-input-shell">
+
+                <textarea
+                    id="translatorInput"
+                    rows="7"
+                    maxlength="500"
+                    placeholder="Nhập từ, câu hoặc đoạn văn cần dịch..."
+                    spellcheck="true"
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="translator-inline-clear"
+                    id="translatorClear"
+                    aria-label="Xóa nội dung"
+                    title="Xóa"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div
+            class="translator-status"
+            id="translatorStatus"
+        >
+
+            <span class="translator-status-dot"></span>
+
+            <span id="translatorStatusText">
+                Sẵn sàng dịch
+            </span>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="translator-section">
+
+            <div class="translator-section-head">
+
+                <span class="translator-section-title">
+                    BẢN DỊCH
+                </span>
+
+                <button
+                    type="button"
+                    class="translator-copy"
+                    id="translatorCopy"
+                    disabled
+                >
+                    ⧉ Sao chép
+                </button>
+
+            </div>
+
+
+            <div
+                class="translator-result"
+                id="translatorResult"
+                aria-live="polite"
+            >
+
+                <div class="translator-result-empty">
+
+                    <span>
+                        文
+                    </span>
+
+                    <p>
+                        Bản dịch sẽ xuất hiện ở đây.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAIN ACTION -->
+
+        <div class="translator-actions">
+
+            <button
+                type="button"
+                class="translator-clear-button"
+                id="translatorClearSecondary"
+            >
+                Xóa
+            </button>
+
+
+            <button
+                type="button"
+                class="translator-translate"
+                id="translatorTranslate"
+            >
+
+                <span
+                    class="translator-translate-label"
+                >
+                    Dịch
+                </span>
+
+                <span
+                    class="translator-translate-arrow"
+                >
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- SHORTCUT -->
+
+        <div class="translator-shortcut">
+
+            <span>
+                PHÍM TẮT
+            </span>
+
+            <kbd>
+                Ctrl
+            </kbd>
+
+            <span>+</span>
+
+            <kbd>
+                Enter
+            </kbd>
+
+            <span>
+                để dịch
+            </span>
+
+        </div>
+
+
+        <!-- FOOTNOTE -->
+
+        <div class="translator-footnote">
+
+            <strong>
+                VERITAS
+            </strong>
+
+            <span>
+                Bản dịch hỗ trợ hiểu nội dung;
+                không thay thế việc kiểm tra nguồn gốc.
+            </span>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- =====================================================
+     RESOURCE VIEWER
+===================================================== -->
+
+<div class="resource-modal" id="resourceModal" aria-hidden="true">
+    <div class="resource-modal-backdrop"></div>
+
+    <div class="resource-modal-panel">
+        <div class="resource-modal-header">
+            <strong id="resourceModalTitle">Nội dung</strong>
+
+            <button
+                type="button"
+                class="resource-modal-close"
+                id="resourceModalClose"
+                aria-label="Đóng"
+            >
+                ×
+            </button>
+        </div>
+
+        <div
+            class="resource-modal-body"
+            id="resourceModalBody"
+        ></div>
+    </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
