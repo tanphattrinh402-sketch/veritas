@@ -2159,6 +2159,7 @@ siftGalleryCards.forEach(card => {
     }
 
 ];
+if (quizTotal) {
     /* =================================================
        QUIZ DOM
     ================================================= */
@@ -2883,7 +2884,7 @@ siftGalleryCards.forEach(card => {
     loadQuestion();
 
 }
-    
+    }
 
 /* =================================================
    SIMPLE CARD TILT
